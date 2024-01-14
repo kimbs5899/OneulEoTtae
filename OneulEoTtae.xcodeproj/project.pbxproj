@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DFBF8BD2B549778008522DC /* NotificationPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBF8BC2B549778008522DC /* NotificationPageView.swift */; };
+		1DFBF8BF2B54978D008522DC /* TimeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBF8BE2B54978D008522DC /* TimeSelectionView.swift */; };
+		1DFBF8C12B54979D008522DC /* DaySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBF8C02B54979D008522DC /* DaySelectionView.swift */; };
+		1DFBF8C32B5497AB008522DC /* RegionSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBF8C22B5497AB008522DC /* RegionSelectionView.swift */; };
+		1DFBF8C52B5497EE008522DC /* DeleteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBF8C42B5497EE008522DC /* DeleteButtonView.swift */; };
+		1DFBF8C72B5497FD008522DC /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBF8C62B5497FD008522DC /* Weekday.swift */; };
+		1DFBF8C92B54983D008522DC /* MultipleSelectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBF8C82B54983D008522DC /* MultipleSelectionRow.swift */; };
+		1DFBF8CB2B549B1B008522DC /* NotificationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBF8CA2B549B1B008522DC /* NotificationListView.swift */; };
+		1DFBF8CD2B549BE6008522DC /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBF8CC2B549BE6008522DC /* NotificationSettings.swift */; };
 		C1AFB4442B4FD9EC00C85A1F /* OneulEoTtaeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AFB4432B4FD9EC00C85A1F /* OneulEoTtaeApp.swift */; };
 		C1AFB4462B4FD9EC00C85A1F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AFB4452B4FD9EC00C85A1F /* ContentView.swift */; };
 		C1AFB4482B4FD9EC00C85A1F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AFB4472B4FD9EC00C85A1F /* Item.swift */; };
@@ -15,6 +24,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1DFBF8BC2B549778008522DC /* NotificationPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPageView.swift; sourceTree = "<group>"; };
+		1DFBF8BE2B54978D008522DC /* TimeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionView.swift; sourceTree = "<group>"; };
+		1DFBF8C02B54979D008522DC /* DaySelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySelectionView.swift; sourceTree = "<group>"; };
+		1DFBF8C22B5497AB008522DC /* RegionSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelectionView.swift; sourceTree = "<group>"; };
+		1DFBF8C42B5497EE008522DC /* DeleteButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButtonView.swift; sourceTree = "<group>"; };
+		1DFBF8C62B5497FD008522DC /* Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
+		1DFBF8C82B54983D008522DC /* MultipleSelectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectionRow.swift; sourceTree = "<group>"; };
+		1DFBF8CA2B549B1B008522DC /* NotificationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListView.swift; sourceTree = "<group>"; };
+		1DFBF8CC2B549BE6008522DC /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
 		C1AFB4402B4FD9EC00C85A1F /* OneulEoTtae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneulEoTtae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1AFB4432B4FD9EC00C85A1F /* OneulEoTtaeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneulEoTtaeApp.swift; sourceTree = "<group>"; };
 		C1AFB4452B4FD9EC00C85A1F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -34,6 +52,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DFBF8B92B5496F6008522DC /* NotificationPage */ = {
+			isa = PBXGroup;
+			children = (
+				1DFBF8BB2B54970D008522DC /* Model */,
+				1DFBF8BA2B549704008522DC /* View */,
+			);
+			path = NotificationPage;
+			sourceTree = "<group>";
+		};
+		1DFBF8BA2B549704008522DC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1DFBF8BC2B549778008522DC /* NotificationPageView.swift */,
+				1DFBF8BE2B54978D008522DC /* TimeSelectionView.swift */,
+				1DFBF8C02B54979D008522DC /* DaySelectionView.swift */,
+				1DFBF8C22B5497AB008522DC /* RegionSelectionView.swift */,
+				1DFBF8C42B5497EE008522DC /* DeleteButtonView.swift */,
+				1DFBF8C82B54983D008522DC /* MultipleSelectionRow.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1DFBF8BB2B54970D008522DC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1DFBF8C62B5497FD008522DC /* Weekday.swift */,
+				1DFBF8CC2B549BE6008522DC /* NotificationSettings.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C1AFB4372B4FD9EC00C85A1F = {
 			isa = PBXGroup;
 			children = (
@@ -53,9 +102,11 @@
 		C1AFB4422B4FD9EC00C85A1F /* OneulEoTtae */ = {
 			isa = PBXGroup;
 			children = (
+				1DFBF8CA2B549B1B008522DC /* NotificationListView.swift */,
 				C1AFB4432B4FD9EC00C85A1F /* OneulEoTtaeApp.swift */,
 				C1AFB4452B4FD9EC00C85A1F /* ContentView.swift */,
 				C1AFB4472B4FD9EC00C85A1F /* Item.swift */,
+				1DFBF8B92B5496F6008522DC /* NotificationPage */,
 				C1AFB4492B4FD9F000C85A1F /* Assets.xcassets */,
 				C1AFB44B2B4FD9F000C85A1F /* Preview Content */,
 			);
@@ -140,7 +191,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DFBF8C12B54979D008522DC /* DaySelectionView.swift in Sources */,
+				1DFBF8CB2B549B1B008522DC /* NotificationListView.swift in Sources */,
+				1DFBF8BD2B549778008522DC /* NotificationPageView.swift in Sources */,
+				1DFBF8C72B5497FD008522DC /* Weekday.swift in Sources */,
+				1DFBF8C92B54983D008522DC /* MultipleSelectionRow.swift in Sources */,
+				1DFBF8CD2B549BE6008522DC /* NotificationSettings.swift in Sources */,
 				C1AFB4462B4FD9EC00C85A1F /* ContentView.swift in Sources */,
+				1DFBF8C52B5497EE008522DC /* DeleteButtonView.swift in Sources */,
+				1DFBF8C32B5497AB008522DC /* RegionSelectionView.swift in Sources */,
+				1DFBF8BF2B54978D008522DC /* TimeSelectionView.swift in Sources */,
 				C1AFB4482B4FD9EC00C85A1F /* Item.swift in Sources */,
 				C1AFB4442B4FD9EC00C85A1F /* OneulEoTtaeApp.swift in Sources */,
 			);
@@ -284,6 +344,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -313,6 +374,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
