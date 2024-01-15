@@ -8,8 +8,26 @@
 import SwiftUI
 
 struct AlrmView: View {
+    
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
-        Text("알람뷰 빠밤 뾰로롱")
+        VStack {
+            Text("알람뷰 빠밤 뾰로롱")
+        }.navigationTitle("알람편집")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "chevron.backward")
+                            .font(.system(size: 18).bold())
+                            .foregroundStyle(Color.orange)
+                    }
+                }
+            }
     }
 }
 

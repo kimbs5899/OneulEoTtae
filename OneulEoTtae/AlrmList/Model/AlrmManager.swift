@@ -9,12 +9,12 @@ import Foundation
 
 class AlrmManager: ObservableObject {
     @Published var alrmList: [Alrm] = [
-        Alrm(time: "08:00", date: "월요일", location: "서울시 동대문구", toggle: false),
-        Alrm(time: "07:00", date: "화요일", location: "서울시 동대문구", toggle: false),
-        Alrm(time: "10:00", date: "수요일", location: "서울시 동대문구", toggle: false),
-        Alrm(time: "01:00", date: "월요일", location: "서울시 동대문구", toggle: false),
-        Alrm(time: "02:00", date: "화요일", location: "서울시 동대문구", toggle: false),
-        Alrm(time: "03:00", date: "수요일", location: "서울시 동대문구", toggle: false),
+        Alrm(time: "08:00 오전", dayOfWeek: "월요일 화요일 수요일", location: "서울시 종로구", toggle: false),
+        Alrm(time: "07:00 오전", dayOfWeek: "화요일 목요일", location: "서울시 영등포구", toggle: true),
+        Alrm(time: "10:00 오전", dayOfWeek: "수요일 일요일", location: "서울시 동작구", toggle: true),
+        Alrm(time: "01:00 오후", dayOfWeek: "월요일 화요일", location: "서울시 도봉구", toggle: false),
+        Alrm(time: "02:00 오후", dayOfWeek: "화요일 금요일", location: "서울시 성동구", toggle: true),
+        Alrm(time: "03:00 오후", dayOfWeek: "수요일", location: "서울시 은평구", toggle: false),
     ]
     
     func addAlrm(alrm: Alrm) {
@@ -37,5 +37,13 @@ class AlrmManager: ObservableObject {
             return
         }
         alrmList[index] = newAlrm
+    }
+    
+    func updateToggle(for id: String, newToggleValue: Bool) {
+        guard let index = alrmList.firstIndex(where: { $0.id == id }) else {
+            print("id 다름~! error")
+            return
+        }
+        alrmList[index].toggle = newToggleValue
     }
 }

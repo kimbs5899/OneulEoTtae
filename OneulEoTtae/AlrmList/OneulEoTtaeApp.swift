@@ -27,7 +27,7 @@ struct OneulEoTtaeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            AlrmListView()
+            MainTabView()
                 .environmentObject(alrmManager)
         }
         .modelContainer(sharedModelContainer)

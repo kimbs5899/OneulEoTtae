@@ -15,8 +15,12 @@ struct AlrmListView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                List {
-                    AlrmCell()
+                NavigationLink {
+                    AlrmView()
+                } label: {
+                    List {
+                        AlrmCell()
+                    }
                 }
             }.navigationTitle("알람목록")
                 .toolbar {

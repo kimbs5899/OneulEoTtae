@@ -9,23 +9,31 @@ import SwiftUI
 
 struct AlrmCell: View {
     @EnvironmentObject var alrmManager: AlrmManager
-    @State var toggle: Bool = false
     
     var body: some View {
-        ForEach(alrmManager.alrmList) { alrm in
+        ForEach(alrmManager.alrmList.indices, id: \.self) { index in
+            let alrm = alrmManager.alrmList[index]
+            
             VStack {
-                HStack {
-                    Text(alrm.time)
-                        .font(.title.bold())
-                    Spacer()
-                }
                 HStack {
                     Text(alrm.location)
                     Spacer()
-                    Toggle(isOn: self.$toggle, label: {
+                }.padding(.bottom, -5)
+                HStack {
+                    Text(alrm.time)
+                        .font(.title.bold())
+                        .padding(.trailing, 5)
+                    Spacer()
+                    Toggle(isOn: $alrmManager.alrmList[index].toggle) {
                         Text("")
-                    })
-                }.font(.title3)
+                    }
+                }.padding(.bottom, -5)
+                HStack {
+                    Text(alrm.dayOfWeek)
+                        .font(.body)
+                    Spacer()
+                }.font(.callout)
+                    .padding(.bottom, -5)
             }.swipeActions(edge: .trailing) {
                 Button {
                     alrmManager.removeAlrm(alrm)
@@ -37,7 +45,9 @@ struct AlrmCell: View {
     }
 }
 
-#Preview {
-    AlrmCell()
-        .environmentObject(AlrmManager())
+struct AlrmCell_Previews: PreviewProvider {
+    static var previews: some View {
+        AlrmCell()
+            .environmentObject(AlrmManager())
+    }
 }
