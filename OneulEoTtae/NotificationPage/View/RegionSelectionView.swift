@@ -19,7 +19,6 @@ struct RegionSelectionView: View {
                     Text($0)
                 }
             }
-            .pickerStyle(MenuPickerStyle())
         }
     }
 }

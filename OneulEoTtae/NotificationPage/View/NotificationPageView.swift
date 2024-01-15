@@ -20,7 +20,7 @@ struct NotificationPageView: View {
                 RegionSelectionView(selectedRegion: $settings.selectedRegion, regions: settings.regions)
                 DeleteButtonView()
             }
-            .navigationBarTitle("알림 페이지")
+            .navigationTitle("알림 페이지")
         }
     }
 }
