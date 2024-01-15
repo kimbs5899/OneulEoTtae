@@ -25,7 +25,7 @@ struct OneulEoTtaeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NotificationListView()
         }
         .modelContainer(sharedModelContainer)
     }

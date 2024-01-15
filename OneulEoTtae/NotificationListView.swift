@@ -16,9 +16,10 @@ struct NotificationListView: View {
                 self.showingNotificationPage = true
             }
         }
-        .sheet(isPresented: $showingNotificationPage) {
+        .sheet(isPresented: $showingNotificationPage, content: {
             NotificationPageView()
-        }
+                .presentationDetents([ .fraction(0.85), .large])
+        })
     }
 }
 

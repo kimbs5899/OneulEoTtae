@@ -13,6 +13,7 @@ struct DeleteButtonView: View {
             Button("알림 삭제하기") {
             }
         }
+        .foregroundStyle(.red)
     }
 }
 
