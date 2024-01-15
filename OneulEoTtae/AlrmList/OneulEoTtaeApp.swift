@@ -10,6 +10,8 @@ import SwiftData
 
 @main
 struct OneulEoTtaeApp: App {
+    let alrmManager = AlrmManager()
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -25,7 +27,8 @@ struct OneulEoTtaeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AlrmListView()
+                .environmentObject(alrmManager)
         }
         .modelContainer(sharedModelContainer)
     }
