@@ -16,8 +16,15 @@
 		1DFBF8C92B54983D008522DC /* MultipleSelectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBF8C82B54983D008522DC /* MultipleSelectionRow.swift */; };
 		1DFBF8CB2B549B1B008522DC /* NotificationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBF8CA2B549B1B008522DC /* NotificationListView.swift */; };
 		1DFBF8CD2B549BE6008522DC /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBF8CC2B549BE6008522DC /* NotificationSettings.swift */; };
+		99F896872B5507AC0059CF72 /* Alrm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F896862B5507AC0059CF72 /* Alrm.swift */; };
+		99F8968B2B5507C90059CF72 /* AlrmListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F8968A2B5507C90059CF72 /* AlrmListView.swift */; };
+		99F8968D2B5508C40059CF72 /* AlrmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F8968C2B5508C40059CF72 /* AlrmCell.swift */; };
+		99F8968F2B55807D0059CF72 /* AlrmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F8968E2B55807D0059CF72 /* AlrmManager.swift */; };
+		99F896912B55844C0059CF72 /* AlrmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F896902B55844C0059CF72 /* AlrmView.swift */; };
+		99F896932B55988F0059CF72 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F896922B55988F0059CF72 /* MainTabView.swift */; };
+		99F896952B559B240059CF72 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F896942B559B240059CF72 /* HomeView.swift */; };
+		99F896972B559B2F0059CF72 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F896962B559B2F0059CF72 /* SettingView.swift */; };
 		C1AFB4442B4FD9EC00C85A1F /* OneulEoTtaeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AFB4432B4FD9EC00C85A1F /* OneulEoTtaeApp.swift */; };
-		C1AFB4462B4FD9EC00C85A1F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AFB4452B4FD9EC00C85A1F /* ContentView.swift */; };
 		C1AFB4482B4FD9EC00C85A1F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AFB4472B4FD9EC00C85A1F /* Item.swift */; };
 		C1AFB44A2B4FD9F000C85A1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1AFB4492B4FD9F000C85A1F /* Assets.xcassets */; };
 		C1AFB44D2B4FD9F000C85A1F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1AFB44C2B4FD9F000C85A1F /* Preview Assets.xcassets */; };
@@ -33,9 +40,16 @@
 		1DFBF8C82B54983D008522DC /* MultipleSelectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectionRow.swift; sourceTree = "<group>"; };
 		1DFBF8CA2B549B1B008522DC /* NotificationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListView.swift; sourceTree = "<group>"; };
 		1DFBF8CC2B549BE6008522DC /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
+		99F896862B5507AC0059CF72 /* Alrm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alrm.swift; sourceTree = "<group>"; };
+		99F8968A2B5507C90059CF72 /* AlrmListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlrmListView.swift; sourceTree = "<group>"; };
+		99F8968C2B5508C40059CF72 /* AlrmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlrmCell.swift; sourceTree = "<group>"; };
+		99F8968E2B55807D0059CF72 /* AlrmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlrmManager.swift; sourceTree = "<group>"; };
+		99F896902B55844C0059CF72 /* AlrmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlrmView.swift; sourceTree = "<group>"; };
+		99F896922B55988F0059CF72 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		99F896942B559B240059CF72 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		99F896962B559B2F0059CF72 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		C1AFB4402B4FD9EC00C85A1F /* OneulEoTtae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneulEoTtae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1AFB4432B4FD9EC00C85A1F /* OneulEoTtaeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneulEoTtaeApp.swift; sourceTree = "<group>"; };
-		C1AFB4452B4FD9EC00C85A1F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C1AFB4472B4FD9EC00C85A1F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C1AFB4492B4FD9F000C85A1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1AFB44C2B4FD9F000C85A1F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -79,8 +93,53 @@
 			children = (
 				1DFBF8C62B5497FD008522DC /* Weekday.swift */,
 				1DFBF8CC2B549BE6008522DC /* NotificationSettings.swift */,
+		99F896852B5507A00059CF72 /* AlrmList */ = {
+			isa = PBXGroup;
+			children = (
+				C1AFB4432B4FD9EC00C85A1F /* OneulEoTtaeApp.swift */,
+				C1AFB4472B4FD9EC00C85A1F /* Item.swift */,
+				99F896922B55988F0059CF72 /* MainTabView.swift */,
+				99F896992B559D7E0059CF72 /* Home */,
+				99F896982B559D700059CF72 /* Setting */,
+				99F896882B5507B00059CF72 /* Views */,
+			);
+			path = AlrmList;
+			sourceTree = "<group>";
+		};
+		99F896882B5507B00059CF72 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				99F896892B5507B80059CF72 /* Model */,
+				99F8968A2B5507C90059CF72 /* AlrmListView.swift */,
+				99F8968C2B5508C40059CF72 /* AlrmCell.swift */,
+				99F896902B55844C0059CF72 /* AlrmView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		99F896892B5507B80059CF72 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				99F896862B5507AC0059CF72 /* Alrm.swift */,
+				99F8968E2B55807D0059CF72 /* AlrmManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		99F896982B559D700059CF72 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				99F896962B559B2F0059CF72 /* SettingView.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		99F896992B559D7E0059CF72 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				99F896942B559B240059CF72 /* HomeView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		C1AFB4372B4FD9EC00C85A1F = {
@@ -107,6 +166,7 @@
 				C1AFB4452B4FD9EC00C85A1F /* ContentView.swift */,
 				C1AFB4472B4FD9EC00C85A1F /* Item.swift */,
 				1DFBF8B92B5496F6008522DC /* NotificationPage */,
+				99F896852B5507A00059CF72 /* AlrmList */,
 				C1AFB4492B4FD9F000C85A1F /* Assets.xcassets */,
 				C1AFB44B2B4FD9F000C85A1F /* Preview Content */,
 			);
@@ -201,8 +261,16 @@
 				1DFBF8C52B5497EE008522DC /* DeleteButtonView.swift in Sources */,
 				1DFBF8C32B5497AB008522DC /* RegionSelectionView.swift in Sources */,
 				1DFBF8BF2B54978D008522DC /* TimeSelectionView.swift in Sources */,
+				99F896912B55844C0059CF72 /* AlrmView.swift in Sources */,
+				99F8968F2B55807D0059CF72 /* AlrmManager.swift in Sources */,
+				99F896932B55988F0059CF72 /* MainTabView.swift in Sources */,
+				99F896952B559B240059CF72 /* HomeView.swift in Sources */,
+				99F8968D2B5508C40059CF72 /* AlrmCell.swift in Sources */,
 				C1AFB4482B4FD9EC00C85A1F /* Item.swift in Sources */,
 				C1AFB4442B4FD9EC00C85A1F /* OneulEoTtaeApp.swift in Sources */,
+				99F896872B5507AC0059CF72 /* Alrm.swift in Sources */,
+				99F896972B559B2F0059CF72 /* SettingView.swift in Sources */,
+				99F8968B2B5507C90059CF72 /* AlrmListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
