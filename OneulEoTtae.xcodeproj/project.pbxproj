@@ -56,7 +56,6 @@
 				99F896922B55988F0059CF72 /* MainTabView.swift */,
 				99F896992B559D7E0059CF72 /* Home */,
 				99F896982B559D700059CF72 /* Setting */,
-				99F896892B5507B80059CF72 /* Model */,
 				99F896882B5507B00059CF72 /* Views */,
 			);
 			path = AlrmList;
@@ -65,6 +64,7 @@
 		99F896882B5507B00059CF72 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				99F896892B5507B80059CF72 /* Model */,
 				99F8968A2B5507C90059CF72 /* AlrmListView.swift */,
 				99F8968C2B5508C40059CF72 /* AlrmCell.swift */,
 				99F896902B55844C0059CF72 /* AlrmView.swift */,
