@@ -78,8 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				8921D6292B5696E100956D62 /* Model */,
-				99CB17ED2B569EBA003C8B4C /* ViewModel */,
 				8921D6252B5696E100956D62 /* View */,
+				99CB17ED2B569EBA003C8B4C /* ViewModel */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -111,13 +111,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		99CB17E62B569DCC003C8B4C /* Views */ = {
+		99CB17E62B569DCC003C8B4C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				99CB17E72B569DD8003C8B4C /* AlrmListView.swift */,
 				99CB17E92B569DE6003C8B4C /* AlrmCell.swift */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
 		99CB17ED2B569EBA003C8B4C /* ViewModel */ = {
@@ -137,7 +137,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		99CB17F52B569F8B003C8B4C /* Views */ = {
+		99CB17F52B569F8B003C8B4C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				99CB17F62B569F9F003C8B4C /* DaySelectionView.swift */,
@@ -146,7 +146,7 @@
 				99CB17FE2B569FF0003C8B4C /* RegionSelectionView.swift */,
 				99CB18002B56A006003C8B4C /* TimeSelectionView.swift */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
 		C19A72662B56938600639506 = {
@@ -195,7 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				99CB17E12B569DAC003C8B4C /* Model */,
-				99CB17E62B569DCC003C8B4C /* Views */,
+				99CB17E62B569DCC003C8B4C /* View */,
 			);
 			path = ArlmList;
 			sourceTree = "<group>";
@@ -204,7 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				99CB17F02B569F59003C8B4C /* Model */,
-				99CB17F52B569F8B003C8B4C /* Views */,
+				99CB17F52B569F8B003C8B4C /* View */,
 				99CB17FA2B569FC7003C8B4C /* MultipleSelectionRow.swift */,
 			);
 			path = Arlm;
