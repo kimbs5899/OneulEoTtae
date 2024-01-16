@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
+    
     @EnvironmentObject var alrmManager: AlrmManager
     @State private var tabIndex: Int = 1
     
@@ -20,16 +21,16 @@ struct MainTabView: View {
                         Image(systemName: "alarm.waves.left.and.right.fill")
                         Text("알람")
                     }.tag(0)
-//                HomeUIView()
-//                    .tabItem {
-//                        Image(systemName: "house")
-//                        Text("홈")
-//                    }.tag(1)
-//                SettingUIView()
-//                    .tabItem {
-//                        Image(systemName: "gearshape")
-//                        Text("설정")
-//                    }.tag(2)
+                CardScrollView()
+                    .tabItem {
+                        Image(systemName: "house")
+                        Text("홈")
+                    }.tag(1)
+                SettingUIView()
+                    .tabItem {
+                        Image(systemName: "gearshape")
+                        Text("설정")
+                    }.tag(2)
             }.tint(.orange)
         }
     }

@@ -16,7 +16,7 @@ struct AlrmListView: View {
         NavigationStack {
             VStack {
                 NavigationLink {
-                    AlrmUIView()
+                    NotificationPageView()
                 } label: {
                     List {
                         AlrmCell()
@@ -40,7 +40,7 @@ struct AlrmListView: View {
                     }
                 }.tint(.orange)
                 .sheet(isPresented: $isAddSheetShowing, content: {
-                    AlrmUIView()
+                    NotificationPageView()
                         .presentationDetents([ .fraction(0.85), .large])
                 })
         }

@@ -14,5 +14,5 @@ struct HomeUIView: View {
 }
 
 #Preview {
-    SwiftUIView()
+    HomeUIView()
 }

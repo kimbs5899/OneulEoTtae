@@ -14,5 +14,5 @@ struct SettingUIView: View {
 }
 
 #Preview {
-    SwiftUIView()
+    SettingUIView()
 }
