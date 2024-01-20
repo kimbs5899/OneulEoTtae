@@ -10,6 +10,7 @@ import SwiftUI
 struct NotificationPageView: View {
     @ObservedObject var settings = NotificationSettings()
     @Environment(\.presentationMode) var presentationMode
+    @Binding var isPresentedInNavigationLink: Bool
     
     var body: some View {
         NavigationStack {
@@ -25,11 +26,13 @@ struct NotificationPageView: View {
             }
             .navigationTitle("알림 편집")
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("취소") {
-                        presentationMode.wrappedValue.dismiss()
+                if !isPresentedInNavigationLink {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("취소") {
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                        .foregroundStyle(.orange)
                     }
-                    .foregroundStyle(.orange)
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
@@ -44,5 +47,5 @@ struct NotificationPageView: View {
 }
 
 #Preview {
-    NotificationPageView(settings: NotificationSettings())
+    NotificationPageView(settings: NotificationSettings(), isPresentedInNavigationLink: .constant(false))
 }
