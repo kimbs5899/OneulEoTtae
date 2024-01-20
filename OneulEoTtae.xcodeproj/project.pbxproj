@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DC687F52B5C1E3100DF9D71 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC687F42B5C1E3100DF9D71 /* LaunchScreenView.swift */; };
+		1DC687FD2B5C24A300DF9D71 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC687FC2B5C24A300DF9D71 /* Font.swift */; };
 		8921D62C2B5696E200956D62 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8921D6262B5696E100956D62 /* CardView.swift */; };
 		8921D62D2B5696E200956D62 /* CardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8921D6272B5696E100956D62 /* CardScrollView.swift */; };
 		8921D62E2B5696E200956D62 /* WeatherInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8921D6282B5696E100956D62 /* WeatherInfoView.swift */; };
@@ -35,6 +37,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1DC687F42B5C1E3100DF9D71 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		1DC687F72B5C239300DF9D71 /* Jalnan2TTF.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Jalnan2TTF.ttf; sourceTree = "<group>"; };
+		1DC687F82B5C239300DF9D71 /* Jalnan2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Jalnan2.otf; sourceTree = "<group>"; };
+		1DC687F92B5C23BC00DF9D71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1DC687FC2B5C24A300DF9D71 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		8921D6262B5696E100956D62 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		8921D6272B5696E100956D62 /* CardScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardScrollView.swift; sourceTree = "<group>"; };
 		8921D6282B5696E100956D62 /* WeatherInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherInfoView.swift; sourceTree = "<group>"; };
@@ -74,6 +81,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DC687F62B5C235B00DF9D71 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				1DC687F82B5C239300DF9D71 /* Jalnan2.otf */,
+				1DC687F72B5C239300DF9D71 /* Jalnan2TTF.ttf */,
+			);
+			name = Font;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		8921D6242B5696C900956D62 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +173,8 @@
 				C19A72742B56938600639506 /* ContentView.swift */,
 				C19A72762B56938600639506 /* Item.swift */,
 				99CB17DF2B569D6B003C8B4C /* MainTabView.swift */,
+				1DC687F42B5C1E3100DF9D71 /* LaunchScreenView.swift */,
+				1DC687FC2B5C24A300DF9D71 /* Font.swift */,
 				C19A72712B56938600639506 /* OneulEoTtae */,
 				C19A72702B56938600639506 /* Products */,
 			);
@@ -172,12 +191,14 @@
 		C19A72712B56938600639506 /* OneulEoTtae */ = {
 			isa = PBXGroup;
 			children = (
+				1DC687F92B5C23BC00DF9D71 /* Info.plist */,
 				8921D6242B5696C900956D62 /* Weather */,
 				C19A72852B5693B500639506 /* Setting */,
 				C19A72842B5693AF00639506 /* Home */,
 				C19A72832B5693A900639506 /* Arlm */,
 				C19A72822B56939200639506 /* ArlmList */,
 				C19A72782B56938A00639506 /* Assets.xcassets */,
+				1DC687F62B5C235B00DF9D71 /* Font */,
 				C19A727A2B56938A00639506 /* Preview Content */,
 			);
 			path = OneulEoTtae;
@@ -303,6 +324,7 @@
 				99CB17FB2B569FC7003C8B4C /* MultipleSelectionRow.swift in Sources */,
 				C19A728D2B56959800639506 /* SettingUIView.swift in Sources */,
 				8921D62D2B5696E200956D62 /* CardScrollView.swift in Sources */,
+				1DC687FD2B5C24A300DF9D71 /* Font.swift in Sources */,
 				99CB18012B56A006003C8B4C /* TimeSelectionView.swift in Sources */,
 				99CB17EA2B569DE6003C8B4C /* AlrmCell.swift in Sources */,
 				99CB17F42B569F7B003C8B4C /* Weekday.swift in Sources */,
@@ -319,6 +341,7 @@
 				C19A728B2B56959100639506 /* HomeUIView.swift in Sources */,
 				8921D62F2B5696E200956D62 /* WeatherModel.swift in Sources */,
 				99CB17E02B569D6B003C8B4C /* MainTabView.swift in Sources */,
+				1DC687F52B5C1E3100DF9D71 /* LaunchScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +478,7 @@
 				DEVELOPMENT_TEAM = T92LV6HV88;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OneulEoTtae/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -485,6 +509,7 @@
 				DEVELOPMENT_TEAM = T92LV6HV88;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OneulEoTtae/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
