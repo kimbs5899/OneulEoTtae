@@ -10,7 +10,7 @@ import SwiftUI
 struct NotificationPageView: View {
     @ObservedObject var settings = NotificationSettings()
     @Environment(\.presentationMode) var presentationMode
-    @Binding var isPresentedInNavigationLink: Bool
+    @Binding var isNewAlarm: Bool
     
     var body: some View {
         NavigationStack {
@@ -22,11 +22,13 @@ struct NotificationPageView: View {
                     }
                 }
                 RegionSelectionView(selectedRegion: $settings.selectedRegion, regions: settings.regions)
-                DeleteButtonView()
+                if isNewAlarm {
+                    DeleteButtonView()
+                }
             }
-            .navigationTitle("알림 편집")
+            .navigationTitle(isNewAlarm ? "알림 편집" : "새 알람 추가")
             .toolbar {
-                if !isPresentedInNavigationLink {
+                if !isNewAlarm {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("취소") {
                             presentationMode.wrappedValue.dismiss()
@@ -36,7 +38,7 @@ struct NotificationPageView: View {
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("저장") {
+                    Button(isNewAlarm ? "저장" : "추가") {
                         presentationMode.wrappedValue.dismiss()
                     }
                     .foregroundStyle(.orange)
@@ -47,5 +49,5 @@ struct NotificationPageView: View {
 }
 
 #Preview {
-    NotificationPageView(settings: NotificationSettings(), isPresentedInNavigationLink: .constant(false))
+    NotificationPageView(settings: NotificationSettings(), isNewAlarm: .constant(false))
 }
