@@ -10,7 +10,7 @@ import SwiftUI
 struct DeleteButtonView: View {
     var body: some View {
         Section {
-            Button("알림 삭제하기") {
+            Button("삭제하기") {
             }
         }
         .foregroundStyle(.red)
