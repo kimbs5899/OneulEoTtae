@@ -14,13 +14,17 @@ struct CardScrollView: View {
         ScrollView(.horizontal) {
             LazyHStack {
                 CardView()
+                    .padding(20)
                 CardView()
+                    .padding(20)
                 CardView()
+                    .padding(20)
+
             }
             .scrollTargetLayout()
         }
         .scrollTargetBehavior(.viewAligned)
-        .safeAreaPadding(.horizontal, 40)
+        .safeAreaPadding(.horizontal, 50)
     }
 }
 
