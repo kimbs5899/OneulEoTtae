@@ -168,6 +168,7 @@ Dependencies/
 ## Xcode 8 and earlier
 
 ### Xcode Patch ###
+**/xcuserdata/
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
