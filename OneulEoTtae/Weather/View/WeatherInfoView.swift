@@ -20,6 +20,8 @@ struct WeatherInfoView: View {
                 .padding(3)
             Text(temperatureChange)
                 .font(.title)
+            Text("풍속은 ~~~~")
+            Text("풍량은 ~~~~")
         }
     }
 }

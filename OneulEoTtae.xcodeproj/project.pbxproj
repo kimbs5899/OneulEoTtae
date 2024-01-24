@@ -13,6 +13,9 @@
 		8921D62D2B5696E200956D62 /* CardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8921D6272B5696E100956D62 /* CardScrollView.swift */; };
 		8921D62E2B5696E200956D62 /* WeatherInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8921D6282B5696E100956D62 /* WeatherInfoView.swift */; };
 		8921D62F2B5696E200956D62 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8921D62A2B5696E100956D62 /* WeatherModel.swift */; };
+		8942F8C12B5C92E400E4B83B /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942F8C02B5C92E400E4B83B /* MotionManager.swift */; };
+		8942F8C32B5CA4AE00E4B83B /* MotionRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942F8C22B5CA4AE00E4B83B /* MotionRectangle.swift */; };
+		895B153E2B583DCA00B9320E /* DetailWeatherItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895B153D2B583DCA00B9320E /* DetailWeatherItemView.swift */; };
 		99CB17E02B569D6B003C8B4C /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB17DF2B569D6B003C8B4C /* MainTabView.swift */; };
 		99CB17E32B569DB4003C8B4C /* Alrm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB17E22B569DB4003C8B4C /* Alrm.swift */; };
 		99CB17E52B569DC2003C8B4C /* AlrmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB17E42B569DC2003C8B4C /* AlrmManager.swift */; };
@@ -50,6 +53,9 @@
 		8921D6272B5696E100956D62 /* CardScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardScrollView.swift; sourceTree = "<group>"; };
 		8921D6282B5696E100956D62 /* WeatherInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherInfoView.swift; sourceTree = "<group>"; };
 		8921D62A2B5696E100956D62 /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		8942F8C02B5C92E400E4B83B /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
+		8942F8C22B5CA4AE00E4B83B /* MotionRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionRectangle.swift; sourceTree = "<group>"; };
+		895B153D2B583DCA00B9320E /* DetailWeatherItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeatherItemView.swift; sourceTree = "<group>"; };
 		99CB17DF2B569D6B003C8B4C /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		99CB17E22B569DB4003C8B4C /* Alrm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alrm.swift; sourceTree = "<group>"; };
 		99CB17E42B569DC2003C8B4C /* AlrmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlrmManager.swift; sourceTree = "<group>"; };
@@ -116,6 +122,7 @@
 				8921D6262B5696E100956D62 /* CardView.swift */,
 				8921D6272B5696E100956D62 /* CardScrollView.swift */,
 				8921D6282B5696E100956D62 /* WeatherInfoView.swift */,
+				895B153D2B583DCA00B9320E /* DetailWeatherItemView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -124,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				8921D62A2B5696E100956D62 /* WeatherModel.swift */,
+				8942F8C02B5C92E400E4B83B /* MotionManager.swift */,
+				8942F8C22B5CA4AE00E4B83B /* MotionRectangle.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -331,10 +340,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8942F8C12B5C92E400E4B83B /* MotionManager.swift in Sources */,
 				99CB17F72B569F9F003C8B4C /* DaySelectionView.swift in Sources */,
 				99CB17FD2B569FDA003C8B4C /* NotificationPageView.swift in Sources */,
 				C19A72752B56938600639506 /* ContentView.swift in Sources */,
 				C19A72772B56938600639506 /* Item.swift in Sources */,
+				8942F8C32B5CA4AE00E4B83B /* MotionRectangle.swift in Sources */,
 				99CB17FB2B569FC7003C8B4C /* MultipleSelectionRow.swift in Sources */,
 				C19A728D2B56959800639506 /* SettingUIView.swift in Sources */,
 				8921D62D2B5696E200956D62 /* CardScrollView.swift in Sources */,
@@ -343,6 +354,7 @@
 				99CB17EA2B569DE6003C8B4C /* AlrmCell.swift in Sources */,
 				99CB17F42B569F7B003C8B4C /* Weekday.swift in Sources */,
 				99CB17EF2B569EC8003C8B4C /* ViewModel.swift in Sources */,
+				895B153E2B583DCA00B9320E /* DetailWeatherItemView.swift in Sources */,
 				99CB17E32B569DB4003C8B4C /* Alrm.swift in Sources */,
 				99CB17F92B569FB4003C8B4C /* DeleteButtonView.swift in Sources */,
 				C151F3C82B5FD0B700311869 /* DeveloperListUIView.swift in Sources */,
@@ -493,7 +505,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OneulEoTtae/Preview Content\"";
-				DEVELOPMENT_TEAM = 678888YLP7;
+				DEVELOPMENT_TEAM = WZFUFHJN8D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OneulEoTtae/Info.plist;
@@ -524,7 +536,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OneulEoTtae/Preview Content\"";
-				DEVELOPMENT_TEAM = 678888YLP7;
+				DEVELOPMENT_TEAM = WZFUFHJN8D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OneulEoTtae/Info.plist;
