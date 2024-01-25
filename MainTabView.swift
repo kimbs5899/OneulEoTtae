@@ -10,30 +10,34 @@ import SwiftUI
 struct MainTabView: View {
     
     @EnvironmentObject var alrmManager: AlrmManager
-    @State private var tabIndex: Int = 1
-    
+    @State private var tabIndex: Int = 0
     
     var body: some View {
         ZStack {
-            TabView {
-                AlrmListView()
-                    .tabItem {
-                        Image(systemName: "alarm.waves.left.and.right.fill")
-                        Text("알람")
-                    }.tag(0)
+            TabView(selection: $tabIndex) {
                 CardScrollView()
                     .tabItem {
-                        Image(systemName: "house")
-                        Text("홈")
+                        Image(systemName: "cloud.sun.fill")
+                        Text("날씨")
+                    }.tag(0)
+                AlrmListView()
+                    .tabItem {
+                        Image(systemName: "alarm.fill")
+                        Text("알람")
                     }.tag(1)
                 SettingUIView()
                     .tabItem {
                         Image(systemName: "gearshape")
                         Text("설정")
                     }.tag(2)
-            }.tint(.orange)
+            }
         }
     }
+}
+
+#Preview {
+    MainTabView()
+        .environmentObject(AlrmManager())
 }
 
 #Preview {
