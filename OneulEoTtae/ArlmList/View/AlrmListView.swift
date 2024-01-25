@@ -20,7 +20,7 @@ struct AlrmListView: View {
                 } label: {
                     List {
                         AlrmCell()
-                    }
+                    }.foregroundStyle(.black)
                 }
             }.navigationTitle("알람목록")
                 .toolbar {
@@ -29,16 +29,16 @@ struct AlrmListView: View {
                             isAddSheetShowing = true
                         }label: {
                             Image(systemName: "plus")
-                        }
+                        }.foregroundStyle(.black)
                     }
                     ToolbarItem(placement: .topBarLeading) {
                         Button{
                             
                         }label: {
                             Text("편집")
-                        }
+                        }.foregroundStyle(.black)
                     }
-                }.tint(.orange)
+                }
                 .sheet(isPresented: $isAddSheetShowing, content: {
                     NotificationPageView(settings: NotificationSettings(), isNewAlarm: .constant(false))
                         .presentationDetents([.fraction(0.85), .large])

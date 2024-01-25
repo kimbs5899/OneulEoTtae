@@ -2,7 +2,7 @@
 //  MultipleSelectionRow.swift
 //  OneulEoTtae
 //
-//  Created by 윤진영 on 1/16/24.
+//  Created by 박찬호 on 1/16/24.
 //
 
 import SwiftUI
