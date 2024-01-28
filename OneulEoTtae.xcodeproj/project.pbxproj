@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D9D295C2B667FF5007CA012 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D295B2B667FF5007CA012 /* Color.swift */; };
 		1DC687F52B5C1E3100DF9D71 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC687F42B5C1E3100DF9D71 /* LaunchScreenView.swift */; };
 		1DC687FD2B5C24A300DF9D71 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC687FC2B5C24A300DF9D71 /* Font.swift */; };
 		8921D62C2B5696E200956D62 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8921D6262B5696E100956D62 /* CardView.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D9D295B2B667FF5007CA012 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1DC687F42B5C1E3100DF9D71 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		1DC687F72B5C239300DF9D71 /* Jalnan2TTF.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Jalnan2TTF.ttf; sourceTree = "<group>"; };
 		1DC687F82B5C239300DF9D71 /* Jalnan2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Jalnan2.otf; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D9D295D2B668001007CA012 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				1D9D295B2B667FF5007CA012 /* Color.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
 		1DC687F62B5C235B00DF9D71 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +227,7 @@
 				C19A72832B5693A900639506 /* Arlm */,
 				C19A72822B56939200639506 /* ArlmList */,
 				C19A72782B56938A00639506 /* Assets.xcassets */,
+				1D9D295D2B668001007CA012 /* Color */,
 				1DC687F62B5C235B00DF9D71 /* Font */,
 				C19A727A2B56938A00639506 /* Preview Content */,
 			);
@@ -342,6 +353,7 @@
 			files = (
 				8942F8C12B5C92E400E4B83B /* MotionManager.swift in Sources */,
 				99CB17F72B569F9F003C8B4C /* DaySelectionView.swift in Sources */,
+				1D9D295C2B667FF5007CA012 /* Color.swift in Sources */,
 				99CB17FD2B569FDA003C8B4C /* NotificationPageView.swift in Sources */,
 				C19A72752B56938600639506 /* ContentView.swift in Sources */,
 				C19A72772B56938600639506 /* Item.swift in Sources */,
