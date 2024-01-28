@@ -92,8 +92,16 @@ public extension Color {
     static var YellowGreenGradient_OET: LinearGradient {
             LinearGradient(
                 gradient: Gradient(colors: [Color(hexCode: "#FFD91E"), Color(hexCode: "#A5ED49")]),
-                startPoint: .leading,
-                endPoint: .trailing
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        }
+    
+    static var MainColor_OET: LinearGradient {
+            LinearGradient(
+                gradient: Gradient(colors: [Color(hexCode: "#CEE4F8"), Color(hexCode: "#D0C5EF")]),
+                startPoint: .top,
+                endPoint: .bottom
             )
         }
 }

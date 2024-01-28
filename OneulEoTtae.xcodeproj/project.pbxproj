@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D9D295C2B667FF5007CA012 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D295B2B667FF5007CA012 /* Color.swift */; };
+		1D9D295F2B66857C007CA012 /* Jalnan2.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1D9D295E2B66857C007CA012 /* Jalnan2.otf */; };
 		1DC687F52B5C1E3100DF9D71 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC687F42B5C1E3100DF9D71 /* LaunchScreenView.swift */; };
 		1DC687FD2B5C24A300DF9D71 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC687FC2B5C24A300DF9D71 /* Font.swift */; };
 		8921D62C2B5696E200956D62 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8921D6262B5696E100956D62 /* CardView.swift */; };
@@ -46,9 +47,8 @@
 
 /* Begin PBXFileReference section */
 		1D9D295B2B667FF5007CA012 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		1D9D295E2B66857C007CA012 /* Jalnan2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Jalnan2.otf; sourceTree = "<group>"; };
 		1DC687F42B5C1E3100DF9D71 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
-		1DC687F72B5C239300DF9D71 /* Jalnan2TTF.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Jalnan2TTF.ttf; sourceTree = "<group>"; };
-		1DC687F82B5C239300DF9D71 /* Jalnan2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Jalnan2.otf; sourceTree = "<group>"; };
 		1DC687F92B5C23BC00DF9D71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1DC687FC2B5C24A300DF9D71 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		8921D6262B5696E100956D62 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -84,7 +84,6 @@
 		C19A727B2B56938A00639506 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C19A728A2B56959100639506 /* HomeUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUIView.swift; sourceTree = "<group>"; };
 		C19A728C2B56959800639506 /* SettingUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUIView.swift; sourceTree = "<group>"; };
-		C1D70DBF2B5E43FC00EB7C3E /* Jalnan2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Jalnan2.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +108,7 @@
 		1DC687F62B5C235B00DF9D71 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				1DC687F82B5C239300DF9D71 /* Jalnan2.otf */,
-				1DC687F72B5C239300DF9D71 /* Jalnan2TTF.ttf */,
+				1D9D295E2B66857C007CA012 /* Jalnan2.otf */,
 			);
 			name = Font;
 			path = ..;
@@ -197,7 +195,6 @@
 		C19A72662B56938600639506 = {
 			isa = PBXGroup;
 			children = (
-				C1D70DBF2B5E43FC00EB7C3E /* Jalnan2.otf */,
 				C19A72722B56938600639506 /* OneulEoTtaeApp.swift */,
 				C19A72742B56938600639506 /* ContentView.swift */,
 				C19A72762B56938600639506 /* Item.swift */,
@@ -339,6 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D9D295F2B66857C007CA012 /* Jalnan2.otf in Resources */,
 				C19A727C2B56938A00639506 /* Preview Assets.xcassets in Resources */,
 				C19A72792B56938A00639506 /* Assets.xcassets in Resources */,
 			);
