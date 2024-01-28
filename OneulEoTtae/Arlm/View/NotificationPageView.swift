@@ -22,6 +22,7 @@ struct NotificationPageView: View {
                             Text("날짜 선택")
                         }
                     }
+                    .font(.system(size: 20))
                     RegionSelectionView(selectedRegion: $settings.selectedRegion, regions: settings.regions)
                     
                     if isNewAlarm {

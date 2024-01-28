@@ -20,6 +20,7 @@ struct RegionSelectionView: View {
                 }
             }
         }
+        .font(.system(size: 20))
     }
 }
 #Preview {
