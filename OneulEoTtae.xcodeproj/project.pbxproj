@@ -34,7 +34,6 @@
 		99CB18012B56A006003C8B4C /* TimeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB18002B56A006003C8B4C /* TimeSelectionView.swift */; };
 		C151F3C22B5FC7C000311869 /* VersionListUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C151F3C12B5FC7C000311869 /* VersionListUIView.swift */; };
 		C151F3C42B5FD04600311869 /* APIResourceUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C151F3C32B5FD04600311869 /* APIResourceUIView.swift */; };
-		C151F3C62B5FD08F00311869 /* ContactUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C151F3C52B5FD08F00311869 /* ContactUIView.swift */; };
 		C151F3C82B5FD0B700311869 /* DeveloperListUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C151F3C72B5FD0B600311869 /* DeveloperListUIView.swift */; };
 		C19A72732B56938600639506 /* OneulEoTtaeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A72722B56938600639506 /* OneulEoTtaeApp.swift */; };
 		C19A72752B56938600639506 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A72742B56938600639506 /* ContentView.swift */; };
@@ -43,6 +42,7 @@
 		C19A727C2B56938A00639506 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C19A727B2B56938A00639506 /* Preview Assets.xcassets */; };
 		C19A728B2B56959100639506 /* HomeUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A728A2B56959100639506 /* HomeUIView.swift */; };
 		C19A728D2B56959800639506 /* SettingUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A728C2B56959800639506 /* SettingUIView.swift */; };
+		C1EB515F2B6B8AA500744F64 /* AlrmSettingUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EB515E2B6B8AA500744F64 /* AlrmSettingUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,7 +74,6 @@
 		99CB18002B56A006003C8B4C /* TimeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionView.swift; sourceTree = "<group>"; };
 		C151F3C12B5FC7C000311869 /* VersionListUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionListUIView.swift; sourceTree = "<group>"; };
 		C151F3C32B5FD04600311869 /* APIResourceUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResourceUIView.swift; sourceTree = "<group>"; };
-		C151F3C52B5FD08F00311869 /* ContactUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUIView.swift; sourceTree = "<group>"; };
 		C151F3C72B5FD0B600311869 /* DeveloperListUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperListUIView.swift; sourceTree = "<group>"; };
 		C19A726F2B56938600639506 /* OneulEoTtae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneulEoTtae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C19A72722B56938600639506 /* OneulEoTtaeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneulEoTtaeApp.swift; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 		C19A727B2B56938A00639506 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C19A728A2B56959100639506 /* HomeUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUIView.swift; sourceTree = "<group>"; };
 		C19A728C2B56959800639506 /* SettingUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUIView.swift; sourceTree = "<group>"; };
+		C1EB515E2B6B8AA500744F64 /* AlrmSettingUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlrmSettingUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,8 +272,8 @@
 				C19A728C2B56959800639506 /* SettingUIView.swift */,
 				C151F3C12B5FC7C000311869 /* VersionListUIView.swift */,
 				C151F3C32B5FD04600311869 /* APIResourceUIView.swift */,
-				C151F3C52B5FD08F00311869 /* ContactUIView.swift */,
 				C151F3C72B5FD0B600311869 /* DeveloperListUIView.swift */,
+				C1EB515E2B6B8AA500744F64 /* AlrmSettingUIView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -370,11 +370,11 @@
 				C151F3C82B5FD0B700311869 /* DeveloperListUIView.swift in Sources */,
 				99CB17E52B569DC2003C8B4C /* AlrmManager.swift in Sources */,
 				C19A72732B56938600639506 /* OneulEoTtaeApp.swift in Sources */,
+				C1EB515F2B6B8AA500744F64 /* AlrmSettingUIView.swift in Sources */,
 				99CB17F22B569F67003C8B4C /* NotificationSettings.swift in Sources */,
 				C151F3C42B5FD04600311869 /* APIResourceUIView.swift in Sources */,
 				99CB17FF2B569FF0003C8B4C /* RegionSelectionView.swift in Sources */,
 				99CB17E82B569DD8003C8B4C /* AlrmListView.swift in Sources */,
-				C151F3C62B5FD08F00311869 /* ContactUIView.swift in Sources */,
 				8921D62E2B5696E200956D62 /* WeatherInfoView.swift in Sources */,
 				8921D62C2B5696E200956D62 /* CardView.swift in Sources */,
 				C19A728B2B56959100639506 /* HomeUIView.swift in Sources */,
