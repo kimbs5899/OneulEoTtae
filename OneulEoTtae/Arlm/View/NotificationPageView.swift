@@ -17,12 +17,11 @@ struct NotificationPageView: View {
             VStack {
                 Form {
                     TimeSelectionView(selectedTime: $settings.selectedTime)
-                    Section(header: Text("날짜")) {
+                    Section(header: Text("날짜").font(.system(size: 14))) {
                         NavigationLink(destination: DaySelectionView(selectedDays: $settings.selectedDays)) {
                             Text("날짜 선택")
                         }
                     }
-                    .font(.system(size: 20))
                     RegionSelectionView(selectedRegion: $settings.selectedRegion, regions: settings.regions)
                     
                     if isNewAlarm {
@@ -32,6 +31,11 @@ struct NotificationPageView: View {
             }
             .navigationTitle(isNewAlarm ? "알림 편집" : "새 알람 추가")
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(isNewAlarm ? "알림 편집" : "새 알람 추가")
+                        .font(.custom(FontName.jalnan2.rawValue, size: 20))
+                        .foregroundColor(.Blue1_OET)
+                }
                 ToolbarItems
             }
         }
@@ -44,7 +48,8 @@ struct NotificationPageView: View {
                     Button("취소") {
                         presentationMode.wrappedValue.dismiss()
                     }
-                    .foregroundStyle(.orange)
+                    .font(.custom(FontName.jalnan2.rawValue, size: 16))
+                    .foregroundColor(.Blue2_OET)
                 }
             }
             
@@ -52,7 +57,8 @@ struct NotificationPageView: View {
                 Button(isNewAlarm ? "저장" : "추가") {
                     presentationMode.wrappedValue.dismiss()
                 }
-                .foregroundStyle(.orange)
+                .font(.custom(FontName.jalnan2.rawValue, size: 16))
+                .foregroundColor(.Blue2_OET)
             }
         }
     }

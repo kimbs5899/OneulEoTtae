@@ -13,14 +13,13 @@ struct RegionSelectionView: View {
     var regions: [String]
     
     var body: some View {
-        Section(header: Text("지역 선택")) {
+        Section(header: Text("지역 선택").font(.system(size: 14))) {
             Picker("장소", selection: $selectedRegion) {
                 ForEach(regions, id: \.self) {
                     Text($0)
                 }
             }
         }
-        .font(.system(size: 20))
     }
 }
 #Preview {

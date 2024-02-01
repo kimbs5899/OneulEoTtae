@@ -21,7 +21,8 @@ struct AlrmCell: View {
                 }.padding(.bottom, -5)
                 HStack {
                     Text(alrm.time)
-                        .font(.title.bold())
+                        .foregroundStyle(Color.Blue2_OET)
+                        .font(.custom(FontName.jalnan2.rawValue, size: 24))
                         .padding(.trailing, 5)
                     Spacer()
                     Toggle(isOn: $alrmManager.alrmList[index].toggle) {

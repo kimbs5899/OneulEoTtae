@@ -15,7 +15,7 @@ struct TimeSelectionView: View {
             DatePicker("시간 선택", selection: $selectedTime, displayedComponents: .hourAndMinute)
                 .datePickerStyle(WheelDatePickerStyle())
         }
-        .font(.system(size: 20))
+        .font(.system(size: 14))
     }
 }
 

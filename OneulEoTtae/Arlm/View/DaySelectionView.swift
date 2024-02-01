@@ -23,6 +23,13 @@ struct DaySelectionView: View {
             }
         }
         .navigationBarTitle("날짜 선택", displayMode: .inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("날짜 선택")
+                    .font(.custom(FontName.jalnan2.rawValue, size: 20))
+                    .foregroundColor(.Blue1_OET)
+            }
+        }
     }
 }
 
