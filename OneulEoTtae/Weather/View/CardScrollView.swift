@@ -11,7 +11,7 @@ import SwiftUI
 // CardView가 들어가는 스크롤 뷰
 struct CardScrollView: View {
     var body: some View {
-        ScrollView(.horizontal) {
+        ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack {
                 CardView()
                     .padding(20)
@@ -19,7 +19,6 @@ struct CardScrollView: View {
                     .padding(20)
                 CardView()
                     .padding(20)
-
             }
             .scrollTargetLayout()
         }

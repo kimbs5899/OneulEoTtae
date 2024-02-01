@@ -18,10 +18,9 @@ struct CardView: View {
         motion != nil ? Double(motion!.attitude.pitch) * 5 / .pi : 0
     }
     
-    let firstRectangleColor: [Color] = [Color(red: 0.4, green: 0.43, blue: 0.6),
-                                        Color(red: 0.58, green: 0.81, blue: 0.9)]
-    let secondRectangleColor: [Color] = [Color(red: 0.24, green: 0.36, blue: 0.61), Color(red: 0.17, green: 0.52, blue: 0.74)]
-    let thirdRectangleColor: [Color] = [Color(red: 0.15, green: 0.29, blue: 0.52)]
+    let firstRectangleColor: [Color] = [Color.Blue5_OET, Color.Blue3_OET]
+    let secondRectangleColor: [Color] = [Color.Blue4_OET, Color.Blue2_OET]
+    let thirdRectangleColor: [Color] = [Color.Blue1_OET]
     
     var body: some View {
         ZStack {
@@ -47,7 +46,7 @@ struct CardView: View {
                             xOffset: accel.x * 20, yOffset: accel.y * 25,
                             rotationDegrees: rotationAngle(),
                             shadowRadius: 1, shadowXOffset: accel.x * 10, shadowYOffset: accel.y * 10)
-            WeatherInfoView(location: "서울", temperatureChange: "-2")
+            WeatherInfoView(location: "서울", temperatureChange: "-2°C")
                         .foregroundStyle(Color.white)
                         .offset(x: accel.x * 20,
                                 y: accel.y * 25)
@@ -63,6 +62,7 @@ struct CardView: View {
         }
     }
 }
+
 #Preview {
     CardView()
 }

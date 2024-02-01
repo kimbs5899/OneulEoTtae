@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct MainTabView: View {
-    
     @EnvironmentObject var alrmManager: AlrmManager
     @State private var tabIndex: Int = 0
+    
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor.white
+    }
     
     var body: some View {
         ZStack {
@@ -19,7 +22,9 @@ struct MainTabView: View {
                     .tabItem {
                         Image(systemName: "cloud.sun.fill")
                         Text("날씨")
-                    }.tag(0)
+                    }
+                    .background(Color.MainColor_OET)
+                    .tag(0)
                 AlrmListView()
                     .tabItem {
                         Image(systemName: "alarm.fill")
@@ -31,6 +36,7 @@ struct MainTabView: View {
                         Text("설정")
                     }.tag(2)
             }
+            .accentColor(.Blue1_OET)
         }
     }
 }

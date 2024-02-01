@@ -14,17 +14,22 @@ struct WeatherInfoView: View {
     var body: some View {
         VStack {
             Text(location)
-                .font(.title)
+                .font(.custom(FontName.jalnan2.rawValue, size: 16))
                 .padding(10)
+                
             Text("어제보다")
+                .font(.custom(FontName.jalnan2.rawValue, size: 24))
                 .padding(3)
             Text(temperatureChange)
+                .font(.custom(FontName.jalnan2.rawValue, size: 32))
                 .font(.title)
             Text("풍속은 ~~~~")
+                .padding(.top, 10)
             Text("풍량은 ~~~~")
+            
         }
     }
 }
 #Preview {
-    WeatherInfoView(location: "서울", temperatureChange: "-5")
+    WeatherInfoView(location: "서울", temperatureChange: "-5°C")
 }
