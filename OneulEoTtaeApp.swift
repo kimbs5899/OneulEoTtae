@@ -37,7 +37,7 @@ struct OneulEoTtaeApp: App {
                         }
                     }
             } else {
-                MainTabView()
+                Home()
                     .environmentObject(alrmManager)
             }
         }

@@ -21,9 +21,11 @@ struct CardScrollView: View {
                     .padding(20)
             }
             .scrollTargetLayout()
+            
         }
         .scrollTargetBehavior(.viewAligned)
         .safeAreaPadding(.horizontal, 50)
+
     }
 }
 
