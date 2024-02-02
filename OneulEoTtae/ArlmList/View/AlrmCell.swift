@@ -35,7 +35,9 @@ struct AlrmCell: View {
                     Spacer()
                 }.font(.callout)
                     .padding(.bottom, -5)
-            }.swipeActions(edge: .trailing) {
+            }
+            
+            .swipeActions(edge: .trailing) {
                 Button {
                     alrmManager.removeAlrm(alrm)
                 } label: {
@@ -44,6 +46,7 @@ struct AlrmCell: View {
             }
         }
     }
+    
 }
 
 struct AlrmCell_Previews: PreviewProvider {

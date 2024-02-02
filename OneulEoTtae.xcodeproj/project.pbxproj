@@ -108,6 +108,7 @@
 		1DC687F62B5C235B00DF9D71 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				1DC687FC2B5C24A300DF9D71 /* Font.swift */,
 				1D9D295E2B66857C007CA012 /* Jalnan2.otf */,
 			);
 			name = Font;
@@ -200,7 +201,6 @@
 				C19A72762B56938600639506 /* Item.swift */,
 				99CB17DF2B569D6B003C8B4C /* MainTabView.swift */,
 				1DC687F42B5C1E3100DF9D71 /* LaunchScreenView.swift */,
-				1DC687FC2B5C24A300DF9D71 /* Font.swift */,
 				C19A72712B56938600639506 /* OneulEoTtae */,
 				C19A72702B56938600639506 /* Products */,
 			);

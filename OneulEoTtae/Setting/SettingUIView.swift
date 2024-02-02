@@ -45,9 +45,9 @@ struct SettingUIView: View {
                     }
                 }.multilineTextAlignment(.center)
             }
-            .background(Color.red) // 배경색 변경
-            .navigationTitle("설정")
-            .navigationBarTitleDisplayMode(.inline)
+            .background(Color.MainColor_OET)
+            .navigationBarTitle("설정", displayMode: .inline)
+            .scrollContentBackground(.hidden)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("설정")

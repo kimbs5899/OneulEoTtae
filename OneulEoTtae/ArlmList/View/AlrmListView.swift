@@ -23,6 +23,8 @@ struct AlrmListView: View {
                     }.foregroundStyle(.black)
                 }
             }
+            .background(Color.MainColor_OET)
+            .scrollContentBackground(.hidden)
             .navigationBarTitle("알림 목록", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
