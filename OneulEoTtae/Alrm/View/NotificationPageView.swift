@@ -29,7 +29,6 @@ struct NotificationPageView: View {
                     }
                 }
             }
-            .navigationTitle(isNewAlarm ? "알림 편집" : "새 알람 추가")
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text(isNewAlarm ? "알림 편집" : "새 알람 추가")
