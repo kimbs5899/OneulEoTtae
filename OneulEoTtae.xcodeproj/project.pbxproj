@@ -95,6 +95,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9926852A2B762BE70033423F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				99CB17E22B569DB4003C8B4C /* Alrm.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9926852B2B762C670033423F /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				99CB17E92B569DE6003C8B4C /* AlrmCell.swift */,
+				99CB17F62B569F9F003C8B4C /* DaySelectionView.swift */,
+				99CB17F82B569FB4003C8B4C /* DeleteButtonView.swift */,
+				99CB17FE2B569FF0003C8B4C /* RegionSelectionView.swift */,
+				99CB18002B56A006003C8B4C /* TimeSelectionView.swift */,
+				99CB17FA2B569FC7003C8B4C /* MultipleSelectionRow.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
 		C19A72662B56938600639506 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +137,7 @@
 			children = (
 				C1EB51822B6CD0A500744F64 /* App */,
 				C1EB51812B6CD04B00744F64 /* Extension */,
+				9926852A2B762BE70033423F /* Model */,
 				C1EB51772B6CCFC400744F64 /* Setting */,
 				C1EB51762B6CCFBE00744F64 /* Alrm */,
 				C1EB51752B6CCFB600744F64 /* Main */,
@@ -148,9 +170,9 @@
 		C1EB51762B6CCFBE00744F64 /* Alrm */ = {
 			isa = PBXGroup;
 			children = (
+				C1EB517B2B6CCFE200744F64 /* Model */,
 				C1EB517D2B6CCFEB00744F64 /* ViewModel */,
 				C1EB517C2B6CCFE700744F64 /* View */,
-				C1EB517B2B6CCFE200744F64 /* Model */,
 			);
 			path = Alrm;
 			sourceTree = "<group>";
@@ -198,8 +220,6 @@
 		C1EB517B2B6CCFE200744F64 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				99CB17E22B569DB4003C8B4C /* Alrm.swift */,
-				99CB17E42B569DC2003C8B4C /* AlrmManager.swift */,
 				99CB17F12B569F67003C8B4C /* NotificationSettings.swift */,
 				99CB17F32B569F7B003C8B4C /* Weekday.swift */,
 			);
@@ -209,14 +229,9 @@
 		C1EB517C2B6CCFE700744F64 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				99CB17F62B569F9F003C8B4C /* DaySelectionView.swift */,
-				99CB17F82B569FB4003C8B4C /* DeleteButtonView.swift */,
-				99CB17FC2B569FDA003C8B4C /* NotificationPageView.swift */,
-				99CB17FE2B569FF0003C8B4C /* RegionSelectionView.swift */,
-				99CB18002B56A006003C8B4C /* TimeSelectionView.swift */,
-				99CB17FA2B569FC7003C8B4C /* MultipleSelectionRow.swift */,
 				99CB17E72B569DD8003C8B4C /* AlrmListView.swift */,
-				99CB17E92B569DE6003C8B4C /* AlrmCell.swift */,
+				99CB17FC2B569FDA003C8B4C /* NotificationPageView.swift */,
+				9926852B2B762C670033423F /* SubView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -224,6 +239,7 @@
 		C1EB517D2B6CCFEB00744F64 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				99CB17E42B569DC2003C8B4C /* AlrmManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
