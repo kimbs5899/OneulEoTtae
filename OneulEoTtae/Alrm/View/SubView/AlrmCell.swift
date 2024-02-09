@@ -13,14 +13,13 @@ struct AlrmCell: View {
     var body: some View {
         ForEach(alrmManager.alrmList.indices, id: \.self) { index in
             let alrm = alrmManager.alrmList[index]
-            
             VStack {
                 HStack {
                     Text(alrm.location)
                     Spacer()
                 }.padding(.bottom, -5)
                 HStack {
-                    Text(alrm.time)
+                    Text(alrm.setTime)
                         .foregroundStyle(Color.Blue2_OET)
                         .font(.custom(FontName.jalnan2.rawValue, size: 24))
                         .padding(.trailing, 5)
@@ -30,13 +29,12 @@ struct AlrmCell: View {
                     }
                 }.padding(.bottom, -5)
                 HStack {
-                    Text(alrm.dayOfWeek)
+                    Text(alrm.dayOfWeek.joined(separator: ", "))
                         .font(.body)
                     Spacer()
                 }.font(.callout)
-                    .padding(.bottom, -5)
+                .padding(.bottom, -5)
             }
-            
             .swipeActions(edge: .trailing) {
                 Button {
                     alrmManager.removeAlrm(alrm)
@@ -46,7 +44,6 @@ struct AlrmCell: View {
             }
         }
     }
-    
 }
 
 struct AlrmCell_Previews: PreviewProvider {
