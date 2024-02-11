@@ -9,46 +9,46 @@ import SwiftUI
 
 struct AlrmCell: View {
     @EnvironmentObject var alrmManager: AlrmManager
-    
+    var alrm: WeatherModel
+
     var body: some View {
-        ForEach(alrmManager.alrmList.indices, id: \.self) { index in
-            let alrm = alrmManager.alrmList[index]
-            VStack {
-                HStack {
-                    Text(alrm.location)
-                    Spacer()
-                }.padding(.bottom, -5)
-                HStack {
-                    Text(alrm.setTime)
-                        .foregroundStyle(Color.Blue2_OET)
-                        .font(.custom(FontName.jalnan2.rawValue, size: 24))
-                        .padding(.trailing, 5)
-                    Spacer()
-                    Toggle(isOn: $alrmManager.alrmList[index].toggle) {
-                        Text("")
+        VStack {
+            HStack {
+                Text(alrm.location)
+                Spacer()
+            }.padding(.bottom, -5)
+            HStack {
+                Text(alrm.setTime)
+                    .foregroundStyle(Color.Blue2_OET)
+                    .font(.custom(FontName.jalnan2.rawValue, size: 24))
+                    .padding(.trailing, 5)
+                Spacer()
+                Toggle(isOn: Binding(
+                    get: { alrm.toggle },
+                    set: { newValue in
+                        alrmManager.toggleAlarm(id: alrm.id)
                     }
-                }.padding(.bottom, -5)
-                HStack {
-                    Text(alrm.dayOfWeek.joined(separator: ", "))
-                        .font(.body)
-                    Spacer()
-                }.font(.callout)
-                .padding(.bottom, -5)
+                )) {
+                    Text("")
+                }
+            }.padding(.bottom, -5)
+            HStack {
+                Text(alrm.dayOfWeek.joined(separator: ", "))
+                    .font(.body)
+                Spacer()
             }
-            .swipeActions(edge: .trailing) {
-                Button {
-                    alrmManager.removeAlrm(alrm)
-                } label: {
-                    Label("remove", systemImage: "trash")
-                }.tint(.red)
-            }
+            .font(.callout)
+            .padding(.bottom, -5)
         }
     }
 }
 
 struct AlrmCell_Previews: PreviewProvider {
     static var previews: some View {
-        AlrmCell()
+        let sampleAlarm = WeatherModel(setTime: "07:00 AM", dayOfWeek: ["월", "화"], location: "서울특별시", toggle: true)
+        AlrmCell(alrm: sampleAlarm)
             .environmentObject(AlrmManager())
+            .previewLayout(.sizeThatFits)
+            .padding()
     }
 }

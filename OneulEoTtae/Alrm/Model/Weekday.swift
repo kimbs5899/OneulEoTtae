@@ -8,9 +8,9 @@
 import Foundation
 
 enum Weekday: String, CaseIterable {
-    case monday = "월요일 마다"
-    case tuesday = "화요일 마다"
-    case wednesday = "수요일 마다"
-    case thursday = "목요일 마다"
-    case friday = "금요일 마다"
+    case monday = "월"
+    case tuesday = "화"
+    case wednesday = "수"
+    case thursday = "목"
+    case friday = "금"
 }

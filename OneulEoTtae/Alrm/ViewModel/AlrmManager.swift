@@ -22,28 +22,24 @@ class AlrmManager: ObservableObject {
     }
     
     func removeAlrm(_ alrm: WeatherModel) {
-        var index = 0
-        for i in alrmList {
-            if i.id == alrm.id {
-                alrmList.remove(at: index)
-            }
-            index += 1
-        }
+        alrmList.removeAll { $0.id == alrm.id }
     }
     
     func updateAlrm(_ id: String, newAlrm: WeatherModel) {
-        guard let index = alrmList.firstIndex(where: { $0.id == id }) else {
-            print("id 다름~! error")
-            return
+        if let index = alrmList.firstIndex(where: { $0.id == id }) {
+            alrmList[index] = newAlrm
         }
-        alrmList[index] = newAlrm
     }
     
     func updateToggle(for id: String, newToggleValue: Bool) {
-        guard let index = alrmList.firstIndex(where: { $0.id == id }) else {
-            print("id 다름~! error")
-            return
+        if let index = alrmList.firstIndex(where: { $0.id == id }) {
+            alrmList[index].toggle = newToggleValue
         }
-        alrmList[index].toggle = newToggleValue
+    }
+    
+    func toggleAlarm(id: String) {
+        if let index = alrmList.firstIndex(where: { $0.id == id }) {
+            alrmList[index].toggle.toggle()
+        }
     }
 }

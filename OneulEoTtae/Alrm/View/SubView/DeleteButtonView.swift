@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct DeleteButtonView: View {
+    var action: () -> Void
+
     var body: some View {
         Section {
             HStack {
-                Spacer() // 왼쪽 공간 추가
-                Button(action: {
-                    // 버튼 액션
-                }) {
+                Spacer()
+                Button(action: action) {
                     Text("알림 삭제하기")
                         .foregroundColor(.red)
                 }
-                Spacer() // 오른쪽 공간 추가
+                Spacer()
             }
         }
     }
 }
 
 #Preview {
-    DeleteButtonView()
+    DeleteButtonView(action: {} )
 }
