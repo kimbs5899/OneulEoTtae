@@ -23,9 +23,8 @@ struct Home: View {
                 VStack {
                     CardScrollView()
                     VStack {
-                        ChartsView()
-                        ChartsView()
-                        ChartsView()
+                        WeeklyTemperatureChartsView()
+                        PerceivedTemperatureChartsView()
                     }
                     .padding(10)
                 }
