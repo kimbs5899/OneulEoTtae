@@ -13,4 +13,6 @@ enum Weekday: String, CaseIterable {
     case wednesday = "수"
     case thursday = "목"
     case friday = "금"
+    case saturday = "토"
+    case sunday = "일"
 }
