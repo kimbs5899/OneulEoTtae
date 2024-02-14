@@ -46,7 +46,7 @@ struct CardView: View {
                             xOffset: accel.x * 20, yOffset: accel.y * 25,
                             rotationDegrees: rotationAngle(),
                             shadowRadius: 1, shadowXOffset: accel.x * 10, shadowYOffset: accel.y * 10)
-            WeatherInfoView(location: "서울", temperatureChange: "-2°C")
+            WeatherInfoView()
                         .foregroundStyle(Color.white)
                         .offset(x: accel.x * 20,
                                 y: accel.y * 25)

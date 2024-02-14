@@ -22,7 +22,6 @@ let sampleCelsiuses: [Celsiuses] = [
     .init(name: "내일", celsiusHigh: 6, celsiusLow: -1),
     .init(name: "모레", celsiusHigh: 10, celsiusLow: 6),
     .init(name: "글피", celsiusHigh: 5, celsiusLow: 2),
-    
 ]
 
 struct ChartsView: View {
@@ -34,10 +33,7 @@ struct ChartsView: View {
                     yStart: .value("3시",sample.celsiusHigh),
                     yEnd: .value("18시",sample.celsiusLow)
                 )
-                
-                
             }
-            
         }
         .frame(width: 300, height: 100)
     }
