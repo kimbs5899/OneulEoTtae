@@ -24,7 +24,7 @@ struct OneulEoTtaeApp: App {
                         }
                     }
             } else {
-                Home()
+                WeatherView()
                     .environmentObject(alrmManager)
             }
         }
