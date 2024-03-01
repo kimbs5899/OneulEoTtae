@@ -18,7 +18,6 @@ extension AlrmData {
 
     @NSManaged public var id: UUID?
     @NSManaged public var setTime: String?
-    @NSManaged public var attribute: NSObject?
     @NSManaged public var location: WeatherData?
     @NSManaged public var dayOfWeek: NSSet?
 
