@@ -7,12 +7,15 @@
 
 import SwiftUI
 import SwiftData
+import UserNotifications
 
 @main
 struct OneulEoTtaeApp: App {
     
     let alrmManager = AlrmManager()
     @State private var isShowingLaunchScreen = true // 런치 스크린 표시 여부를 위한 상태 변수
+    /// UIApplicationDelegateAdaptor: UIKit 앱 델리게이트를 만드는 데 사용하는 프로퍼티 래퍼 유형
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
         WindowGroup {
@@ -30,3 +33,4 @@ struct OneulEoTtaeApp: App {
         }
     }
 }
+
