@@ -44,6 +44,9 @@
 		C19A72792B56938A00639506 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C19A72782B56938A00639506 /* Assets.xcassets */; };
 		C19A727C2B56938A00639506 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C19A727B2B56938A00639506 /* Preview Assets.xcassets */; };
 		C19A728D2B56959800639506 /* SettingUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A728C2B56959800639506 /* SettingUIView.swift */; };
+		C1CCBC372B91CDC7006832DE /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CCBC362B91CDC7006832DE /* WeatherDataModel.swift */; };
+		C1CCBC392B91CEDF006832DE /* AlrmDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CCBC382B91CEDF006832DE /* AlrmDataModel.swift */; };
+		C1CCBC3B2B91CF2A006832DE /* DateListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CCBC3A2B91CF2A006832DE /* DateListModel.swift */; };
 		C1CD98A42B919F4200ABD463 /* DayOfWeekInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD98A32B919F4200ABD463 /* DayOfWeekInfo.swift */; };
 		C1CD98B32B91B93800ABD463 /* OneulEoTtaeData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1CD98B12B91B93800ABD463 /* OneulEoTtaeData.xcdatamodeld */; };
 		C1CD98B52B91B96900ABD463 /* WeatherDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD98B42B91B96900ABD463 /* WeatherDataManager.swift */; };
@@ -98,6 +101,9 @@
 		C19A72782B56938A00639506 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C19A727B2B56938A00639506 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C19A728C2B56959800639506 /* SettingUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUIView.swift; sourceTree = "<group>"; };
+		C1CCBC362B91CDC7006832DE /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModel.swift; sourceTree = "<group>"; };
+		C1CCBC382B91CEDF006832DE /* AlrmDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlrmDataModel.swift; sourceTree = "<group>"; };
+		C1CCBC3A2B91CF2A006832DE /* DateListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateListModel.swift; sourceTree = "<group>"; };
 		C1CD98A32B919F4200ABD463 /* DayOfWeekInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekInfo.swift; sourceTree = "<group>"; };
 		C1CD98B22B91B93800ABD463 /* OneulEoTtaeData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OneulEoTtaeData.xcdatamodel; sourceTree = "<group>"; };
 		C1CD98B42B91B96900ABD463 /* WeatherDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataManager.swift; sourceTree = "<group>"; };
@@ -173,6 +179,9 @@
 				C15D01CB2B7A0E940029E70D /* OneulEoTtae.entitlements */,
 				C1CD98B42B91B96900ABD463 /* WeatherDataManager.swift */,
 				C1CD98B62B91B97D00ABD463 /* AlrmDataManager.swift */,
+				C1CCBC382B91CEDF006832DE /* AlrmDataModel.swift */,
+				C1CCBC3A2B91CF2A006832DE /* DateListModel.swift */,
+				C1CCBC362B91CDC7006832DE /* WeatherDataModel.swift */,
 				C1EB51822B6CD0A500744F64 /* App */,
 				C1EB51812B6CD04B00744F64 /* Extension */,
 				9926852A2B762BE70033423F /* Model */,
@@ -424,8 +433,10 @@
 				99CB17E32B569DB4003C8B4C /* Alrm.swift in Sources */,
 				99CB17F92B569FB4003C8B4C /* DeleteButtonView.swift in Sources */,
 				C151F3C82B5FD0B700311869 /* DeveloperListUIView.swift in Sources */,
+				C1CCBC392B91CEDF006832DE /* AlrmDataModel.swift in Sources */,
 				C1CD98CB2B91BEE300ABD463 /* DateData+CoreDataProperties.swift in Sources */,
 				998F55E02B91A91300F94A4A /* AppDelegate.swift in Sources */,
+				C1CCBC372B91CDC7006832DE /* WeatherDataModel.swift in Sources */,
 				C1CD98B32B91B93800ABD463 /* OneulEoTtaeData.xcdatamodeld in Sources */,
 				99CB17E52B569DC2003C8B4C /* AlrmManager.swift in Sources */,
 				C19A72732B56938600639506 /* OneulEoTtaeApp.swift in Sources */,
@@ -441,6 +452,7 @@
 				C1CD98B52B91B96900ABD463 /* WeatherDataManager.swift in Sources */,
 				893A2B3F2B76777900008CE0 /* PerceivedTemperatureChartsView.swift in Sources */,
 				8921D62C2B5696E200956D62 /* CardView.swift in Sources */,
+				C1CCBC3B2B91CF2A006832DE /* DateListModel.swift in Sources */,
 				C1CD98CA2B91BEE300ABD463 /* DateData+CoreDataClass.swift in Sources */,
 				C1CD98B72B91B97D00ABD463 /* AlrmDataManager.swift in Sources */,
 				C1CD98CE2B91BEE300ABD463 /* WeatherData+CoreDataClass.swift in Sources */,

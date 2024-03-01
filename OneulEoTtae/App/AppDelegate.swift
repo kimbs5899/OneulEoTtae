@@ -7,6 +7,7 @@
 
 import UIKit
 import UserNotifications
+import CoreData
 
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     /// 앱이 처음 호출될때 실행되는 메서드
@@ -33,18 +34,28 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     }
 
     func sendNotification(hour: Int, minute: Int) {
-            let notificationContent = UNMutableNotificationContent()
-            notificationContent.title = "오늘어때??"
-            notificationContent.body = "어제보다 오늘 몇도 높습니다."
-            
-            var date = DateComponents()
-            date.hour = hour
-            date.minute = minute
-            /// UNCalendarNotificationTrigger: 특정 날짜와 시간에 시스템에서 알림을 전송하도록 하는 트리거
-            let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
-            /// UNNotificationRequest: 알림의 콘텐츠와 배달 트리거 조건이 포함된 로컬 알림 예약 요청
-            let request = UNNotificationRequest(identifier: "Notification", content: notificationContent, trigger: trigger)
-            /// UNUserNotificationCenter: 앱 또는 앱 확장 프로그램의 알림 관련 활동을 관리하기 위한 중심 개체
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        }
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "오늘어때??"
+        notificationContent.body = "어제보다 오늘 몇도 높습니다."
+        
+        var date = DateComponents()
+        date.hour = hour
+        date.minute = minute
+        /// UNCalendarNotificationTrigger: 특정 날짜와 시간에 시스템에서 알림을 전송하도록 하는 트리거
+        let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+        /// UNNotificationRequest: 알림의 콘텐츠와 배달 트리거 조건이 포함된 로컬 알림 예약 요청
+        let request = UNNotificationRequest(identifier: "Notification", content: notificationContent, trigger: trigger)
+        /// UNUserNotificationCenter: 앱 또는 앱 확장 프로그램의 알림 관련 활동을 관리하기 위한 중심 개체
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "OneulEoTtaeData")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+}

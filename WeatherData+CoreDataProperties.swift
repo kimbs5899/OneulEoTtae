@@ -16,8 +16,9 @@ extension WeatherData {
         return NSFetchRequest<WeatherData>(entityName: "WeatherData")
     }
 
+    @NSManaged public var id: UUID?
     @NSManaged public var prevWeather: String?
-    @NSManaged public var location: AlrmData?
+    @NSManaged public var location: NSSet?
 
 }
 
