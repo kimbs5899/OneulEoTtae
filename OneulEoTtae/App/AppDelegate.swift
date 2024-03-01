@@ -23,7 +23,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         /// 앱 실행 시 사용자에게 알림 허용 권한을 받음
         UNUserNotificationCenter.current().delegate = self
         application.registerForRemoteNotifications()
-        sendNotification(hour: 15, minute: 27)
+        sendNotification(hour: 16, minute: 16)
         return true
     }
     
@@ -34,8 +34,8 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 
     func sendNotification(hour: Int, minute: Int) {
             let notificationContent = UNMutableNotificationContent()
-            notificationContent.title = "알림 테스트입니다."
-            notificationContent.body = "알림 테스트"
+            notificationContent.title = "오늘어때??"
+            notificationContent.body = "어제보다 오늘 몇도 높습니다."
             
             var date = DateComponents()
             date.hour = hour
@@ -43,7 +43,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             /// UNCalendarNotificationTrigger: 특정 날짜와 시간에 시스템에서 알림을 전송하도록 하는 트리거
             let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
             /// UNNotificationRequest: 알림의 콘텐츠와 배달 트리거 조건이 포함된 로컬 알림 예약 요청
-            let request = UNNotificationRequest(identifier: "testNotification", content: notificationContent, trigger: trigger)
+            let request = UNNotificationRequest(identifier: "Notification", content: notificationContent, trigger: trigger)
             /// UNUserNotificationCenter: 앱 또는 앱 확장 프로그램의 알림 관련 활동을 관리하기 위한 중심 개체
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         }

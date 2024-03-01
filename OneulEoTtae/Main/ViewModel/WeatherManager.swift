@@ -15,17 +15,14 @@ class WeatherManager {
     
     func getWeather() async -> String {
         do {
-            let startDate = Calendar.current.date(byAdding: .day, value: 0, to: Date())!
-            let endDate = Calendar.current.date(byAdding: .day, value: 2, to: Date())!
+            let startDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
+            let endDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
                 
             let weather = try await WeatherService.shared.weather(for: location, including: .daily(startDate: startDate, endDate: endDate))
-                
-            let todayWeather = weather.last
-            let yesterdayWeather = weather.first
             
-            print("오늘날짜\(todayWeather!.date) 날씨 \(todayWeather!.highTemperature)°C")
-            print("어제날짜\(yesterdayWeather!.date) 날씨 \(yesterdayWeather!.highTemperature)°C")
-            return "\(todayWeather!.highTemperature)°C \(yesterdayWeather!.highTemperature)°C"
+            print("오늘날짜\(weather.last!.date + 86400) 날씨 \(weather.last!.highTemperature)°C")
+            print("어제날짜\(weather.first!.date + 86400) 날씨 \(weather.first!.highTemperature)°C")
+            return "\(weather.last!.highTemperature)°C \(weather.first!.highTemperature)°C"
         } catch {
             assertionFailure(error.localizedDescription)
             return "Error retrieving weather data."
