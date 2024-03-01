@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23D56" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="AlrmData" representedClassName="AlrmData" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="setTime" optional="YES" attributeType="String"/>
+        <attribute name="toggle" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="dayOfWeek" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DayOfWeekData" inverseName="alrmTag" inverseEntity="DayOfWeekData"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherData" inverseName="location" inverseEntity="WeatherData"/>
+    </entity>
+    <entity name="DayOfWeekData" representedClassName="DayOfWeekData" syncable="YES" codeGenerationType="class">
+        <attribute name="day" optional="YES" attributeType="String"/>
+        <relationship name="alrmTag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AlrmData" inverseName="dayOfWeek" inverseEntity="AlrmData"/>
+    </entity>
+    <entity name="WeatherData" representedClassName="WeatherData" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="prevWeather" optional="YES" attributeType="String"/>
+        <relationship name="location" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AlrmData" inverseName="location" inverseEntity="AlrmData"/>
+    </entity>
+</model>
