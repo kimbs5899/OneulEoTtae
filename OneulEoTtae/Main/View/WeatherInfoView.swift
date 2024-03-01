@@ -9,20 +9,29 @@ import SwiftUI
 
 // json 날씨정보의 일부를 CardView에 표시
 struct WeatherInfoView: View {
-    var location: String
-    var temperatureChange: String
+    var test = WeatherManager()
+    
+    var weatherManager = WeatherManager()
+    @State private var location = "Loading..." // Default text while fetching data
+    @State private var temperatureChange = "-"
+
     var body: some View {
         VStack {
             Text(location)
                 .font(.custom(FontName.jalnan2.rawValue, size: 16))
                 .padding(10)
-                
-            Text("어제보다")
-                .font(.custom(FontName.jalnan2.rawValue, size: 24))
-                .padding(3)
             Text(temperatureChange)
                 .font(.custom(FontName.jalnan2.rawValue, size: 32))
                 .font(.title)
+                .onAppear {
+                    // Fetch weather data when the view appears
+                    Task {
+                        let weatherInfo = await weatherManager.getWeather()
+                        // Update UI with the retrieved data
+                        location = "서울" // Set your location here or extract from the weatherInfo
+                        temperatureChange = weatherInfo
+                    }
+                }
             Text("풍속은 ~~~~")
                 .padding(.top, 10)
             Text("풍량은 ~~~~")
@@ -30,6 +39,6 @@ struct WeatherInfoView: View {
         }
     }
 }
-#Preview {
-    WeatherInfoView(location: "서울", temperatureChange: "-5°C")
-}
+//#Preview {
+//    WeatherInfoView as! any View
+//}
