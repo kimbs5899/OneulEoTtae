@@ -25,3 +25,8 @@ struct WeatherModel: Identifiable {
     /// 풍속
     var windSpeed: Int?
 }
+
+extension WeatherModel {
+    static let sampleAlarm = WeatherModel(setTime: "07:00 AM", dayOfWeek: ["월", "화"], location: "서울특별시", toggle: true)
+}
+
