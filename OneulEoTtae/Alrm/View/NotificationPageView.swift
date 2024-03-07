@@ -152,9 +152,7 @@ struct 추가: PreviewProvider {
 // 편집
 struct 편집: PreviewProvider {
     static var previews: some View {
-        let editingAlarm = WeatherModel(setTime: "09:00 AM", dayOfWeek: ["월", "수", "금"], location: "서울특별시", toggle: true)
-        
-        NotificationPageView(settings: NotificationSettings(editingAlarm: editingAlarm), isNewAlarm: false, editingAlarm: editingAlarm)
+        NotificationPageView(settings: NotificationSettings(editingAlarm: .sampleAlarm), isNewAlarm: false, editingAlarm: .sampleAlarm)
             .environmentObject(AlrmManager())
     }
 }

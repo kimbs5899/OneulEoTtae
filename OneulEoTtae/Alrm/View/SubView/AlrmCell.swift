@@ -45,8 +45,7 @@ struct AlrmCell: View {
 
 struct AlrmCell_Previews: PreviewProvider {
     static var previews: some View {
-        let sampleAlarm = WeatherModel(setTime: "07:00 AM", dayOfWeek: ["월", "화"], location: "서울특별시", toggle: true)
-        AlrmCell(alrm: sampleAlarm)
+        AlrmCell(alrm: .sampleAlarm)
             .environmentObject(AlrmManager())
             .previewLayout(.sizeThatFits)
             .padding()
