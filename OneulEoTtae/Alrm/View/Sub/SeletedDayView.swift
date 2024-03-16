@@ -66,7 +66,7 @@ struct SeletedDayView: View {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button("확인") {
                             let selectedDays = self.selectedDayIndices.sorted().map { self.daysOfWeek[$0] }
-                            self.selectedDates = selectedDays // 수정된 부분: 선택된 날짜를 바인딩된 변수에 할당
+                            self.selectedDates = selectedDays
                             self.presentationMode.wrappedValue.dismiss()
                         }.font(.jalnan2_XS)
                             .foregroundColor(.Blue2_OET)
@@ -80,6 +80,6 @@ struct SeletedDayView: View {
 
 struct SeletedDayView_Previews: PreviewProvider {
     static var previews: some View {
-        SeletedDayView(selectedDates: .constant(["월요일", "수요일"])) // 예시로 선택된 요일 데이터 제공
+        SeletedDayView(selectedDates: .constant(["월요일", "수요일"])) 
     }
 }
