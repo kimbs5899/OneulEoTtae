@@ -42,7 +42,7 @@ struct AlrmSettingView: View {
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text("새 알람 추가")
-                            .font(.custom(FontName.jalnan2.rawValue, size: 20))
+                            .font(.jalnan2_S)
                             .foregroundColor(.Blue1_OET)
                     }
                     ToolbarItem(placement: .topBarTrailing) {
@@ -68,7 +68,7 @@ struct AlrmSettingView: View {
                             isSheetShowing = false
                         }, label: {
                             Text("저장")
-                                .font(.custom(FontName.jalnan2.rawValue, size: 16))
+                                .font(.jalnan2_XS)
                                 .foregroundColor(.Blue2_OET)
                         })
                     }

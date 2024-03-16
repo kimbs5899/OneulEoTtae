@@ -7,16 +7,37 @@
 
 import SwiftUI
 
-// 폰트 설정을 위한 커스텀 메소드
-extension Text {
-    func customFont(_ name: FontName, size: CGFloat, color: Color) -> some View {
-        self.font(Font.custom(name.rawValue, size: size))
-            .foregroundColor(color)
+extension Font {
+    /// jalnan2_L : 32
+    static var jalnan2_L: Font {
+        return Font.custom("Jalnan2", size: 32)
     }
-}
-
-// 폰트 이름을 관리하는 열거형
-enum FontName: String {
-    case jalnan2 = "Jalnan2"
-    case jalnan2TTF = "Jalnan2TTF"
+    /// jalnan2_R : 25
+    static var jalnan2_R: Font {
+        return Font.custom("Jalnan2", size: 25)
+    }
+    /// jalnan2_S : 20
+    static var jalnan2_S: Font {
+        return Font.custom("Jalnan2", size: 20)
+    }
+    /// jalnan2_XS : 16
+    static var jalnan2_XS: Font {
+        return Font.custom("Jalnan2", size: 16)
+    }
+    /// jalnan2TTF_L : 32
+    static var jalnan2TTF_L: Font {
+        return Font.custom("Jalnan2", size: 32)
+    }
+    /// jalnan2TTF_R : 25
+    static var jalnan2TTF_R: Font {
+        return Font.custom("Jalnan2", size: 25)
+    }
+    /// jalnan2TTF_S : 20
+    static var jalnan2TTF_S: Font {
+        return Font.custom("Jalnan2", size: 20)
+    }
+    /// jalnan2TTF_XS : 16
+    static var jalnan2TTF_XS: Font {
+        return Font.custom("Jalnan2", size: 16)
+    }
 }

@@ -31,7 +31,7 @@ struct AlrmListView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("알림 목록")
-                        .font(.custom(FontName.jalnan2.rawValue, size: 20))
+                        .font(.jalnan2_S)
                         .foregroundColor(.Blue1_OET)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {

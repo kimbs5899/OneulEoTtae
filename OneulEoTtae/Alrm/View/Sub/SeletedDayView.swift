@@ -51,7 +51,7 @@ struct SeletedDayView: View {
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text("날짜 선택")
-                            .font(.custom(FontName.jalnan2.rawValue, size: 20))
+                            .font(.jalnan2_S)
                             .foregroundColor(.Blue1_OET)
                     }
                     ToolbarItem(placement: .topBarLeading) {
@@ -59,7 +59,7 @@ struct SeletedDayView: View {
                             self.presentationMode.wrappedValue.dismiss()
                         }, label: {
                             Image(systemName: "chevron.left")
-                                .font(.custom(FontName.jalnan2.rawValue, size: 16))
+                                .font(.jalnan2_XS)
                                 .foregroundColor(.Blue2_OET)
                         })
                     }
@@ -68,7 +68,7 @@ struct SeletedDayView: View {
                             let selectedDays = self.selectedDayIndices.sorted().map { self.daysOfWeek[$0] }
                             self.selectedDates = selectedDays // 수정된 부분: 선택된 날짜를 바인딩된 변수에 할당
                             self.presentationMode.wrappedValue.dismiss()
-                        }.font(.custom(FontName.jalnan2.rawValue, size: 16))
+                        }.font(.jalnan2_XS)
                             .foregroundColor(.Blue2_OET)
                     }
                 }

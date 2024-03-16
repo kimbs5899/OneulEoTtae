@@ -26,7 +26,7 @@ struct DaySelectionView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text("날짜 선택")
-                    .font(.custom(FontName.jalnan2.rawValue, size: 20))
+                    .font(.jalnan2_S)
                     .foregroundColor(.Blue1_OET)
             }
         }

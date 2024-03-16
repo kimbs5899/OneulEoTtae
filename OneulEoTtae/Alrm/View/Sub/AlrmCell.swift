@@ -20,7 +20,7 @@ struct AlrmCell: View {
             HStack {
                 Text(alrm.setTime)
                     .foregroundStyle(Color.Blue2_OET)
-                    .font(.custom(FontName.jalnan2.rawValue, size: 24))
+                    .font(.jalnan2_R)
                     .padding(.trailing, 5)
                 Spacer()
                 Toggle(isOn: Binding(

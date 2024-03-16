@@ -18,10 +18,10 @@ struct WeatherInfoView: View {
     var body: some View {
         VStack {
             Text(location)
-                .font(.custom(FontName.jalnan2.rawValue, size: 16))
+                .font(.jalnan2_XS)
                 .padding(10)
             Text(temperatureChange)
-                .font(.custom(FontName.jalnan2.rawValue, size: 32))
+                .font(.jalnan2_L)
                 .font(.title)
                 .onAppear {
                     // Fetch weather data when the view appears
