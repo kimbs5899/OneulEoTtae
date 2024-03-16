@@ -7,24 +7,22 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
-class AlrmDataManager {
-    static let shared = AlrmDataManager()
-    
-    private init() {}
-    
+class AlrmDataManager: ObservableObject {
+    @Published var alrmData: [AlrmDataModel] = []
     lazy var context = AppDelegate().persistentContainer.viewContext
 
     let modelName: String = "AlrmData"
     
     func createAlrmCoreData(data: AlrmDataModel, day: DateListModel) {
-        let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
         if let entity = NSEntityDescription.entity(forEntityName: self.modelName, in: context) {
             if let alrmData = NSManagedObject(entity: entity, insertInto: context) as AnyObject as? AlrmData {
                 alrmData.id = data.id
                 alrmData.dayOfWeek = day as AnyObject as? NSSet
                 alrmData.location = data.location
                 alrmData.setTime = data.setTime
+                alrmData.isToggleOn = data.isToggleOn
                 if context.hasChanges {
                     do{
                         try context.save()
@@ -37,20 +35,32 @@ class AlrmDataManager {
     }
     
     func readAlrmCoreData() -> [AlrmDataModel] {
-        var alrmData: [AlrmDataModel] = []
-        let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
+        let request = NSFetchRequest<AlrmData>(entityName: self.modelName)
         do {
-            if let fetchedDataList = try context.fetch(request) as? [AlrmDataModel] {
-                alrmData = fetchedDataList.map { alrmEntity in
-                    return AlrmDataModel(id: UUID(), setTime: alrmEntity.setTime, location: alrmEntity.location, dayOfWeek: alrmEntity.dayOfWeek)
+            let fetchedDataList = try context.fetch(request)
+            let alrmDataList = fetchedDataList.map { alrmEntity in
+                guard let dayOfWeekSet = alrmEntity.dayOfWeek as? Set<String> else {
+                    return AlrmDataModel(id: alrmEntity.id ?? UUID(),
+                                         setTime: alrmEntity.setTime ?? "",
+                                         location: alrmEntity.location ?? "",
+                                         dayOfWeek: [],
+                                         isToggleOn: alrmEntity.isToggleOn)
                 }
+                let dayOfWeekArray = Array(dayOfWeekSet)
+                return AlrmDataModel(id: alrmEntity.id ?? UUID(),
+                                     setTime: alrmEntity.setTime ?? "",
+                                     location: alrmEntity.location ?? "",
+                                     dayOfWeek: dayOfWeekArray,
+                                     isToggleOn: alrmEntity.isToggleOn)
             }
+            return alrmDataList
         } catch {
-            print("읽기 실패")
+            print("읽기 실패: \(error)")
+            return []
         }
-        return alrmData
     }
-    
+
+
     func updateAlrmCoreData(_ data: AlrmDataModel) {
         let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
         request.predicate = NSPredicate(format: "id = %@", data.id as CVarArg)
@@ -60,6 +70,7 @@ class AlrmDataManager {
                     targetAlrm.setTime = data.setTime
                     targetAlrm.location = data.location
                     targetAlrm.dayOfWeek = data.dayOfWeek
+                    targetAlrm.isToggleOn = data.isToggleOn
                     if context.hasChanges {
                         do{
                             try context.save()
@@ -94,4 +105,27 @@ class AlrmDataManager {
             print("삭제 실패")
         }
     }
+    func toggleAlarm(id: UUID) {
+        let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
+        request.predicate = NSPredicate(format: "id = %@", id as CVarArg)
+        
+        do {
+            if let fetchAlrmList = try context.fetch(request) as? [AlrmData] {
+                if let targetAlrm = fetchAlrmList.first {
+                    targetAlrm.isToggleOn.toggle()
+                    
+                    if context.hasChanges {
+                        do {
+                            try context.save()
+                        } catch {
+                            print(error)
+                        }
+                    }
+                }
+            }
+        } catch {
+            print("토글 실패")
+        }
+    }
 }
+

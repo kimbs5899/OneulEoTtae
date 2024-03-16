@@ -16,13 +16,13 @@ extension DateData {
         return NSFetchRequest<DateData>(entityName: "DateData")
     }
 
-    @NSManaged public var monday: String?
-    @NSManaged public var tuesday: String?
-    @NSManaged public var wednesday: String?
-    @NSManaged public var thursday: String?
-    @NSManaged public var friday: String?
-    @NSManaged public var saturday: String?
-    @NSManaged public var sunday: String?
+    @NSManaged public var monday: Bool
+    @NSManaged public var tuesday: Bool
+    @NSManaged public var wednesday: Bool
+    @NSManaged public var thursday: Bool
+    @NSManaged public var friday: Bool
+    @NSManaged public var saturday: Bool
+    @NSManaged public var sunday: Bool
     @NSManaged public var dayList: AlrmData?
 
 }
