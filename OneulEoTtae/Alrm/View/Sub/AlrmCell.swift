@@ -14,6 +14,7 @@ struct AlrmCell: View {
     var body: some View {
         VStack {
             HStack {
+
                 Text(alrm.location)
                 Spacer()
             }.padding(.bottom, -5)
