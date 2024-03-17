@@ -30,7 +30,7 @@ struct NotificationPageView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text(isNewAlarm ? "새 알람 추가" : "알림 편집")
-                        .font(.custom(FontName.jalnan2.rawValue, size: 20))
+                        .font(.jalnan2_S)
                         .foregroundColor(.Blue1_OET)
                 }
                 leadingToolbarItem // 취소 버튼
@@ -85,7 +85,7 @@ struct NotificationPageView: View {
                 Button("취소") {
                     presentationMode.wrappedValue.dismiss()
                 }
-                .font(.custom(FontName.jalnan2.rawValue, size: 16))
+                .font(.jalnan2_XS)
                 .foregroundColor(.Blue2_OET)
             }
         }
@@ -97,7 +97,7 @@ struct NotificationPageView: View {
             Button(isNewAlarm ? "저장" : "추가") {
                 saveAlarm() // 알람 저장 또는 추가
             }
-            .font(.custom(FontName.jalnan2.rawValue, size: 16))
+            .font(.jalnan2_XS)
             .foregroundColor(.Blue2_OET)
         }
     }

@@ -18,8 +18,9 @@ extension AlrmData {
 
     @NSManaged public var id: UUID?
     @NSManaged public var setTime: String?
-    @NSManaged public var location: WeatherData?
+    @NSManaged public var location: String?
     @NSManaged public var dayOfWeek: NSSet?
+    @NSManaged public var isToggleOn: Bool
 
 }
 

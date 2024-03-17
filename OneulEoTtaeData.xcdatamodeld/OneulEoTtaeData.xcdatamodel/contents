@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23D56" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="23A344" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="AlrmData" representedClassName="AlrmData" syncable="YES">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isToggleOn" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
         <attribute name="setTime" optional="YES" attributeType="String"/>
         <relationship name="dayOfWeek" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DateData" inverseName="dayList" inverseEntity="DateData"/>
-        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherData" inverseName="location" inverseEntity="WeatherData"/>
+        <relationship name="locations" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherData" inverseName="location" inverseEntity="WeatherData"/>
     </entity>
     <entity name="DateData" representedClassName="DateData" syncable="YES">
         <attribute name="friday" optional="YES" attributeType="String"/>
@@ -19,6 +21,6 @@
     <entity name="WeatherData" representedClassName="WeatherData" syncable="YES">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="prevWeather" optional="YES" attributeType="String"/>
-        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AlrmData" inverseName="location" inverseEntity="AlrmData"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AlrmData" inverseName="locations" inverseEntity="AlrmData"/>
     </entity>
 </model>

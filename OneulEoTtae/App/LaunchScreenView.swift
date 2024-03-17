@@ -23,14 +23,16 @@ struct LaunchScreenView: View {
                     // "오늘어때?"와 "?" 텍스트
                     HStack(spacing: 0) {
                         Text("오늘어때")
-                            .customFont(.jalnan2, size: 20, color: .Blue1_OET)
+                            .font(.jalnan2_L)
+                            .foregroundStyle(Color.Blue1_OET)
                     }
                     .position(x: geometry.size.width / 2, y: geometry.size.height * 0.43)
                     .opacity(textOpacity)
                     
                     // "made by SeSAC" 텍스트
                     Text("made by SeSAC")
-                        .customFont(.jalnan2, size: 14, color: Color(red: 0.57, green: 0.61, blue: 0.68))
+                        .font(.jalnan2_XS)
+                        .foregroundStyle(Color(red: 0.57, green: 0.61, blue: 0.68))
                         .position(x: geometry.size.width / 2, y: geometry.size.height * 0.30)
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height)

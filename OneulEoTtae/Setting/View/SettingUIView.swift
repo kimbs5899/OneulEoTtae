@@ -51,8 +51,7 @@ struct SettingUIView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("설정")
-                    .font(
-                    .custom(FontName.jalnan2.rawValue, size: 20))
+                        .font(.jalnan2_S)
                     .foregroundColor(.Blue1_OET)
                  }
             }

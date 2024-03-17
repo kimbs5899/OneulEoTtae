@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct AlrmListView: View {
-    @EnvironmentObject var alrmManager: AlrmManager
+    @ObservedObject var alrmDataManager: AlrmDataManager
     @State private var isAddSheetShowing = false
-    @State private var editingAlarm: WeatherModel? // 편집할 알람을 저장
     @State private var isEditingSheetShowing = false // 편집 모드 활성화 상태
-
+    @State private var selectedRegion: String = "서울특별시"
+    
     var body: some View {
         NavigationStack {
             List {
-                ForEach(alrmManager.alrmList) { alrm in
+                ForEach(alrmDataManager.readAlrmCoreData(), id: \.id) { alrm in
                     AlrmCell(alrm: alrm)
                         .onTapGesture {
-                            self.editingAlarm = alrm
                             self.isEditingSheetShowing = true
                         }
                 }
@@ -32,7 +31,7 @@ struct AlrmListView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("알림 목록")
-                        .font(.custom(FontName.jalnan2.rawValue, size: 20))
+                        .font(.jalnan2_S)
                         .foregroundColor(.Blue1_OET)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -43,28 +42,28 @@ struct AlrmListView: View {
                 }
             }
             .sheet(isPresented: $isAddSheetShowing) {
-                NotificationPageView(settings: NotificationSettings(), isNewAlarm: true, editingAlarm: nil)
+                AlrmSettingView(isSheetShowing: $isAddSheetShowing)
                     .presentationDetents([.fraction(0.75), .large])
             }
             // 편집 모드를 위한 시트
             .sheet(isPresented: $isEditingSheetShowing) {
-                if let editingAlarm = editingAlarm ?? alrmManager.alrmList.first {
-                    NotificationPageView(settings: NotificationSettings(editingAlarm: editingAlarm), isNewAlarm: false, editingAlarm: editingAlarm)
-                        .presentationDetents([.fraction(0.85), .large])
-                } else {
-                    EmptyView()
-                }
+                //                if let editingAlarm = editingAlarm ?? alrmManager.alrmList.first {
+                //                    NotificationPageView(settings: NotificationSettings(editingAlarm: editingAlarm), isNewAlarm: false, editingAlarm: editingAlarm)
+                //                        .presentationDetents([.fraction(0.85), .large])
+                //                } else {
+                //                    EmptyView()
+                //                }
             }
         }
     }
     private func deleteAlrm(at offsets: IndexSet) {
-        alrmManager.alrmList.remove(atOffsets: offsets)
+        let alrmList = alrmDataManager.readAlrmCoreData()
+        alrmDataManager.deleteAlrmCoreData(alrmList[offsets.first!])
     }
 }
 
 struct AlrmListView_Previews: PreviewProvider {
     static var previews: some View {
-        AlrmListView()
-            .environmentObject(AlrmManager())
+        AlrmListView(alrmDataManager: AlrmDataManager())
     }
 }
