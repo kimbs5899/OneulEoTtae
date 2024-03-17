@@ -12,10 +12,10 @@ struct AlrmDataModel {
     let id: UUID
     var setTime: String
     var location: String
-    var dayOfWeek: [String]
+    var dayOfWeek: [Bool]
     var isToggleOn: Bool
     
-    init(id: UUID, setTime: String, location: String, dayOfWeek: [String], isToggleOn: Bool) {
+    init(id: UUID, setTime: String, location: String, dayOfWeek: [Bool], isToggleOn: Bool) {
             self.id = id
             self.setTime = setTime
             self.location = location
