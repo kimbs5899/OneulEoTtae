@@ -23,7 +23,7 @@ class WeatherDataManager {
             if let weatherData = NSManagedObject(entity: entity, insertInto: context) as AnyObject as? WeatherData {
                 weatherData.id = data.id
                 weatherData.prevWeather = data.prevWeather
-                weatherData.location = arlm.location as AnyObject as? NSSet
+            //    weatherData.location = arlm.location as AnyObject as? NSSet
                 if context.hasChanges {
                     do{
                         try context.save()

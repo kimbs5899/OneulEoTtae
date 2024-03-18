@@ -9,45 +9,40 @@ import SwiftUI
 
 struct SeletedDayView: View {
     @Binding var selectedDates: [String]
-    
-    let daysOfWeek = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"]
-    @State private var selectedDayIndices: Set<Int> = []
+    @State private var selectedDays: [Day]
     @Environment(\.presentationMode) var presentationMode
+    
+    init(selectedDates: Binding<[String]>) {
+        self._selectedDates = selectedDates
+        let selectedDays: [Day] = selectedDates.wrappedValue.compactMap { stringDate in
+            Day(string: stringDate)
+        }
+        self._selectedDays = State(initialValue: selectedDays)
+    }
     
     var body: some View {
         NavigationStack {
             VStack {
                 List {
-                    ForEach(0..<daysOfWeek.count, id: \.self) { index in
-                        Button(action: {
-                            if self.selectedDayIndices.contains(index) {
-                                self.selectedDayIndices.remove(index)
-                            } else {
-                                self.selectedDayIndices.insert(index)
-                            }
-                        }) {
+                    ForEach(Day.allCases, id: \.self) { day in
+                        Button {
+                            toggleSelection(for: day)
+                        } label: {
                             HStack {
-                                Text(self.daysOfWeek[index])
+                                Text("\(day.toString)")
                                     .foregroundStyle(Color.black)
                                 Spacer()
-                                if self.selectedDayIndices.contains(index) {
+                                if isDaySelected(day) {
                                     Image(systemName: "checkmark")
                                         .foregroundColor(.blue)
                                 }
                             }
                         }
                     }
-                }
-                .listStyle(InsetGroupedListStyle())
+                }.listStyle(InsetGroupedListStyle())
             }.navigationTitle("날짜 선택")
                 .navigationBarTitleDisplayMode(.inline)
-                .onAppear {
-                    for (index, day) in daysOfWeek.enumerated() {
-                        if selectedDates.contains(day) {
-                            selectedDayIndices.insert(index)
-                        }
-                    }
-                }.navigationBarBackButtonHidden(true)
+                .navigationBarBackButtonHidden(true)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text("날짜 선택")
@@ -65,21 +60,33 @@ struct SeletedDayView: View {
                     }
                     ToolbarItem(placement: .topBarTrailing) {
                         Button("확인") {
-                            let selectedDays = self.selectedDayIndices.sorted().map { self.daysOfWeek[$0] }
-                            self.selectedDates = selectedDays
-                            self.presentationMode.wrappedValue.dismiss()
+                            let sortedSelectedDays = self.selectedDays.sorted(by: { $0.rawValue < $1.rawValue })
+                                let sortedSelectedDates = sortedSelectedDays.map { $0.toString }
+                                self.selectedDates = sortedSelectedDates
+                                self.presentationMode.wrappedValue.dismiss()
+                                print("\(sortedSelectedDates)")
                         }.font(.jalnan2_XS)
                             .foregroundColor(.Blue2_OET)
                     }
                 }
         }
-        
+    }
+    
+    private func toggleSelection(for day: Day) {
+        if isDaySelected(day) {
+            selectedDays.removeAll { $0 == day }
+        } else {
+            selectedDays.append(day)
+        }
+    }
+    
+    private func isDaySelected(_ day: Day) -> Bool {
+        selectedDays.contains(day)
     }
 }
 
-
 struct SeletedDayView_Previews: PreviewProvider {
     static var previews: some View {
-        SeletedDayView(selectedDates: .constant(["월요일", "수요일"])) 
+        SeletedDayView(selectedDates: .constant(["월요일", "수요일"]))
     }
 }

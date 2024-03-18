@@ -13,7 +13,7 @@ struct AlrmSettingView: View {
     @State var selectedTime: Date = Date()
     @State private var selectedDays: [String] = []
     @Binding var isSheetShowing: Bool
-    
+    @Binding var selectedDates: [String]
     var body: some View {
         NavigationStack {
             VStack {
@@ -52,20 +52,31 @@ struct AlrmSettingView: View {
                             let setTime = formatter.string(from: selectedTime)
                             let locationString = selectedRegion
                             let selectedDaysModel = DateListModel(
-                                    monday: selectedDays.contains("월요일"),
-                                    tuesday: selectedDays.contains("화요일"),
-                                    wednesday: selectedDays.contains("수요일"),
-                                    thursday: selectedDays.contains("목요일"),
-                                    friday: selectedDays.contains("금요일"),
-                                    saturday: selectedDays.contains("토요일"),
-                                    sunday: selectedDays.contains("일요일")
-                                )
+                                monday: selectedDays.contains("월요일"),
+                                tuesday: selectedDays.contains("화요일"),
+                                wednesday: selectedDays.contains("수요일"),
+                                thursday: selectedDays.contains("목요일"),
+                                friday: selectedDays.contains("금요일"),
+                                saturday: selectedDays.contains("토요일"),
+                                sunday: selectedDays.contains("일요일")
+                            )
                             
-                            let newAlarm = AlrmDataModel(id: UUID(), setTime: setTime, location: locationString, dayOfWeek: selectedDays, isToggleOn: true)
+                            let newAlarm = AlrmDataModel(id: UUID(),
+                                                         setTime: setTime,
+                                                         location: locationString,
+                                                         dayOfWeek: [
+                                                            selectedDaysModel.monday,
+                                                            selectedDaysModel.tuesday,
+                                                            selectedDaysModel.wednesday,
+                                                            selectedDaysModel.thursday,
+                                                            selectedDaysModel.friday,
+                                                            selectedDaysModel.saturday,
+                                                            selectedDaysModel.sunday
+                                                         ],
+                                                         isToggleOn: true)
                             alrmDataManager.createAlrmCoreData(data: newAlarm, day: selectedDaysModel)
-                            print("지역: \(locationString)")
-                            print("새로운 알람: \(newAlarm)")
                             isSheetShowing = false
+                            print("Selected days: \(selectedDays)")
                         }, label: {
                             Text("저장")
                                 .font(.jalnan2_XS)
@@ -79,6 +90,6 @@ struct AlrmSettingView: View {
 
 
 #Preview {
-    AlrmSettingView(isSheetShowing: .constant(true))
+    AlrmSettingView(isSheetShowing: .constant(true), selectedDates: .constant([]))
         .environmentObject(AlrmDataManager())
 }

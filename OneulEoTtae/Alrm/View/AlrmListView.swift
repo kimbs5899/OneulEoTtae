@@ -12,12 +12,12 @@ struct AlrmListView: View {
     @State private var isAddSheetShowing = false
     @State private var isEditingSheetShowing = false // 편집 모드 활성화 상태
     @State private var selectedRegion: String = "서울특별시"
-    
+    @State var selectedDates: [String] = []
     var body: some View {
         NavigationStack {
             List {
                 ForEach(alrmDataManager.readAlrmCoreData(), id: \.id) { alrm in
-                    AlrmCell(alrm: alrm)
+                    AlrmCell(alrm: alrm, selectedDates: $selectedDates)
                         .onTapGesture {
                             self.isEditingSheetShowing = true
                         }
@@ -42,7 +42,7 @@ struct AlrmListView: View {
                 }
             }
             .sheet(isPresented: $isAddSheetShowing) {
-                AlrmSettingView(isSheetShowing: $isAddSheetShowing)
+                AlrmSettingView(isSheetShowing: $isAddSheetShowing, selectedDates: $selectedDates)
                     .presentationDetents([.fraction(0.75), .large])
             }
             // 편집 모드를 위한 시트

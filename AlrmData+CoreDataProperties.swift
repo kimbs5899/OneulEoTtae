@@ -2,7 +2,7 @@
 //  AlrmData+CoreDataProperties.swift
 //  OneulEoTtae
 //
-//  Created by Matthew on 3/1/24.
+//  Created by 윤진영 on 3/17/24.
 //
 //
 
@@ -17,10 +17,11 @@ extension AlrmData {
     }
 
     @NSManaged public var id: UUID?
-    @NSManaged public var setTime: String?
-    @NSManaged public var location: String?
-    @NSManaged public var dayOfWeek: NSSet?
     @NSManaged public var isToggleOn: Bool
+    @NSManaged public var location: String?
+    @NSManaged public var setTime: String?
+    @NSManaged public var dayOfWeek: DateData?
+    @NSManaged public var locations: WeatherData?
 
 }
 

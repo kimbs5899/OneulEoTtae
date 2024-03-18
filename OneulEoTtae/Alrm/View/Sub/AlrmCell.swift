@@ -10,11 +10,11 @@ import SwiftUI
 struct AlrmCell: View {
     @EnvironmentObject var alrmDataManager: AlrmDataManager
     @State var alrm: AlrmDataModel
-
+    @Binding var selectedDates: [String]
+    
     var body: some View {
         VStack {
             HStack {
-
                 Text(alrm.location)
                 Spacer()
             }.padding(.bottom, -5)
@@ -34,9 +34,10 @@ struct AlrmCell: View {
                 }
             }.padding(.bottom, -5)
             HStack {
-                Text(alrm.dayOfWeek.joined(separator: ", "))
-                    .font(.body)
-                Spacer()
+                Text(alrm.dayOfWeek.compactMap { isDaySelected in
+                       isDaySelected ? Day(rawValue: selectedDates.firstIndex(of: "월요일") ?? 0)?.toString : nil
+                   }.joined(separator: ", "))
+                   Spacer()
             }
             .font(.callout)
             .padding(.bottom, -5)
@@ -55,7 +56,7 @@ struct AlrmCell: View {
 
 struct AlrmCell_Previews: PreviewProvider {
     static var previews: some View {
-        AlrmCell(alrm: .sampleAlarm)
+        AlrmCell(alrm: .sampleAlarm, selectedDates: .constant(["월요일"]))
             .environmentObject(AlrmDataManager())
             .previewLayout(.sizeThatFits)
             .padding()

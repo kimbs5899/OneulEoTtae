@@ -15,19 +15,11 @@ class AlrmDataManager: ObservableObject {
 
     let modelName: String = "AlrmData"
     
-    func makeWeekCheck(array: [Bool]) -> [String] {
-        var result: [String] = []
-        if array[0] == true {
-            result.append("월")
-        }
-        return result
-    }
-    
     func createAlrmCoreData(data: AlrmDataModel, day: DateListModel) {
         if let entity = NSEntityDescription.entity(forEntityName: self.modelName, in: context) {
             if let alrmData = NSManagedObject(entity: entity, insertInto: context) as AnyObject as? AlrmData {
                 alrmData.id = data.id
-                alrmData.dayOfWeek = day as AnyObject as? NSSet
+                alrmData.dayOfWeek = day as AnyObject as? DateData
                 alrmData.location = data.location
                 alrmData.setTime = data.setTime
                 alrmData.isToggleOn = data.isToggleOn

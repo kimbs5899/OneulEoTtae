@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct AlrmDataModel {
     let id: UUID
     var setTime: String
@@ -25,5 +24,9 @@ struct AlrmDataModel {
 }
 
 extension AlrmDataModel {
-    static let sampleAlarm = AlrmDataModel(id: UUID(), setTime: "07:00 AM", location: "서울특별시", dayOfWeek: [], isToggleOn: true)
+    static let sampleAlarm = AlrmDataModel(id: UUID(), 
+                                           setTime: "07:00 AM",
+                                           location: "서울특별시",
+                                           dayOfWeek: [],
+                                           isToggleOn: true)
 }

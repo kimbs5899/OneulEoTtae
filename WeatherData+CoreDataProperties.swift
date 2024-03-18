@@ -2,7 +2,7 @@
 //  WeatherData+CoreDataProperties.swift
 //  OneulEoTtae
 //
-//  Created by Matthew on 3/1/24.
+//  Created by 윤진영 on 3/17/24.
 //
 //
 
@@ -18,7 +18,7 @@ extension WeatherData {
 
     @NSManaged public var id: UUID?
     @NSManaged public var prevWeather: String?
-    @NSManaged public var location: NSSet?
+    @NSManaged public var location: AlrmData?
 
 }
 
