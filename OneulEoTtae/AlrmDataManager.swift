@@ -15,14 +15,20 @@ class AlrmDataManager: ObservableObject {
 
     let modelName: String = "AlrmData"
     
-    func createAlrmCoreData(data: AlrmDataModel, day: DateListModel) {
+    func createAlrmCoreData(data: AlrmDataModel) {
         if let entity = NSEntityDescription.entity(forEntityName: self.modelName, in: context) {
             if let alrmData = NSManagedObject(entity: entity, insertInto: context) as AnyObject as? AlrmData {
                 alrmData.id = data.id
-                alrmData.dayOfWeek = day as AnyObject as? DateData
                 alrmData.location = data.location
                 alrmData.setTime = data.setTime
                 alrmData.isToggleOn = data.isToggleOn
+                alrmData.monday = data.monday
+                alrmData.tuesday = data.tuesday
+                alrmData.wednesday = data.wednesday
+                alrmData.thursday = data.thursday
+                alrmData.friday = data.friday
+                alrmData.saturday = data.saturday
+                alrmData.sunday = data.sunday
                 self.alrmData.append(data)
                 if context.hasChanges {
                     do{
@@ -40,19 +46,19 @@ class AlrmDataManager: ObservableObject {
         do {
             let fetchedDataList = try context.fetch(request)
             let alrmDataList = fetchedDataList.map { alrmEntity in
-                guard let dayOfWeekSet = alrmEntity.dayOfWeek as? Set<Bool> else {
-                    return AlrmDataModel(id: alrmEntity.id ?? UUID(),
-                                         setTime: alrmEntity.setTime ?? "",
-                                         location: alrmEntity.location ?? "",
-                                         dayOfWeek: [],
-                                         isToggleOn: alrmEntity.isToggleOn)
-                }
-                let dayOfWeekArray = Array(dayOfWeekSet)
-                return AlrmDataModel(id: alrmEntity.id ?? UUID(),
-                                     setTime: alrmEntity.setTime ?? "",
-                                     location: alrmEntity.location ?? "",
-                                     dayOfWeek: dayOfWeekArray,
-                                     isToggleOn: alrmEntity.isToggleOn)
+                AlrmDataModel(
+                      id: alrmEntity.id ?? UUID(),
+                      setTime: alrmEntity.setTime ?? "",
+                      location: alrmEntity.location ?? "",
+                      isToggleOn: alrmEntity.isToggleOn,
+                      monday: alrmEntity.monday,
+                      tuesday: alrmEntity.tuesday,
+                      wednesday: alrmEntity.wednesday,
+                      thursday: alrmEntity.thursday,
+                      friday: alrmEntity.friday,
+                      saturday: alrmEntity.saturday,
+                      sunday: alrmEntity.sunday
+                )
             }
             return alrmDataList
         } catch {
@@ -70,8 +76,14 @@ class AlrmDataManager: ObservableObject {
                 if var targetAlrm = fetchAlrmList.first {
                     targetAlrm.setTime = data.setTime
                     targetAlrm.location = data.location
-                    targetAlrm.dayOfWeek = data.dayOfWeek
                     targetAlrm.isToggleOn = data.isToggleOn
+                    targetAlrm.monday = data.monday
+                    targetAlrm.tuesday = data.tuesday
+                    targetAlrm.wednesday = data.wednesday
+                    targetAlrm.thursday = data.thursday
+                    targetAlrm.friday = data.friday
+                    targetAlrm.saturday = data.saturday
+                    targetAlrm.sunday = data.sunday
                     if context.hasChanges {
                         do{
                             try context.save()
