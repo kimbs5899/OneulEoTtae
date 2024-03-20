@@ -2,7 +2,7 @@
 //  AlrmData+CoreDataProperties.swift
 //  OneulEoTtae
 //
-//  Created by 윤진영 on 3/17/24.
+//  Created by Matthew on 3/19/24.
 //
 //
 
@@ -20,25 +20,15 @@ extension AlrmData {
     @NSManaged public var isToggleOn: Bool
     @NSManaged public var location: String?
     @NSManaged public var setTime: String?
-    @NSManaged public var dayOfWeek: DateData?
+    
+    @NSManaged public var monday: Bool
+    @NSManaged public var tuesday: Bool
+    @NSManaged public var wednesday: Bool
+    @NSManaged public var thursday: Bool
+    @NSManaged public var friday: Bool
+    @NSManaged public var saturday: Bool
+    @NSManaged public var sunday: Bool
     @NSManaged public var locations: WeatherData?
-
-}
-
-// MARK: Generated accessors for dayOfWeek
-extension AlrmData {
-
-    @objc(addDayOfWeekObject:)
-    @NSManaged public func addToDayOfWeek(_ value: DateData)
-
-    @objc(removeDayOfWeekObject:)
-    @NSManaged public func removeFromDayOfWeek(_ value: DateData)
-
-    @objc(addDayOfWeek:)
-    @NSManaged public func addToDayOfWeek(_ values: NSSet)
-
-    @objc(removeDayOfWeek:)
-    @NSManaged public func removeFromDayOfWeek(_ values: NSSet)
 
 }
 

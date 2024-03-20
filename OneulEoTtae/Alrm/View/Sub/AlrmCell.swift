@@ -12,6 +12,33 @@ struct AlrmCell: View {
     @State var alrm: AlrmDataModel
     @Binding var selectedDates: [String]
     
+    func returnDay(input: AlrmDataModel) -> String {
+        var result: [String] = []
+        
+        for day in Day.allCases {
+            switch day {
+            case .monday where input.monday:
+                result.append(day.toString)
+            case .tuesday where input.tuesday:
+                result.append(day.toString)
+            case .wednesday where input.wednesday:
+                result.append(day.toString)
+            case .thursday where input.thursday:
+                result.append(day.toString)
+            case .friday where input.friday:
+                result.append(day.toString)
+            case .saturday where input.saturday:
+                result.append(day.toString)
+            case .sunday where input.sunday:
+                result.append(day.toString)
+            default:
+                break
+//                result.append("반복안함")
+            }
+        }
+        return result.joined(separator: ", ")
+    }
+    
     var body: some View {
         VStack {
             HStack {
@@ -34,9 +61,7 @@ struct AlrmCell: View {
                 }
             }.padding(.bottom, -5)
             HStack {
-                Text(alrm.dayOfWeek.compactMap { isDaySelected in
-                       isDaySelected ? Day(rawValue: selectedDates.firstIndex(of: "월요일") ?? 0)?.toString : nil
-                   }.joined(separator: ", "))
+                Text(returnDay(input: alrm))
                    Spacer()
             }
             .font(.callout)
@@ -47,7 +72,7 @@ struct AlrmCell: View {
                 self.alrm = updatedAlarm
                 print("알림셀 location: \(alrm.location)")
                 print("알림셀 setTime: \(alrm.setTime)")
-                print("알림셀 dayOfWeek: \(alrm.dayOfWeek)")
+                print("알림셀 dayOfWeek: \(returnDay(input: alrm))")
                 print("알림셀 isToggleOn: \(alrm.isToggleOn)")
             }
         }

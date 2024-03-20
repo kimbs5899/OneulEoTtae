@@ -2,7 +2,7 @@
 //  WeatherData+CoreDataProperties.swift
 //  OneulEoTtae
 //
-//  Created by 윤진영 on 3/17/24.
+//  Created by Matthew on 3/19/24.
 //
 //
 
