@@ -12,7 +12,6 @@ import SwiftUI
 class AlrmDataManager: ObservableObject {
     @Published var alrmData: [AlrmDataModel] = []
     lazy var context = AppDelegate().persistentContainer.viewContext
-
     let modelName: String = "AlrmData"
     
     func createAlrmCoreData(data: AlrmDataModel) {
@@ -120,6 +119,7 @@ class AlrmDataManager: ObservableObject {
             print("삭제 실패")
         }
     }
+    
     func toggleAlarm(id: UUID) {
         let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
         request.predicate = NSPredicate(format: "id = %@", id as CVarArg)

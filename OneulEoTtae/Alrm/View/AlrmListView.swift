@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AlrmListView: View {
-    @ObservedObject var alrmDataManager: AlrmDataManager
+    @EnvironmentObject var alrmDataManager: AlrmDataManager
     @State private var isAddSheetShowing = false
     @State private var isEditingSheetShowing = false // 편집 모드 활성화 상태
     @State private var selectedRegion: String = "서울특별시"
@@ -17,10 +17,11 @@ struct AlrmListView: View {
         NavigationStack {
             List {
                 ForEach(alrmDataManager.readAlrmCoreData(), id: \.id) { alrm in
-                    AlrmCell(alrm: alrm, selectedDates: $selectedDates)
-                        .onTapGesture {
-                            self.isEditingSheetShowing = true
-                        }
+                    Button(action: {
+                        isAddSheetShowing = true
+                    }, label: {
+                        AlrmCell(alrm: alrm, selectedDates: $selectedDates)
+                    })
                 }
                 .onDelete(perform: deleteAlrm)
             }
@@ -35,24 +36,35 @@ struct AlrmListView: View {
                         .foregroundColor(.Blue1_OET)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: { isAddSheetShowing = true }) {
+                    Button(action: {
+                        isAddSheetShowing = true
+                    }, label: {
                         Image(systemName: "plus")
-                    }
-                    .foregroundColor(.Blue2_OET)
+                            .foregroundColor(.Blue1_OET)
+                    })
+                }
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        // 전체삭제로직
+                        alrmDataManager.readAlrmCoreData().forEach { alrm in
+                            alrmDataManager.deleteAlrmCoreData(alrm)
+                        }
+                    }, label: {
+                        Image(systemName: "trash.fill")
+                            .foregroundColor(.Blue5_OET)
+                    })
                 }
             }
             .sheet(isPresented: $isAddSheetShowing) {
-                AlrmSettingView(isSheetShowing: $isAddSheetShowing, selectedDates: $selectedDates)
-                    .presentationDetents([.fraction(0.75), .large])
+                AlrmSettingView(isSheetShowing: $isAddSheetShowing, isEdit: true, selectedDates: $selectedDates)
+                    .presentationDetents([.fraction(0.85), .large])
             }
             // 편집 모드를 위한 시트
             .sheet(isPresented: $isEditingSheetShowing) {
-                //                if let editingAlarm = editingAlarm ?? alrmManager.alrmList.first {
-                //                    NotificationPageView(settings: NotificationSettings(editingAlarm: editingAlarm), isNewAlarm: false, editingAlarm: editingAlarm)
-                //                        .presentationDetents([.fraction(0.85), .large])
-                //                } else {
-                //                    EmptyView()
-                //                }
+                if alrmDataManager.alrmData.first != nil {
+                    AlrmSettingView(isSheetShowing: $isAddSheetShowing, isEdit: false, selectedDates: $selectedDates)
+                        .presentationDetents([.fraction(0.85), .large])
+                }
             }
         }
     }
@@ -64,6 +76,7 @@ struct AlrmListView: View {
 
 struct AlrmListView_Previews: PreviewProvider {
     static var previews: some View {
-        AlrmListView(alrmDataManager: AlrmDataManager())
+        AlrmListView()
+            .environmentObject(AlrmDataManager())
     }
 }

@@ -13,12 +13,12 @@ struct NotificationPageView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showAlert = false
     @State private var isNewAlarm: Bool
-    @State private var editingAlarm: WeatherModel?
+   // @State private var editingAlarm: WeatherModel?
 
     init(settings: NotificationSettings, isNewAlarm: Bool, editingAlarm: WeatherModel? = nil) {
         self._settings = ObservedObject(wrappedValue: settings)
         self._isNewAlarm = State(initialValue: isNewAlarm)
-        self._editingAlarm = State(initialValue: editingAlarm)
+     //   self._editingAlarm = State(initialValue: editingAlarm)
     }
     
     var body: some View {
@@ -40,11 +40,11 @@ struct NotificationPageView: View {
                 Alert(title: Text("유효하지 않은 입력입니다"), message: Text("시간과 요일을 다시 선택해주세요."), dismissButton: .default(Text("확인")))
             }
         }
-        .onAppear {
-            if !isNewAlarm && editingAlarm == nil {
-                editingAlarm = alrmManager.alrmList.first
-            }
-        }
+//        .onAppear {
+//            if !isNewAlarm && editingAlarm == nil {
+//                editingAlarm = alrmManager.alrmList.first
+//            }
+//        }
     }
 
     private var alarmForm: some View {
@@ -68,12 +68,12 @@ struct NotificationPageView: View {
             RegionSelectionView(selectedRegion: $settings.selectedRegion, regions: settings.regions)
             
             if !isNewAlarm {
-                DeleteButtonView {
-                    if let alrmToEdit = editingAlarm {
-                        alrmManager.removeAlrm(alrmToEdit)
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                }
+//                DeleteButtonView {
+//                    if let alrmToEdit = editingAlarm {
+//                        alrmManager.removeAlrm(alrmToEdit)
+//                        presentationMode.wrappedValue.dismiss()
+//                    }
+//                }
             }
         }
     }
@@ -117,12 +117,12 @@ struct NotificationPageView: View {
                                     toggle: true)
         
         // 기존 알람을 편집
-        if let editingAlarm = editingAlarm {
-            alrmManager.updateAlrm(editingAlarm.id, newAlrm: newAlarm)
-        } else {
-            // 새 알람 추가
-            alrmManager.addAlrm(alrm: newAlarm)
-        }
+//        if let editingAlarm = editingAlarm {
+//            alrmManager.updateAlrm(editingAlarm.id, newAlrm: newAlarm)
+//        } else {
+//            // 새 알람 추가
+//            alrmManager.addAlrm(alrm: newAlarm)
+//        }
         
         presentationMode.wrappedValue.dismiss()
     }

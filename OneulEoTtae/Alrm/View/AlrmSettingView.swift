@@ -9,10 +9,12 @@ import SwiftUI
 
 struct AlrmSettingView: View {
     @EnvironmentObject var alrmDataManager: AlrmDataManager
+    @Environment(\.dismiss) var dismiss
     @State var selectedRegion: String = "서울특별시"
     @State var selectedTime: Date = Date()
     @State private var selectedDays: [String] = []
     @Binding var isSheetShowing: Bool
+    @State var isEdit: Bool
     @Binding var selectedDates: [String]
     var body: some View {
         NavigationStack {
@@ -36,66 +38,80 @@ struct AlrmSettingView: View {
                         Text("지역 선택")
                     }
                 }
-            }.navigationTitle("새 알람 추가")
-                .navigationBarTitleDisplayMode(.inline)
-            
+            }.navigationBarTitleDisplayMode(.inline)
                 .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        if !isEdit {
+                            Button(action: {
+                                dismiss()
+                            }, label: {
+                                Text("취소")
+                                    .font(.jalnan2_XS)
+                                    .foregroundColor(.Blue2_OET)
+                            })
+                        }
+                    }
                     ToolbarItem(placement: .principal) {
-                        Text("새 알람 추가")
+                        Text(isEdit ? "새 알람 추가" : "알림 편집")
                             .font(.jalnan2_S)
                             .foregroundColor(.Blue1_OET)
                     }
                     ToolbarItem(placement: .topBarTrailing) {
                         Button(action: {
-                            let formatter = DateFormatter()
-                            formatter.timeStyle = .short
-                            let setTime = formatter.string(from: selectedTime)
-                            let locationString = selectedRegion
-                            
-                            lazy var selectedDayResult = {
-                                var result: [Bool] = [false, false, false, false, false, false, false]
+                            if isEdit {
+                                let formatter = DateFormatter()
+                                formatter.timeStyle = .short
+                                let setTime = formatter.string(from: selectedTime)
+                                let locationString = selectedRegion
                                 
-                                _ = selectedDays.map { day in
-                                    switch day {
-                                    case "월요일": 
-                                        result[0] = true
-                                    case "화요일":
-                                        result[1] = true
-                                    case "수요일":
-                                        result[2] = true
-                                    case "목요일":
-                                        result[3] = true
-                                    case "금요일":
-                                        result[4] = true
-                                    case "토요일":
-                                        result[5] = true
-                                    case "일요일":
-                                        result[6] = true
-                                    default:
-                                        break
+                                lazy var selectedDayResult = {
+                                    var result: [Bool] = [false, false, false, false, false, false, false]
+                                    
+                                    _ = selectedDays.map { day in
+                                        switch day {
+                                        case "월요일":
+                                            result[0] = true
+                                        case "화요일":
+                                            result[1] = true
+                                        case "수요일":
+                                            result[2] = true
+                                        case "목요일":
+                                            result[3] = true
+                                        case "금요일":
+                                            result[4] = true
+                                        case "토요일":
+                                            result[5] = true
+                                        case "일요일":
+                                            result[6] = true
+                                        default:
+                                            break
+                                        }
                                     }
-                                }
-                                return result
-                            }()
-                        
-                            let newAlarm = AlrmDataModel(
-                                                id: UUID(),
-                                                setTime: setTime,
-                                                location: locationString,
-                                                isToggleOn: true,
-                                                monday: selectedDayResult[0],
-                                                tuesday: selectedDayResult[1],
-                                                wednesday: selectedDayResult[2],
-                                                thursday: selectedDayResult[3],
-                                                friday: selectedDayResult[4],
-                                                saturday: selectedDayResult[5],
-                                                sunday: selectedDayResult[6]
-                                            )
-                            alrmDataManager.createAlrmCoreData(data: newAlarm)
+                                    return result
+                                }()
+                                
+                                let newAlarm = AlrmDataModel(
+                                    id: UUID(),
+                                    setTime: setTime,
+                                    location: locationString,
+                                    isToggleOn: true,
+                                    monday: selectedDayResult[0],
+                                    tuesday: selectedDayResult[1],
+                                    wednesday: selectedDayResult[2],
+                                    thursday: selectedDayResult[3],
+                                    friday: selectedDayResult[4],
+                                    saturday: selectedDayResult[5],
+                                    sunday: selectedDayResult[6]
+                                )
+                                alrmDataManager.createAlrmCoreData(data: newAlarm)
+                            } else {
+                                // 편잡적용하셈 김메튜
+                            }
                             isSheetShowing = false
+                            
                             print("Selected days: \(selectedDays)")
                         }, label: {
-                            Text("저장")
+                            Text(isEdit ? "추가" : "저장")
                                 .font(.jalnan2_XS)
                                 .foregroundColor(.Blue2_OET)
                         })
@@ -107,6 +123,6 @@ struct AlrmSettingView: View {
 
 
 #Preview {
-    AlrmSettingView(isSheetShowing: .constant(true), selectedDates: .constant([]))
+    AlrmSettingView(isSheetShowing: .constant(true), isEdit: false, selectedDates: .constant([]))
         .environmentObject(AlrmDataManager())
 }

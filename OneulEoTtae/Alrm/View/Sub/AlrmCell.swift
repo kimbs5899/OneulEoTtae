@@ -33,7 +33,6 @@ struct AlrmCell: View {
                 result.append(day.toString)
             default:
                 break
-//                result.append("반복안함")
             }
         }
         return result.joined(separator: ", ")
@@ -51,30 +50,18 @@ struct AlrmCell: View {
                     .font(.jalnan2_R)
                     .padding(.trailing, 5)
                 Spacer()
-                Toggle(isOn: Binding(
-                    get: { alrm.isToggleOn },
-                    set: { newValue in
-                        alrmDataManager.toggleAlarm(id: alrm.id)
-                    }
-                )) {
+                Toggle(isOn: $alrm.isToggleOn, label: {
                     Text("")
+                }).onTapGesture {
+                    alrmDataManager.toggleAlarm(id: alrm.id)
                 }
             }.padding(.bottom, -5)
             HStack {
                 Text(returnDay(input: alrm))
-                   Spacer()
+                Spacer()
             }
             .font(.callout)
             .padding(.bottom, -5)
-        }.onAppear {
-            let alarms = alrmDataManager.readAlrmCoreData()
-            if let updatedAlarm = alarms.first(where: { $0.id == alrm.id }) {
-                self.alrm = updatedAlarm
-                print("알림셀 location: \(alrm.location)")
-                print("알림셀 setTime: \(alrm.setTime)")
-                print("알림셀 dayOfWeek: \(returnDay(input: alrm))")
-                print("알림셀 isToggleOn: \(alrm.isToggleOn)")
-            }
         }
     }
 }
@@ -83,7 +70,6 @@ struct AlrmCell_Previews: PreviewProvider {
     static var previews: some View {
         AlrmCell(alrm: .sampleAlarm, selectedDates: .constant(["월요일"]))
             .environmentObject(AlrmDataManager())
-            .previewLayout(.sizeThatFits)
             .padding()
     }
 }
