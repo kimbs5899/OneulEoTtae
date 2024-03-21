@@ -64,7 +64,6 @@ struct SeletedDayView: View {
                                 let sortedSelectedDates = sortedSelectedDays.map { $0.toString }
                                 self.selectedDates = sortedSelectedDates
                                 self.presentationMode.wrappedValue.dismiss()
-                                print("\(sortedSelectedDates)")
                         }.font(.jalnan2_XS)
                             .foregroundColor(.Blue2_OET)
                     }

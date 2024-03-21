@@ -25,13 +25,11 @@ struct AlrmSettingView: View {
                     } header: {
                         Text("시간 설정")
                     }
-                    
                     Section {
                         DaySettingView(selectedDates: $selectedDays)
                     } header: {
                         Text("요일 선택")
                     }
-                    
                     Section {
                         LocationSettingView(selectedRegion: $selectedRegion, regions: ["서울특별시", "경기도", "강원도"])
                     } header: {
@@ -67,7 +65,7 @@ struct AlrmSettingView: View {
                                 lazy var selectedDayResult = {
                                     var result: [Bool] = [false, false, false, false, false, false, false]
                                     
-                                    _ = selectedDays.map { day in
+                                    selectedDays.forEach { day in
                                         switch day {
                                         case "월요일":
                                             result[0] = true
@@ -105,11 +103,9 @@ struct AlrmSettingView: View {
                                 )
                                 alrmDataManager.createAlrmCoreData(data: newAlarm)
                             } else {
-                                // 편잡적용하셈 김메튜
+                                // 편잡적용하셈 김메튜 ㅎ ㅇ ㅌ !
                             }
                             isSheetShowing = false
-                            
-                            print("Selected days: \(selectedDays)")
                         }, label: {
                             Text(isEdit ? "추가" : "저장")
                                 .font(.jalnan2_XS)
