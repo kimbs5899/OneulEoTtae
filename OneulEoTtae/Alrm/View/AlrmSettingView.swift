@@ -5,7 +5,6 @@
 //  Created by 윤진영 on 3/16/24.
 //
 
-
 import SwiftUI
 
 struct AlrmSettingView: View {
@@ -14,7 +13,6 @@ struct AlrmSettingView: View {
     @State var selectedTime: Date = Date()
     @State private var selectedDays: [String] = []
     @Binding var isSheetShowing: Bool
-    @Binding var selectedDates: [String]
     var body: some View {
         NavigationStack {
             VStack {
@@ -44,9 +42,7 @@ struct AlrmSettingView: View {
                     }
                     ToolbarItem(placement: .topBarTrailing) {
                         Button(action: {
-                                let formatter = DateFormatter()
-                                formatter.timeStyle = .short
-                                let setTime = formatter.string(from: selectedTime)
+                                let setTime = formatTime(selectedTime)
                                 let locationString = selectedRegion
                                 
                                 lazy var selectedDayResult = {
@@ -109,6 +105,6 @@ struct AlrmSettingView: View {
 
 
 #Preview {
-    AlrmSettingView(isSheetShowing: .constant(true), selectedDates: .constant([]))
+    AlrmSettingView(isSheetShowing: .constant(true))
         .environmentObject(AlrmDataManager())
 }

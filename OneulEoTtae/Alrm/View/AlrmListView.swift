@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct AlrmListView: View {
     @EnvironmentObject var alrmDataManager: AlrmDataManager
     @State private var isAddSheetShowing = false
@@ -56,11 +54,12 @@ struct AlrmListView: View {
                 }
             }
             .sheet(isPresented: $isAddSheetShowing) {
-                AlrmSettingView(isSheetShowing: $isAddSheetShowing, selectedDates: $selectedDates)
+                AlrmSettingView(isSheetShowing: $isAddSheetShowing)
+                    .environmentObject(alrmDataManager)
                 .presentationDetents([.fraction(0.85), .large])
             }
             .sheet(item: $selectedAlrm) { alrm in
-                AlrmEditView(selectedRegion: alrm.location, selectedTime: timeFromString(alrm.setTime), selectedDays: selectedDaysFromAlrm(alrm), isEditingSheetShowing: $isEditingSheetShowing, selectedDates: $selectedDates)
+                AlrmEditView(selectedRegion: alrm.location, selectedTime: timeFromString(alrm.setTime), selectedDays: selectedDaysFromAlrm(alrm), isEditingSheetShowing: $isEditingSheetShowing)
                     .environmentObject(alrmDataManager)
                 .presentationDetents([.fraction(0.85), .large])
             }

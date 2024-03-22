@@ -14,7 +14,6 @@ struct AlrmEditView: View {
     @State var selectedTime: Date
     @State var selectedDays: [String]
     @Binding var isEditingSheetShowing: Bool
-    @Binding var selectedDates: [String]
     @State var alrm: AlrmDataModel?
     
     var body: some View {
@@ -42,7 +41,6 @@ struct AlrmEditView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(action: {
-                        dismiss()
                         isEditingSheetShowing = false
                     }, label: {
                         Text("취소")
@@ -57,9 +55,7 @@ struct AlrmEditView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
-                        // 알람 수정 로직 수정해야함.
                         if let existingAlarm = alrm {
-                            // 알람 편집
                             let editedAlarm = AlrmDataModel(
                                 id: existingAlarm.id,
                                 setTime: formatTime(selectedTime),
@@ -75,8 +71,8 @@ struct AlrmEditView: View {
                             )
                             alrmDataManager.updateAlrmCoreData(editedAlarm)
                         }
+                        // dismiss()
                         isEditingSheetShowing = false
-                        dismiss()
                     }, label: {
                         Text("저장")
                             .font(.jalnan2_XS)
