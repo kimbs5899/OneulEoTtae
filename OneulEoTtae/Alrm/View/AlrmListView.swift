@@ -10,7 +10,6 @@ import SwiftUI
 struct AlrmListView: View {
     @EnvironmentObject var alrmDataManager: AlrmDataManager
     @State private var isAddSheetShowing = false
-    @State private var isEditingSheetShowing = false
     @State private var selectedRegion: String = "서울특별시"
     @State private var selectedDates: [String] = []
     @State private var selectedAlrm: AlrmDataModel?
@@ -19,19 +18,19 @@ struct AlrmListView: View {
         NavigationStack {
             List {
                 ForEach(alrmDataManager.readAlrmCoreData(), id: \.id) { alrm in
-                    Button(action: {
-                        selectedAlrm = alrm
-                        isEditingSheetShowing = true
-                    }) {
+                    NavigationLink {
+                        AlrmEditView(selectedRegion: alrm.location,
+                                     selectedTime: timeFromString(alrm.setTime),
+                                     selectedDays: selectedDaysFromAlrm(alrm))
+                        .environmentObject(alrmDataManager)
+                    } label: {
                         AlrmCell(alrm: alrm, selectedDates: $selectedDates)
                     }
                 }
                 .onDelete(perform: deleteAlrm)
             }
-            .foregroundStyle(.black)
             .background(Color.MainColor_OET)
             .scrollContentBackground(.hidden)
-            .navigationBarTitle("알림 목록", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("알림 목록")
@@ -58,12 +57,6 @@ struct AlrmListView: View {
             .sheet(isPresented: $isAddSheetShowing) {
                 AlrmSettingView(isSheetShowing: $isAddSheetShowing)
                     .environmentObject(alrmDataManager)
-                    .presentationDetents([.fraction(0.85), .large])
-            }
-            .sheet(item: $selectedAlrm) { alrm in
-                AlrmEditView(selectedRegion: alrm.location, selectedTime: timeFromString(alrm.setTime), selectedDays: selectedDaysFromAlrm(alrm), isEditingSheetShowing: $isEditingSheetShowing)
-                    .environmentObject(alrmDataManager)
-                    .presentationDetents([.fraction(0.85), .large])
             }
         }
     }

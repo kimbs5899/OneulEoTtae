@@ -13,35 +13,26 @@ struct AlrmEditView: View {
     @State var selectedRegion: String
     @State var selectedTime: Date
     @State var selectedDays: [String]
-    @Binding var isEditingSheetShowing: Bool
     @State var alrm: AlrmDataModel?
     
     var body: some View {
         NavigationStack {
-            VStack {
-                Form {
-                    Section {
-                        TimeSettingView(selectedTime: $selectedTime)
-                    } header: {
-                        Text("시간 설정")
-                    }
-                    Section {
-                        DaySettingView(selectedDates: $selectedDays)
-                    } header: {
-                        Text("요일 선택")
-                    }
-                    Section {
-                        LocationSettingView(selectedRegion: $selectedRegion, regions: ["서울특별시", "경기도", "강원도"])
-                    } header: {
-                        Text("지역 선택")
-                    }
+            Form {
+                Section("시간 설정") {
+                    TimeSettingView(selectedTime: $selectedTime)
+                }
+                Section("요일 선택") {
+                    DaySettingView(selectedDates: $selectedDays)
+                }
+                Section("지역 선택") {
+                    LocationSettingView(selectedRegion: $selectedRegion, regions: ["서울특별시", "경기도", "강원도"])
                 }
             }
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(action: {
-                        isEditingSheetShowing = false
+                        dismiss()
                     }, label: {
                         Text("취소")
                             .font(.jalnan2_XS)
@@ -71,8 +62,7 @@ struct AlrmEditView: View {
                             )
                             alrmDataManager.updateAlrmCoreData(editedAlarm)
                         }
-                        // dismiss()
-                        isEditingSheetShowing = false
+                        dismiss()
                     }, label: {
                         Text("저장")
                             .font(.jalnan2_XS)
