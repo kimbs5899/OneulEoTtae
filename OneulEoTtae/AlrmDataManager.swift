@@ -38,6 +38,7 @@ class AlrmDataManager: ObservableObject {
                 }
             }
         }
+        sortAlrmDataByTime()
     }
     
     func readAlrmCoreData() -> [AlrmDataModel] {
@@ -46,27 +47,27 @@ class AlrmDataManager: ObservableObject {
             let fetchedDataList = try context.fetch(request)
             let alrmDataList = fetchedDataList.map { alrmEntity in
                 AlrmDataModel(
-                      id: alrmEntity.id ?? UUID(),
-                      setTime: alrmEntity.setTime ?? "",
-                      location: alrmEntity.location ?? "",
-                      isToggleOn: alrmEntity.isToggleOn,
-                      monday: alrmEntity.monday,
-                      tuesday: alrmEntity.tuesday,
-                      wednesday: alrmEntity.wednesday,
-                      thursday: alrmEntity.thursday,
-                      friday: alrmEntity.friday,
-                      saturday: alrmEntity.saturday,
-                      sunday: alrmEntity.sunday
+                    id: alrmEntity.id ?? UUID(),
+                    setTime: alrmEntity.setTime ?? "",
+                    location: alrmEntity.location ?? "",
+                    isToggleOn: alrmEntity.isToggleOn,
+                    monday: alrmEntity.monday,
+                    tuesday: alrmEntity.tuesday,
+                    wednesday: alrmEntity.wednesday,
+                    thursday: alrmEntity.thursday,
+                    friday: alrmEntity.friday,
+                    saturday: alrmEntity.saturday,
+                    sunday: alrmEntity.sunday
                 )
             }
-            return alrmDataList
+            return alrmDataList.sorted { $0.setTime < $1.setTime } // 날짜순으로 정렬하여 반환
         } catch {
             print("읽기 실패: \(error)")
             return []
         }
     }
-
-
+    
+    
     func updateAlrmCoreData(_ data: AlrmDataModel) {
         let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
         request.predicate = NSPredicate(format: "id = %@", data.id as CVarArg)
@@ -93,6 +94,7 @@ class AlrmDataManager: ObservableObject {
                 }
             }
             alrmData = readAlrmCoreData()
+            sortAlrmDataByTime()
         } catch {
             print("수정 실패")
         }
@@ -120,6 +122,17 @@ class AlrmDataManager: ObservableObject {
         }
     }
     
+    func deleteAllAlrms() {
+            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: modelName)
+            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            
+            do {
+                try context.execute(batchDeleteRequest)
+            } catch {
+                print("전체 알림 삭제 실패: \(error.localizedDescription)")
+            }
+        }
+    
     func toggleAlarm(id: UUID) {
         let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
         request.predicate = NSPredicate(format: "id = %@", id as CVarArg)
@@ -142,6 +155,9 @@ class AlrmDataManager: ObservableObject {
         } catch {
             print("토글 실패")
         }
+    }
+    func sortAlrmDataByTime() {
+        alrmData.sort { $0.setTime < $1.setTime }
     }
 }
 

@@ -7,21 +7,26 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct AlrmListView: View {
     @EnvironmentObject var alrmDataManager: AlrmDataManager
     @State private var isAddSheetShowing = false
-    @State private var isEditingSheetShowing = false // 편집 모드 활성화 상태
+    @State private var isEditingSheetShowing = false
     @State private var selectedRegion: String = "서울특별시"
-    @State var selectedDates: [String] = []
+    @State private var selectedDates: [String] = []
+    @State private var selectedAlrm: AlrmDataModel?
+    
     var body: some View {
         NavigationStack {
             List {
                 ForEach(alrmDataManager.readAlrmCoreData(), id: \.id) { alrm in
                     Button(action: {
-                        isAddSheetShowing = true
-                    }, label: {
+                        selectedAlrm = alrm
+                        isEditingSheetShowing = true
+                    }) {
                         AlrmCell(alrm: alrm, selectedDates: $selectedDates)
-                    })
+                    }
                 }
                 .onDelete(perform: deleteAlrm)
             }
@@ -38,39 +43,51 @@ struct AlrmListView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         isAddSheetShowing = true
-                    }, label: {
+                    }) {
                         Image(systemName: "plus")
                             .foregroundColor(.Blue1_OET)
-                    })
+                    }
                 }
                 ToolbarItem(placement: .topBarLeading) {
-                    Button(action: {
-                        // 전체삭제로직
-                        alrmDataManager.readAlrmCoreData().forEach { alrm in
-                            alrmDataManager.deleteAlrmCoreData(alrm)
-                        }
-                    }, label: {
+                    Button(action: alrmDataManager.deleteAllAlrms) {
                         Image(systemName: "trash.fill")
                             .foregroundColor(.Blue5_OET)
-                    })
+                    }
                 }
             }
             .sheet(isPresented: $isAddSheetShowing) {
-                AlrmSettingView(isSheetShowing: $isAddSheetShowing, isEdit: true, selectedDates: $selectedDates)
-                    .presentationDetents([.fraction(0.85), .large])
+                AlrmSettingView(isSheetShowing: $isAddSheetShowing, selectedDates: $selectedDates)
+                .presentationDetents([.fraction(0.85), .large])
             }
-            // 편집 모드를 위한 시트
-            .sheet(isPresented: $isEditingSheetShowing) {
-                if alrmDataManager.alrmData.first != nil {
-                    AlrmSettingView(isSheetShowing: $isAddSheetShowing, isEdit: false, selectedDates: $selectedDates)
-                        .presentationDetents([.fraction(0.85), .large])
-                }
+            .sheet(item: $selectedAlrm) { alrm in
+                AlrmEditView(selectedRegion: alrm.location, selectedTime: timeFromString(alrm.setTime), selectedDays: selectedDaysFromAlrm(alrm), isEditingSheetShowing: $isEditingSheetShowing, selectedDates: $selectedDates)
+                    .environmentObject(alrmDataManager)
+                .presentationDetents([.fraction(0.85), .large])
             }
         }
     }
+    
     private func deleteAlrm(at offsets: IndexSet) {
         let alrmList = alrmDataManager.readAlrmCoreData()
         alrmDataManager.deleteAlrmCoreData(alrmList[offsets.first!])
+    }
+    
+    private func timeFromString(_ timeString: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        return formatter.date(from: timeString) ?? Date()
+    }
+    
+    private func selectedDaysFromAlrm(_ alrm: AlrmDataModel) -> [String] {
+        var selectedDays: [String] = []
+        if alrm.monday { selectedDays.append("월요일") }
+        if alrm.tuesday { selectedDays.append("화요일") }
+        if alrm.wednesday { selectedDays.append("수요일") }
+        if alrm.thursday { selectedDays.append("목요일") }
+        if alrm.friday { selectedDays.append("금요일") }
+        if alrm.saturday { selectedDays.append("토요일") }
+        if alrm.sunday { selectedDays.append("일요일") }
+        return selectedDays
     }
 }
 

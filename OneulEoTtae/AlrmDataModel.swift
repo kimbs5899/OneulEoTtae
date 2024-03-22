@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AlrmDataModel {
+struct AlrmDataModel: Identifiable {
     let id: UUID
     var setTime: String
     var location: String
