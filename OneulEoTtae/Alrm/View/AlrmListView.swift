@@ -47,21 +47,23 @@ struct AlrmListView: View {
                     }
                 }
                 ToolbarItem(placement: .topBarLeading) {
-                    Button(action: alrmDataManager.deleteAllAlrms) {
+                    Button(action: {
+                        alrmDataManager.deleteAllAlrms()
+                    }, label: {
                         Image(systemName: "trash.fill")
                             .foregroundColor(.Blue5_OET)
-                    }
+                    })
                 }
             }
             .sheet(isPresented: $isAddSheetShowing) {
                 AlrmSettingView(isSheetShowing: $isAddSheetShowing)
                     .environmentObject(alrmDataManager)
-                .presentationDetents([.fraction(0.85), .large])
+                    .presentationDetents([.fraction(0.85), .large])
             }
             .sheet(item: $selectedAlrm) { alrm in
                 AlrmEditView(selectedRegion: alrm.location, selectedTime: timeFromString(alrm.setTime), selectedDays: selectedDaysFromAlrm(alrm), isEditingSheetShowing: $isEditingSheetShowing)
                     .environmentObject(alrmDataManager)
-                .presentationDetents([.fraction(0.85), .large])
+                    .presentationDetents([.fraction(0.85), .large])
             }
         }
     }

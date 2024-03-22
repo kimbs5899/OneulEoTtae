@@ -38,7 +38,6 @@ class AlrmDataManager: ObservableObject {
                 }
             }
         }
-        sortAlrmDataByTime()
     }
     
     func readAlrmCoreData() -> [AlrmDataModel] {
@@ -60,13 +59,12 @@ class AlrmDataManager: ObservableObject {
                     sunday: alrmEntity.sunday
                 )
             }
-            return alrmDataList.sorted { $0.setTime < $1.setTime } // 날짜순으로 정렬하여 반환
+            return alrmDataList.sorted { $0.setTime < $1.setTime }
         } catch {
             print("읽기 실패: \(error)")
             return []
         }
     }
-    
     
     func updateAlrmCoreData(_ data: AlrmDataModel) {
         let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
@@ -94,7 +92,6 @@ class AlrmDataManager: ObservableObject {
                 }
             }
             alrmData = readAlrmCoreData()
-            sortAlrmDataByTime()
         } catch {
             print("수정 실패")
         }
@@ -123,15 +120,15 @@ class AlrmDataManager: ObservableObject {
     }
     
     func deleteAllAlrms() {
-            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: modelName)
-            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-            
-            do {
-                try context.execute(batchDeleteRequest)
-            } catch {
-                print("전체 알림 삭제 실패: \(error.localizedDescription)")
-            }
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: modelName)
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try context.execute(batchDeleteRequest)
+            alrmData = readAlrmCoreData()
+        } catch {
+            print("전체 알림 삭제 실패: \(error.localizedDescription)")
         }
+    }
     
     func toggleAlarm(id: UUID) {
         let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
@@ -141,7 +138,6 @@ class AlrmDataManager: ObservableObject {
             if let fetchAlrmList = try context.fetch(request) as? [AlrmData] {
                 if let targetAlrm = fetchAlrmList.first {
                     targetAlrm.isToggleOn.toggle()
-                    
                     if context.hasChanges {
                         do {
                             try context.save()
@@ -155,9 +151,6 @@ class AlrmDataManager: ObservableObject {
         } catch {
             print("토글 실패")
         }
-    }
-    func sortAlrmDataByTime() {
-        alrmData.sort { $0.setTime < $1.setTime }
     }
 }
 
