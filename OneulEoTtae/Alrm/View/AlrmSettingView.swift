@@ -42,7 +42,7 @@ struct AlrmSettingView: View {
                     }
                     ToolbarItem(placement: .topBarTrailing) {
                         Button(action: {
-                                let setTime = formatTime(selectedTime)
+                            let setTime = DateFormatter().formatTime(at: selectedTime)
                                 let locationString = selectedRegion
                                 
                                 lazy var selectedDayResult = {
@@ -95,12 +95,6 @@ struct AlrmSettingView: View {
                 }
         }
     }
-    
-    func formatTime(_ time: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        return formatter.string(from: time)
-    }
 }
 
 
@@ -108,3 +102,4 @@ struct AlrmSettingView: View {
     AlrmSettingView(isSheetShowing: .constant(true))
         .environmentObject(AlrmDataManager())
 }
+

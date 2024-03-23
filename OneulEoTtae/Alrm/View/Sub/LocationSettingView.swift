@@ -9,7 +9,6 @@ import SwiftUI
 
 struct LocationSettingView: View {
     @Binding var selectedRegion: String
-    
     var regions: [String]
     
     var body: some View {

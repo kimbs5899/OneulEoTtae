@@ -30,7 +30,7 @@ struct AlrmEditView: View {
             }
             .navigationBarBackButtonHidden(true)
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         dismiss()
                     }, label: {
@@ -44,12 +44,12 @@ struct AlrmEditView: View {
                         .font(.jalnan2_S)
                         .foregroundColor(.Blue1_OET)
                 }
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         if let existingAlarm = alrm {
                             let editedAlarm = AlrmDataModel(
                                 id: existingAlarm.id,
-                                setTime: formatTime(selectedTime),
+                                setTime: DateFormatter().formatTime(at: selectedTime),
                                 location: selectedRegion,
                                 isToggleOn: true,
                                 monday: selectedDays.contains("월요일"),
@@ -70,12 +70,11 @@ struct AlrmEditView: View {
                     })
                 }
             }
-            
         }
     }
-    func formatTime(_ time: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        return formatter.string(from: time)
-    }
+}
+
+#Preview {
+    AlrmEditView(selectedRegion: "", selectedTime: Date(), selectedDays: [])
+        .environmentObject(AlrmDataManager())
 }

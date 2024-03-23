@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct SeletedDayView: View {
+    @Environment(\.presentationMode) var presentationMode
     @Binding var selectedDates: [String]
     @State private var selectedDays: [Day]
-    @Environment(\.presentationMode) var presentationMode
-    
+
     init(selectedDates: Binding<[String]>) {
         self._selectedDates = selectedDates
         let selectedDays: [Day] = selectedDates.wrappedValue.compactMap { stringDate in
@@ -22,25 +22,24 @@ struct SeletedDayView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                List {
-                    ForEach(Day.allCases, id: \.self) { day in
-                        Button {
-                            toggleSelection(for: day)
-                        } label: {
-                            HStack {
-                                Text("\(day.toString)")
-                                    .foregroundStyle(Color.black)
-                                Spacer()
-                                if isDaySelected(day) {
-                                    Image(systemName: "checkmark")
-                                        .foregroundColor(.blue)
-                                }
+            List {
+                ForEach(Day.allCases, id: \.self) { day in
+                    Button {
+                        toggleSelection(for: day)
+                    } label: {
+                        HStack {
+                            Text("\(day.toString)")
+                                .foregroundStyle(Color.black)
+                            Spacer()
+                            if isDaySelected(day) {
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.blue)
                             }
                         }
                     }
-                }.listStyle(InsetGroupedListStyle())
-            }.navigationTitle("날짜 선택")
+                }
+            }.listStyle(InsetGroupedListStyle())
+                .navigationTitle("날짜 선택")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
@@ -61,9 +60,9 @@ struct SeletedDayView: View {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button("확인") {
                             let sortedSelectedDays = self.selectedDays.sorted(by: { $0.rawValue < $1.rawValue })
-                                let sortedSelectedDates = sortedSelectedDays.map { $0.toString }
-                                self.selectedDates = sortedSelectedDates
-                                self.presentationMode.wrappedValue.dismiss()
+                            let sortedSelectedDates = sortedSelectedDays.map { $0.toString }
+                            self.selectedDates = sortedSelectedDates
+                            self.presentationMode.wrappedValue.dismiss()
                         }.font(.jalnan2_XS)
                             .foregroundColor(.Blue2_OET)
                     }
