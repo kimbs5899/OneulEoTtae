@@ -30,9 +30,16 @@ struct AlrmListView: View {
                         }.opacity(0)
                         
                         AlrmCell(alrm: alrm, selectedDates: $selectedDates)
+                            .swipeActions(edge: .trailing) {
+                                Button {
+                                    alrmDataManager.deleteAlrmCoreData(alrm)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                        .tint(.red)
+                                }
+                            }
                     }
                 }
-                .onDelete(perform: deleteAlrm) // 삭제 기능 추가
             }
             .background(Color.MainColor_OET)
             .scrollContentBackground(.hidden)
@@ -60,11 +67,6 @@ struct AlrmListView: View {
                     .environmentObject(alrmDataManager)
             }
         }
-    }
-    
-    private func deleteAlrm(at offsets: IndexSet) {
-        let alrmList = alrmDataManager.readAlrmCoreData()
-        alrmDataManager.deleteAlrmCoreData(alrmList[offsets.first!])
     }
     
     private func selectedDaysFromAlrm(_ alrm: AlrmDataModel) -> [String] {
