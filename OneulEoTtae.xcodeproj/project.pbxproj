@@ -21,6 +21,8 @@
 		8942F8C12B5C92E400E4B83B /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942F8C02B5C92E400E4B83B /* MotionManager.swift */; };
 		8942F8C32B5CA4AE00E4B83B /* MotionRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942F8C22B5CA4AE00E4B83B /* MotionRectangle.swift */; };
 		895B153E2B583DCA00B9320E /* DetailWeatherItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895B153D2B583DCA00B9320E /* DetailWeatherItemView.swift */; };
+		995C154A2BAD35E600E44991 /* AlrmEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995C15492BAD35E600E44991 /* AlrmEditView.swift */; };
+		995C154E2BADB54400E44991 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995C154D2BADB54400E44991 /* DateFormatter+.swift */; };
 		9984D1D72BA5C29500AA2F57 /* AlrmSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9984D1D62BA5C29500AA2F57 /* AlrmSettingView.swift */; };
 		9984D1D92BA5C2A100AA2F57 /* TimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9984D1D82BA5C2A100AA2F57 /* TimeSettingView.swift */; };
 		9984D1DB2BA5C2AE00AA2F57 /* DaySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9984D1DA2BA5C2AE00AA2F57 /* DaySettingView.swift */; };
@@ -79,6 +81,8 @@
 		8942F8C02B5C92E400E4B83B /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 		8942F8C22B5CA4AE00E4B83B /* MotionRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionRectangle.swift; sourceTree = "<group>"; };
 		895B153D2B583DCA00B9320E /* DetailWeatherItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeatherItemView.swift; sourceTree = "<group>"; };
+		995C15492BAD35E600E44991 /* AlrmEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlrmEditView.swift; sourceTree = "<group>"; };
+		995C154D2BADB54400E44991 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
 		9984D1D62BA5C29500AA2F57 /* AlrmSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlrmSettingView.swift; sourceTree = "<group>"; };
 		9984D1D82BA5C2A100AA2F57 /* TimeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSettingView.swift; sourceTree = "<group>"; };
 		9984D1DA2BA5C2AE00AA2F57 /* DaySettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySettingView.swift; sourceTree = "<group>"; };
@@ -296,6 +300,7 @@
 			children = (
 				99CB17E72B569DD8003C8B4C /* AlrmListView.swift */,
 				9984D1D62BA5C29500AA2F57 /* AlrmSettingView.swift */,
+				995C15492BAD35E600E44991 /* AlrmEditView.swift */,
 				9984D1D52BA5C28900AA2F57 /* Sub */,
 				9926852B2B762C670033423F /* SubView */,
 			);
@@ -341,6 +346,7 @@
 			children = (
 				1DC687FC2B5C24A300DF9D71 /* Font+.swift */,
 				1D9D295B2B667FF5007CA012 /* Color+.swift */,
+				995C154D2BADB54400E44991 /* DateFormatter+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -438,6 +444,7 @@
 				99CB17FB2B569FC7003C8B4C /* MultipleSelectionRow.swift in Sources */,
 				C12CFD6F2B7C916400F1C932 /* WeatherManager.swift in Sources */,
 				C19A728D2B56959800639506 /* SettingUIView.swift in Sources */,
+				995C154A2BAD35E600E44991 /* AlrmEditView.swift in Sources */,
 				9984D1DF2BA5C2C800AA2F57 /* LocationSettingView.swift in Sources */,
 				8921D62D2B5696E200956D62 /* CardScrollView.swift in Sources */,
 				1DC687FD2B5C24A300DF9D71 /* Font+.swift in Sources */,
@@ -453,6 +460,7 @@
 				C18FE4462BA980D000FC357E /* AlrmData+CoreDataClass.swift in Sources */,
 				C18FE4472BA980D000FC357E /* AlrmData+CoreDataProperties.swift in Sources */,
 				99CB17F92B569FB4003C8B4C /* DeleteButtonView.swift in Sources */,
+				995C154E2BADB54400E44991 /* DateFormatter+.swift in Sources */,
 				C151F3C82B5FD0B700311869 /* DeveloperListUIView.swift in Sources */,
 				C1CCBC392B91CEDF006832DE /* AlrmDataModel.swift in Sources */,
 				9984D1D92BA5C2A100AA2F57 /* TimeSettingView.swift in Sources */,

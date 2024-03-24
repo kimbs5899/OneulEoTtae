@@ -9,13 +9,10 @@ import SwiftUI
 
 struct AlrmSettingView: View {
     @EnvironmentObject var alrmDataManager: AlrmDataManager
-    @Environment(\.dismiss) var dismiss
     @State var selectedRegion: String = "서울특별시"
     @State var selectedTime: Date = Date()
     @State private var selectedDays: [String] = []
     @Binding var isSheetShowing: Bool
-    @State var isEdit: Bool
-    @Binding var selectedDates: [String]
     var body: some View {
         NavigationStack {
             VStack {
@@ -38,28 +35,14 @@ struct AlrmSettingView: View {
                 }
             }.navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        if !isEdit {
-                            Button(action: {
-                                dismiss()
-                            }, label: {
-                                Text("취소")
-                                    .font(.jalnan2_XS)
-                                    .foregroundColor(.Blue2_OET)
-                            })
-                        }
-                    }
                     ToolbarItem(placement: .principal) {
-                        Text(isEdit ? "새 알람 추가" : "알림 편집")
+                        Text("새 알람 추가")
                             .font(.jalnan2_S)
                             .foregroundColor(.Blue1_OET)
                     }
                     ToolbarItem(placement: .topBarTrailing) {
                         Button(action: {
-                            if isEdit {
-                                let formatter = DateFormatter()
-                                formatter.timeStyle = .short
-                                let setTime = formatter.string(from: selectedTime)
+                            let setTime = DateFormatter().formatTime(at: selectedTime)
                                 let locationString = selectedRegion
                                 
                                 lazy var selectedDayResult = {
@@ -102,12 +85,9 @@ struct AlrmSettingView: View {
                                     sunday: selectedDayResult[6]
                                 )
                                 alrmDataManager.createAlrmCoreData(data: newAlarm)
-                            } else {
-                                // 편잡적용하셈 김메튜 ㅎ ㅇ ㅌ !
-                            }
                             isSheetShowing = false
                         }, label: {
-                            Text(isEdit ? "추가" : "저장")
+                            Text("추가")
                                 .font(.jalnan2_XS)
                                 .foregroundColor(.Blue2_OET)
                         })
@@ -119,6 +99,7 @@ struct AlrmSettingView: View {
 
 
 #Preview {
-    AlrmSettingView(isSheetShowing: .constant(true), isEdit: false, selectedDates: .constant([]))
+    AlrmSettingView(isSheetShowing: .constant(true))
         .environmentObject(AlrmDataManager())
 }
+

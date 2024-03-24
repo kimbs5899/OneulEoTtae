@@ -12,15 +12,13 @@ struct DaySettingView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                NavigationLink(destination: SeletedDayView(selectedDates: $selectedDates)) {
-                    HStack {
-                        Text("반복")
-                        Spacer()
-                        Text("\(selectedDates.isEmpty ? "날짜 선택" : selectedDates.joined(separator: ", "))")
-                    }
-                }.foregroundStyle(Color.black)
-            }
+            NavigationLink(destination: SeletedDayView(selectedDates: $selectedDates)) {
+                HStack {
+                    Text("반복")
+                    Spacer()
+                    Text("\(selectedDates.isEmpty ? "날짜 선택" : selectedDates.joined(separator: ", "))")
+                }
+            }.foregroundStyle(Color.black)
         }
     }
 }

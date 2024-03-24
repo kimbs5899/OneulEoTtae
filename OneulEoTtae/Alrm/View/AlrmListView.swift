@@ -10,25 +10,39 @@ import SwiftUI
 struct AlrmListView: View {
     @EnvironmentObject var alrmDataManager: AlrmDataManager
     @State private var isAddSheetShowing = false
-    @State private var isEditingSheetShowing = false // 편집 모드 활성화 상태
     @State private var selectedRegion: String = "서울특별시"
-    @State var selectedDates: [String] = []
+    @State private var selectedDates: [String] = []
+    @State private var selectedAlrm: AlrmDataModel?
+    //@State private var isEditing = false // 추가
+    
     var body: some View {
         NavigationStack {
             List {
-                ForEach(alrmDataManager.readAlrmCoreData(), id: \.id) { alrm in
-                    Button(action: {
-                        isAddSheetShowing = true
-                    }, label: {
+                ForEach(alrmDataManager.readAlrmCoreData()) { alrm in
+                    ZStack {
+                        NavigationLink {
+                            AlrmEditView(selectedRegion: alrm.location,
+                                         selectedTime: DateFormatter().formatTimeDate(at: alrm.setTime),
+                                         selectedDays: selectedDaysFromAlrm(alrm))
+                            .environmentObject(alrmDataManager)
+                        } label: {
+                            EmptyView()
+                        }.opacity(0)
+                        
                         AlrmCell(alrm: alrm, selectedDates: $selectedDates)
-                    })
+                            .swipeActions(edge: .trailing) {
+                                Button {
+                                    alrmDataManager.deleteAlrmCoreData(alrm)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                        .tint(.red)
+                                }
+                            }
+                    }
                 }
-                .onDelete(perform: deleteAlrm)
             }
-            .foregroundStyle(.black)
             .background(Color.MainColor_OET)
             .scrollContentBackground(.hidden)
-            .navigationBarTitle("알림 목록", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("알림 목록")
@@ -38,39 +52,33 @@ struct AlrmListView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         isAddSheetShowing = true
-                    }, label: {
+                    }) {
                         Image(systemName: "plus")
                             .foregroundColor(.Blue1_OET)
-                    })
+                    }
                 }
-                ToolbarItem(placement: .topBarLeading) {
-                    Button(action: {
-                        // 전체삭제로직
-                        alrmDataManager.readAlrmCoreData().forEach { alrm in
-                            alrmDataManager.deleteAlrmCoreData(alrm)
-                        }
-                    }, label: {
-                        Image(systemName: "trash.fill")
-                            .foregroundColor(.Blue5_OET)
-                    })
-                }
+                //                ToolbarItem(placement: .navigationBarLeading) {
+                //                    EditButton() // 편집 버튼 추가
+                //                        .foregroundColor(.Blue1_OET)
+                //                }
             }
             .sheet(isPresented: $isAddSheetShowing) {
-                AlrmSettingView(isSheetShowing: $isAddSheetShowing, isEdit: true, selectedDates: $selectedDates)
-                    .presentationDetents([.fraction(0.85), .large])
-            }
-            // 편집 모드를 위한 시트
-            .sheet(isPresented: $isEditingSheetShowing) {
-                if alrmDataManager.alrmData.first != nil {
-                    AlrmSettingView(isSheetShowing: $isAddSheetShowing, isEdit: false, selectedDates: $selectedDates)
-                        .presentationDetents([.fraction(0.85), .large])
-                }
+                AlrmSettingView(isSheetShowing: $isAddSheetShowing)
+                    .environmentObject(alrmDataManager)
             }
         }
     }
-    private func deleteAlrm(at offsets: IndexSet) {
-        let alrmList = alrmDataManager.readAlrmCoreData()
-        alrmDataManager.deleteAlrmCoreData(alrmList[offsets.first!])
+    
+    private func selectedDaysFromAlrm(_ alrm: AlrmDataModel) -> [String] {
+        var selectedDays: [String] = []
+        if alrm.monday { selectedDays.append("월요일") }
+        if alrm.tuesday { selectedDays.append("화요일") }
+        if alrm.wednesday { selectedDays.append("수요일") }
+        if alrm.thursday { selectedDays.append("목요일") }
+        if alrm.friday { selectedDays.append("금요일") }
+        if alrm.saturday { selectedDays.append("토요일") }
+        if alrm.sunday { selectedDays.append("일요일") }
+        return selectedDays
     }
 }
 

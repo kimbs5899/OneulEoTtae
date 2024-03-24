@@ -8,25 +8,13 @@
 import SwiftUI
 
 struct TimeSettingView: View {
-    @Binding private var selectedTime: Date
-    
-    init(selectedTime: Binding<Date>) {
-        self._selectedTime = selectedTime
-    }
+    @Binding var selectedTime: Date
     
     var body: some View {
-        VStack {
-            DatePicker("Select a time", selection: $selectedTime, displayedComponents: .hourAndMinute)
-                .datePickerStyle(WheelDatePickerStyle())
-                .labelsHidden()
-                .padding()
-        }
-    }
-    
-    var formattedTime: String {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        return formatter.string(from: selectedTime)
+        DatePicker("Select a time", selection: $selectedTime, displayedComponents: .hourAndMinute)
+            .datePickerStyle(WheelDatePickerStyle())
+            .labelsHidden()
+            .padding()
     }
 }
 
