@@ -9,8 +9,45 @@ import SwiftUI
 
 struct AlrmCell: View {
     @EnvironmentObject var alrmDataManager: AlrmDataManager
-    @State var alrm: AlrmDataModel
-    @Binding var selectedDates: [String]
+    let alrm: AlrmDataModel
+    @State private var isToggleOn: Bool
+    
+    init(alrm: AlrmDataModel) {
+        self.alrm = alrm
+        _isToggleOn = State(initialValue: alrm.isToggleOn)
+    }
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Text(alrm.location)
+                Spacer()
+            }.padding(.bottom, -5)
+            HStack {
+                Text(alrm.setTime)
+                    .foregroundStyle(Color.Blue2_OET)
+                    .font(.jalnan2_R)
+                    .padding(.trailing, 5)
+                Spacer()
+                Toggle(isOn: $isToggleOn, label: {
+                    Text("")
+                }).onTapGesture {
+                    toggleAlarm()
+                }
+            }.padding(.bottom, -5)
+            HStack {
+                Text(returnDay(input: alrm))
+                Spacer()
+            }
+            .font(.callout)
+            .padding(.bottom, -5)
+        }
+    }
+    
+    private func toggleAlarm() {
+        alrmDataManager.toggleAlarm(id: alrm.id)
+        isToggleOn.toggle()
+    }
     
     func returnDay(input: AlrmDataModel) -> String {
         var result: [String] = []
@@ -37,38 +74,11 @@ struct AlrmCell: View {
         }
         return result.joined(separator: ", ")
     }
-    
-    var body: some View {
-        VStack {
-            HStack {
-                Text(alrm.location)
-                Spacer()
-            }.padding(.bottom, -5)
-            HStack {
-                Text(alrm.setTime)
-                    .foregroundStyle(Color.Blue2_OET)
-                    .font(.jalnan2_R)
-                    .padding(.trailing, 5)
-                Spacer()
-                Toggle(isOn: $alrm.isToggleOn, label: {
-                    Text("")
-                }).onTapGesture {
-                    alrmDataManager.toggleAlarm(id: alrm.id)
-                }
-            }.padding(.bottom, -5)
-            HStack {
-                Text(returnDay(input: alrm))
-                Spacer()
-            }
-            .font(.callout)
-            .padding(.bottom, -5)
-        }
-    }
 }
 
 struct AlrmCell_Previews: PreviewProvider {
     static var previews: some View {
-        AlrmCell(alrm: .sampleAlarm, selectedDates: .constant(["월요일"]))
+        AlrmCell(alrm: .sampleAlarm)
             .environmentObject(AlrmDataManager())
             .padding()
     }

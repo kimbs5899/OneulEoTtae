@@ -7,26 +7,6 @@
 
 import Foundation
 
-//struct DateListModel {
-//    var monday: Bool
-//    var tuesday: Bool
-//    var wednesday: Bool
-//    var thursday: Bool
-//    var friday: Bool
-//    var saturday: Bool
-//    var sunday: Bool
-//    
-//    init(monday: Bool = false, tuesday: Bool = false, wednesday: Bool = false, thursday: Bool = false, friday: Bool = false, saturday: Bool = false, sunday: Bool = false) {
-//        self.monday = monday
-//        self.tuesday = tuesday
-//        self.wednesday = wednesday
-//        self.thursday = thursday
-//        self.friday = friday
-//        self.saturday = saturday
-//        self.sunday = sunday
-//    }
-//}
-
 enum Day: Int, CaseIterable {
     case monday = 1
     case tuesday

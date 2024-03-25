@@ -13,34 +13,46 @@ struct AlrmListView: View {
     @State private var selectedRegion: String = "서울특별시"
     @State private var selectedDates: [String] = []
     @State private var selectedAlrm: AlrmDataModel?
-    
+    @State private var isEditing = false
     var body: some View {
         NavigationStack {
-            List(alrmDataManager.alrmData) { alrm in
-                ZStack {
-                    NavigationLink {
-                        AlrmEditView(selectedRegion: alrm.location,
-                                     selectedTime: DateFormatter().formatTimeDate(at: alrm.setTime),
-                                     selectedDays: selectedDaysFromAlrm(alrm),
-                                     id: alrm.id)
-                    } label: {
-                        EmptyView()
-                    }.opacity(0)
-                    
-                    AlrmCell(alrm: alrm, selectedDates: $selectedDates)
-                        .swipeActions(edge: .trailing) {
-                            Button {
-                                alrmDataManager.deleteAlrmCoreData(alrm)
-                            } label: {
-                                Label("Delete", systemImage: "trash")
-                                    .tint(.red)
+            List {
+                ForEach(alrmDataManager.alrmData) { alrm in
+                    ZStack {
+                        NavigationLink {
+                            AlrmEditView(selectedRegion: alrm.location,
+                                         selectedTime: DateFormatter.sharedFormatter.date(from: alrm.setTime) ?? Date(),
+                                         selectedDays: selectedDaysFromAlrm(alrm),
+                                         id: alrm.id)
+                        } label: {
+                            EmptyView()
+                        }.opacity(0)
+                        
+                        AlrmCell(alrm: alrm)
+                            .swipeActions(edge: .trailing) {
+                                Button {
+                                    alrmDataManager.deleteAlrmCoreData(alrm)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                        .tint(.red)
+                                }
                             }
-                        }
+                    }
+                }
+                .onDelete { IndexSet in
+                    IndexSet.forEach { index in
+                        let alrmToDelete = alrmDataManager.alrmData[index]
+                        alrmDataManager.deleteAlrmCoreData(alrmToDelete)
+                    }
                 }
             }
             .background(Color.MainColor_OET)
             .scrollContentBackground(.hidden)
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    EditButton()
+                        .foregroundColor(.Blue1_OET)
+                }
                 ToolbarItem(placement: .principal) {
                     Text("알림 목록")
                         .font(.jalnan2_S)
@@ -57,11 +69,9 @@ struct AlrmListView: View {
             }
             .sheet(isPresented: $isAddSheetShowing) {
                 AlrmSettingView(isSheetShowing: $isAddSheetShowing)
-                    .environmentObject(alrmDataManager)
             }
         }
     }
-    
     private func selectedDaysFromAlrm(_ alrm: AlrmDataModel) -> [String] {
         var selectedDays: [String] = []
         if alrm.monday { selectedDays.append("월요일") }
