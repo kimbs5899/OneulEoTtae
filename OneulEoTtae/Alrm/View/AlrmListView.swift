@@ -51,6 +51,7 @@ struct AlrmListView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     EditButton()
+                        .foregroundColor(.Blue1_OET)
                 }
                 ToolbarItem(placement: .principal) {
                     Text("알림 목록")
