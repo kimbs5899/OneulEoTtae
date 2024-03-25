@@ -14,7 +14,6 @@ class AlrmDataManager: ObservableObject {
     
     init() {
         alrmData = readAlrmCoreData()
-        // sortTimes()
     }
     
     func createAlrmCoreData(data: AlrmDataModel) {
@@ -34,7 +33,6 @@ class AlrmDataManager: ObservableObject {
             try context.save()
             alrmData.append(data)
             alrmData.sort(by: { DateFormatter.sharedFormatter.date(from: $0.setTime) ?? Date() < DateFormatter.sharedFormatter.date(from: $1.setTime) ?? Date() })
-            //sortTimes()
         } catch {
             print(error.localizedDescription)
         }
@@ -86,7 +84,6 @@ class AlrmDataManager: ObservableObject {
                 
                 try context.save()
                 alrmData = readAlrmCoreData()
-                //  sortTimes()
             }
         } catch {
             print("업데이트 실패: \(error.localizedDescription)")
@@ -134,19 +131,6 @@ class AlrmDataManager: ObservableObject {
             }
         } catch {
             print("토글 실패: \(error.localizedDescription)")
-        }
-    }
-    
-    private func getDayString(from days: [String]) -> String {
-        switch days {
-        case _ where Set(days) == Set(Day.allCases.map { $0.toString }):
-            return "매일"
-        case _ where Set(days).isDisjoint(with: ["월요일", "화요일", "수요일", "목요일", "금요일"]):
-            return "주말"
-        case _ where Set(days).isDisjoint(with: ["토요일", "일요일"]):
-            return "주중"
-        default:
-            return days.joined(separator: ", ")
         }
     }
 }

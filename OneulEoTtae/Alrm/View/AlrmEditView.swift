@@ -59,8 +59,7 @@ struct AlrmEditView: View {
         let setTime = DateFormatter.sharedFormatter.string(from: selectedTime)
         let locationString = selectedRegion
         let selectedDayResult = selectedDays.map { Day(string: $0)?.rawValue ?? 0 }
-        let isSaturdaySelected = selectedDayResult.contains(Day.saturday.rawValue)
-        let isSundaySelected = selectedDayResult.contains(Day.sunday.rawValue)
+        
         let newAlarm = AlrmDataModel(
             id: id,
             setTime: setTime,
