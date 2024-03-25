@@ -13,32 +13,29 @@ struct AlrmListView: View {
     @State private var selectedRegion: String = "서울특별시"
     @State private var selectedDates: [String] = []
     @State private var selectedAlrm: AlrmDataModel?
-    //@State private var isEditing = false // 추가
     
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(alrmDataManager.readAlrmCoreData()) { alrm in
-                    ZStack {
-                        NavigationLink {
-                            AlrmEditView(selectedRegion: alrm.location,
-                                         selectedTime: DateFormatter().formatTimeDate(at: alrm.setTime),
-                                         selectedDays: selectedDaysFromAlrm(alrm))
-                            .environmentObject(alrmDataManager)
-                        } label: {
-                            EmptyView()
-                        }.opacity(0)
-                        
-                        AlrmCell(alrm: alrm, selectedDates: $selectedDates)
-                            .swipeActions(edge: .trailing) {
-                                Button {
-                                    alrmDataManager.deleteAlrmCoreData(alrm)
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                        .tint(.red)
-                                }
+            List(alrmDataManager.alrmData) { alrm in
+                ZStack {
+                    NavigationLink {
+                        AlrmEditView(selectedRegion: alrm.location,
+                                     selectedTime: DateFormatter().formatTimeDate(at: alrm.setTime),
+                                     selectedDays: selectedDaysFromAlrm(alrm),
+                                     id: alrm.id)
+                    } label: {
+                        EmptyView()
+                    }.opacity(0)
+                    
+                    AlrmCell(alrm: alrm, selectedDates: $selectedDates)
+                        .swipeActions(edge: .trailing) {
+                            Button {
+                                alrmDataManager.deleteAlrmCoreData(alrm)
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                                    .tint(.red)
                             }
-                    }
+                        }
                 }
             }
             .background(Color.MainColor_OET)
@@ -57,10 +54,6 @@ struct AlrmListView: View {
                             .foregroundColor(.Blue1_OET)
                     }
                 }
-                //                ToolbarItem(placement: .navigationBarLeading) {
-                //                    EditButton() // 편집 버튼 추가
-                //                        .foregroundColor(.Blue1_OET)
-                //                }
             }
             .sheet(isPresented: $isAddSheetShowing) {
                 AlrmSettingView(isSheetShowing: $isAddSheetShowing)
