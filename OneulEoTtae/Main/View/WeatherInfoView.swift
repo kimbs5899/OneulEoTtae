@@ -32,10 +32,6 @@ struct WeatherInfoView: View {
                         temperatureChange = weatherInfo
                     }
                 }
-            Text("풍속은 ~~~~")
-                .padding(.top, 10)
-            Text("풍량은 ~~~~")
-            
         }
     }
 }

@@ -20,9 +20,14 @@ class WeatherManager {
                 
             let weather = try await WeatherService.shared.weather(for: location, including: .daily(startDate: startDate, endDate: endDate))
             
-            print("오늘날짜\(weather.last!.date + 86400) 날씨 \(weather.last!.highTemperature)°C")
-            print("어제날짜\(weather.first!.date + 86400) 날씨 \(weather.first!.highTemperature)°C")
-            return "\(weather.last!.highTemperature)°C \(weather.first!.highTemperature)°C"
+            let today = weather.last!.date + 86400
+            let yesterday = weather.first!.date + 86400
+            let todayTemperature = weather.last!.highTemperature
+            
+            print("오늘날짜\(today) 날씨 \(todayTemperature)°C")
+            print("어제날짜\(yesterday) 날씨 \(weather.first!.highTemperature)°C")
+            
+            return "\(todayTemperature)"
         } catch {
             assertionFailure(error.localizedDescription)
             return "Error retrieving weather data."

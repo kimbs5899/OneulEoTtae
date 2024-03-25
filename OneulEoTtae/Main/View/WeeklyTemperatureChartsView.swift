@@ -33,7 +33,8 @@ struct WeeklyTemperatureChartsView: View {
                     yStart: .value("3시",sample.celsiusHigh),
                     yEnd: .value("18시",sample.celsiusLow)
                 )
-                
+                .lineStyle(.init(lineWidth: 10, lineCap: .round))
+                .foregroundStyle(Color.Blue4_OET)
             }
         }
         .frame(width: 300, height: 100)
