@@ -13,12 +13,4 @@ extension DateFormatter {
         formatter.dateFormat = "hh:mm a"
         return formatter
     }()
-    
-    func formatTime(at time: Date) -> String {
-        return DateFormatter.sharedFormatter.string(from: time)
-    }
-    
-    func formatTimeDate(at time: String) -> Date {
-        return DateFormatter.sharedFormatter.date(from: time) ?? Date()
-    }
 }

@@ -42,50 +42,7 @@ struct AlrmSettingView: View {
                     }
                     ToolbarItem(placement: .topBarTrailing) {
                         Button(action: {
-                            let setTime = DateFormatter().formatTime(at: selectedTime)
-                                let locationString = selectedRegion
-                                
-                                lazy var selectedDayResult = {
-                                    var result: [Bool] = [false, false, false, false, false, false, false]
-                                    
-                                    selectedDays.forEach { day in
-                                        switch day {
-                                        case "월요일":
-                                            result[0] = true
-                                        case "화요일":
-                                            result[1] = true
-                                        case "수요일":
-                                            result[2] = true
-                                        case "목요일":
-                                            result[3] = true
-                                        case "금요일":
-                                            result[4] = true
-                                        case "토요일":
-                                            result[5] = true
-                                        case "일요일":
-                                            result[6] = true
-                                        default:
-                                            break
-                                        }
-                                    }
-                                    return result
-                                }()
-                                
-                                let newAlarm = AlrmDataModel(
-                                    id: UUID(),
-                                    setTime: setTime,
-                                    location: locationString,
-                                    isToggleOn: true,
-                                    monday: selectedDayResult[0],
-                                    tuesday: selectedDayResult[1],
-                                    wednesday: selectedDayResult[2],
-                                    thursday: selectedDayResult[3],
-                                    friday: selectedDayResult[4],
-                                    saturday: selectedDayResult[5],
-                                    sunday: selectedDayResult[6]
-                                )
-                                alrmDataManager.createAlrmCoreData(data: newAlarm)
-                            isSheetShowing = false
+                            addNewAlarm()
                         }, label: {
                             Text("추가")
                                 .font(.jalnan2_XS)
@@ -94,6 +51,27 @@ struct AlrmSettingView: View {
                     }
                 }
         }
+    }
+    private func addNewAlarm() {
+        let setTime = DateFormatter.sharedFormatter.string(from: selectedTime)
+        let locationString = selectedRegion
+        let selectedDayResult = selectedDays.map { Day(string: $0)?.rawValue }
+        
+        let newAlarm = AlrmDataModel(
+            id: UUID(),
+            setTime: setTime,
+            location: locationString,
+            isToggleOn: true,
+            monday: selectedDayResult.contains(Day.monday.rawValue),
+            tuesday: selectedDayResult.contains(Day.tuesday.rawValue),
+            wednesday: selectedDayResult.contains(Day.wednesday.rawValue),
+            thursday: selectedDayResult.contains(Day.thursday.rawValue),
+            friday: selectedDayResult.contains(Day.friday.rawValue),
+            saturday: selectedDayResult.contains(Day.saturday.rawValue),
+            sunday: selectedDayResult.contains(Day.sunday.rawValue)
+        )
+        alrmDataManager.createAlrmCoreData(data: newAlarm)
+        isSheetShowing = false
     }
 }
 

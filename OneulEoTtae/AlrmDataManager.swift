@@ -12,6 +12,10 @@ class AlrmDataManager: ObservableObject {
     @Published var alrmData: [AlrmDataModel] = []
     lazy var context = AppDelegate().persistentContainer.viewContext
     
+    init() {
+        alrmData = readAlrmCoreData()
+    }
+    
     func createAlrmCoreData(data: AlrmDataModel) {
         let alrmDataEntity = AlrmData(context: context)
         alrmDataEntity.id = data.id
@@ -27,21 +31,8 @@ class AlrmDataManager: ObservableObject {
         alrmDataEntity.sunday = data.sunday
         do {
             try context.save()
-            let newDataModel = AlrmDataModel(
-                id: alrmDataEntity.id ?? UUID(),
-                setTime: alrmDataEntity.setTime ?? "",
-                location: alrmDataEntity.location ?? "",
-                isToggleOn: alrmDataEntity.isToggleOn,
-                monday: alrmDataEntity.monday,
-                tuesday: alrmDataEntity.tuesday,
-                wednesday: alrmDataEntity.wednesday,
-                thursday: alrmDataEntity.thursday,
-                friday: alrmDataEntity.friday,
-                saturday: alrmDataEntity.saturday,
-                sunday: alrmDataEntity.sunday
-            )
-            alrmData.append(newDataModel)
-            // sortTimes()
+            alrmData.append(data)
+            alrmData.sort(by: { DateFormatter.sharedFormatter.date(from: $0.setTime) ?? Date() < DateFormatter.sharedFormatter.date(from: $1.setTime) ?? Date() })
         } catch {
             print(error.localizedDescription)
         }
@@ -52,20 +43,7 @@ class AlrmDataManager: ObservableObject {
         do {
             let fetchedDataList = try context.fetch(request)
             
-            let sortedDataList = fetchedDataList.sorted { (first, second) -> Bool in
-                let firstHour = extractHour(from: first.setTime ?? "")
-                let secondHour = extractHour(from: second.setTime ?? "")
-                
-                // 오전, 오후를 구분
-                if firstHour < 12 && secondHour >= 12 {
-                    return true // firstHour 오전, secondHour 오후
-                } else if firstHour >= 12 && secondHour < 12 {
-                    return false // firstHour 오후, secondHour 오전
-                } else {
-                    return firstHour < secondHour // 그 외의 경우에는 시간 순서대로 정렬
-                }
-            }
-            return sortedDataList.map { alrmEntity in
+            return fetchedDataList.map { alrmEntity in
                 AlrmDataModel(
                     id: alrmEntity.id ?? UUID(),
                     setTime: alrmEntity.setTime ?? "",
@@ -79,7 +57,7 @@ class AlrmDataManager: ObservableObject {
                     saturday: alrmEntity.saturday,
                     sunday: alrmEntity.sunday
                 )
-            }
+            }.sorted(by: { DateFormatter.sharedFormatter.date(from: $0.setTime) ?? Date() < DateFormatter.sharedFormatter.date(from: $1.setTime) ?? Date() })
         } catch {
             print("읽기 실패: \(error)")
             return []
@@ -89,24 +67,26 @@ class AlrmDataManager: ObservableObject {
     func updateAlrmCoreData(_ data: AlrmDataModel) {
         let request: NSFetchRequest<AlrmData> = AlrmData.fetchRequest()
         request.predicate = NSPredicate(format: "id = %@", data.id as CVarArg)
+        
         do {
             let fetchResult = try context.fetch(request)
             if let targetAlrm = fetchResult.first {
-                targetAlrm.setTime = data.setTime
-                targetAlrm.location = data.location
-                targetAlrm.isToggleOn = data.isToggleOn
-                targetAlrm.monday = data.monday
-                targetAlrm.tuesday = data.tuesday
-                targetAlrm.wednesday = data.wednesday
-                targetAlrm.thursday = data.thursday
-                targetAlrm.friday = data.friday
-                targetAlrm.saturday = data.saturday
-                targetAlrm.sunday = data.sunday
+                targetAlrm.setValue(data.setTime, forKey: "setTime")
+                targetAlrm.setValue(data.location, forKey: "location")
+                targetAlrm.setValue(data.isToggleOn, forKey: "isToggleOn")
+                targetAlrm.setValue(data.monday, forKey: "monday")
+                targetAlrm.setValue(data.tuesday, forKey: "tuesday")
+                targetAlrm.setValue(data.wednesday, forKey: "wednesday")
+                targetAlrm.setValue(data.thursday, forKey: "thursday")
+                targetAlrm.setValue(data.friday, forKey: "friday")
+                targetAlrm.setValue(data.saturday, forKey: "saturday")
+                targetAlrm.setValue(data.sunday, forKey: "sunday")
+                
                 try context.save()
                 alrmData = readAlrmCoreData()
             }
         } catch {
-            print("수정 실패: \(error.localizedDescription)")
+            print("업데이트 실패: \(error.localizedDescription)")
         }
     }
     
@@ -153,34 +133,4 @@ class AlrmDataManager: ObservableObject {
             print("토글 실패: \(error.localizedDescription)")
         }
     }
-    
-    //    private func sortTimes() {
-    //        alrmData.sort { (first, second) -> Bool in
-    //            let firstHour = extractHour(from: first.setTime)
-    //            let secondHour = extractHour(from: second.setTime)
-    //
-    //            if firstHour < 12 && secondHour >= 12 {
-    //                return true
-    //            } else if firstHour >= 12 && secondHour < 12 {
-    //                return false
-    //            } else {
-    //                return firstHour < secondHour
-    //            }
-    //        }
-    //    }
-    //
-    private func extractHour(from time: String) -> Int {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "h:mm a"
-        
-        guard let date = dateFormatter.date(from: time) else {
-            return 0
-        }
-        
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        
-        return hour
-    }
-    
 }

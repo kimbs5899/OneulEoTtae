@@ -13,8 +13,7 @@ struct AlrmEditView: View {
     @State var selectedRegion: String
     @State var selectedTime: Date
     @State var selectedDays: [String]
-    @State var alrm: AlrmDataModel?
-    
+    @State var id: UUID
     var body: some View {
         NavigationStack {
             Form {
@@ -46,23 +45,7 @@ struct AlrmEditView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        if let existingAlarm = alrm {
-                            let editedAlarm = AlrmDataModel(
-                                id: existingAlarm.id,
-                                setTime: DateFormatter().formatTime(at: selectedTime),
-                                location: selectedRegion,
-                                isToggleOn: true,
-                                monday: selectedDays.contains("월요일"),
-                                tuesday: selectedDays.contains("화요일"),
-                                wednesday: selectedDays.contains("수요일"),
-                                thursday: selectedDays.contains("목요일"),
-                                friday: selectedDays.contains("금요일"),
-                                saturday: selectedDays.contains("토요일"),
-                                sunday: selectedDays.contains("일요일")
-                            )
-                            alrmDataManager.updateAlrmCoreData(editedAlarm)
-                        }
-                        dismiss()
+                        saveAlarm()
                     }, label: {
                         Text("저장")
                             .font(.jalnan2_XS)
@@ -72,9 +55,30 @@ struct AlrmEditView: View {
             }
         }
     }
+    private func saveAlarm() {
+        let setTime = DateFormatter.sharedFormatter.string(from: selectedTime)
+        let locationString = selectedRegion
+        let selectedDayResult = selectedDays.map { Day(string: $0)?.rawValue ?? 0 }
+        
+        let newAlarm = AlrmDataModel(
+            id: id,
+            setTime: setTime,
+            location: locationString,
+            isToggleOn: true,
+            monday: selectedDayResult.contains(Day.monday.rawValue),
+            tuesday: selectedDayResult.contains(Day.tuesday.rawValue),
+            wednesday: selectedDayResult.contains(Day.wednesday.rawValue),
+            thursday: selectedDayResult.contains(Day.thursday.rawValue),
+            friday: selectedDayResult.contains(Day.friday.rawValue),
+            saturday: selectedDayResult.contains(Day.saturday.rawValue),
+            sunday: selectedDayResult.contains(Day.sunday.rawValue)
+        )
+        alrmDataManager.updateAlrmCoreData(newAlarm)
+        dismiss()
+    }
 }
 
 #Preview {
-    AlrmEditView(selectedRegion: "", selectedTime: Date(), selectedDays: [])
+    AlrmEditView(selectedRegion: "", selectedTime: Date(), selectedDays: [], id: UUID())
         .environmentObject(AlrmDataManager())
 }
