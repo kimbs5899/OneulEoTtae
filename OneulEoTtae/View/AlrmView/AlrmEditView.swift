@@ -1,5 +1,5 @@
 //
-//  AlrmSettingView.swift
+//  AlrmEditView.swift
 //  OneulEoTtae
 //
 //  Created by 윤진영 on 3/16/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AlrmSettingView: View {
+struct AlrmEditView: View {
     @EnvironmentObject var alrmDataManager: AlrmDataManager
     @State var selectedRegion: Location = Location.seoulGangbuk
     @State var selectedTime: Date = Date()
@@ -79,7 +79,7 @@ struct AlrmSettingView: View {
 
 
 #Preview {
-    AlrmSettingView(isSheetShowing: .constant(true))
+    AlrmEditView(isSheetShowing: .constant(true))
         .environmentObject(AlrmDataManager())
 }
 

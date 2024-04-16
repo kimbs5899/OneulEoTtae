@@ -12,8 +12,8 @@ import SwiftUI
 class AlrmDataManager: ObservableObject {
     @Published var alrmData: [AlrmDataModel] = []
     lazy var context = AppDelegate().persistentContainer.viewContext
-    let weatherManager = WeatherManager()
-    let weatherCoreManager = WeatherDataManager()
+//    let weatherManager = WeatherManager()
+//    let weatherCoreManager = WeatherDataManager()
     
     init() {
         alrmData = readAlrmCoreData()
@@ -34,25 +34,48 @@ class AlrmDataManager: ObservableObject {
         alrmDataEntity.sunday = data.sunday
         
         do {
-            if weatherCoreManager.readWeatherCoreData().contains(where: { weather in
-                weather.location == data.location
-            }){
-                try context.save()
-                alrmData.append(data)
-                alrmData.sort(by: { DateFormatter.sharedFormatter.date(from: $0.setTime) ?? Date() < DateFormatter.sharedFormatter.date(from: $1.setTime) ?? Date() })
-            } else {
-                let weatherData = await weatherManager.getWeather(locationTitle: Location(rawValue: data.location)!)
-                let newWeatherData = WeatherDataModel(id: UUID(), prevWeather: weatherData.last!, nowWeather: weatherData.first!, location: data.location)
-                weatherCoreManager.createWeatherCoreData(data: newWeatherData)
-                
-                try context.save()
-                alrmData.append(data)
-                alrmData.sort(by: { DateFormatter.sharedFormatter.date(from: $0.setTime) ?? Date() < DateFormatter.sharedFormatter.date(from: $1.setTime) ?? Date() })
-            }
+            try context.save()
+            alrmData.append(data)
+            alrmData.sort(by: { DateFormatter.sharedFormatter.date(from: $0.setTime) ?? Date() < DateFormatter.sharedFormatter.date(from: $1.setTime) ?? Date() })
         } catch {
             print(error.localizedDescription)
         }
     }
+    
+//    func createAlrmCoreData(data: AlrmDataModel) async {
+//        let alrmDataEntity = AlrmData(context: context)
+//        alrmDataEntity.id = data.id
+//        alrmDataEntity.location = data.location
+//        alrmDataEntity.setTime = data.setTime
+//        alrmDataEntity.isToggleOn = data.isToggleOn
+//        alrmDataEntity.monday = data.monday
+//        alrmDataEntity.tuesday = data.tuesday
+//        alrmDataEntity.wednesday = data.wednesday
+//        alrmDataEntity.thursday = data.thursday
+//        alrmDataEntity.friday = data.friday
+//        alrmDataEntity.saturday = data.saturday
+//        alrmDataEntity.sunday = data.sunday
+//        
+//        do {
+//            if weatherCoreManager.readWeatherCoreData().contains(where: { weather in
+//                weather.location == data.location
+//            }){
+//                try context.save()
+//                alrmData.append(data)
+//                alrmData.sort(by: { DateFormatter.sharedFormatter.date(from: $0.setTime) ?? Date() < DateFormatter.sharedFormatter.date(from: $1.setTime) ?? Date() })
+//            } else {
+//                let weatherData = await weatherManager.getWeather(locationTitle: Location(rawValue: data.location)!)
+//                let newWeatherData = WeatherDataModel(id: UUID(), prevWeather: weatherData.last!, nowWeather: weatherData.first!, location: data.location)
+//                weatherCoreManager.createWeatherCoreData(data: newWeatherData)
+//                
+//                try context.save()
+//                alrmData.append(data)
+//                alrmData.sort(by: { DateFormatter.sharedFormatter.date(from: $0.setTime) ?? Date() < DateFormatter.sharedFormatter.date(from: $1.setTime) ?? Date() })
+//            }
+//        } catch {
+//            print(error.localizedDescription)
+//        }
+//    }
     
     func readAlrmCoreData() -> [AlrmDataModel] {
         let request: NSFetchRequest<AlrmData> = AlrmData.fetchRequest()
@@ -106,33 +129,49 @@ class AlrmDataManager: ObservableObject {
         }
     }
     
+//    func deleteAlrmCoreData(_ data: AlrmDataModel) {
+//        let request: NSFetchRequest<AlrmData> = AlrmData.fetchRequest()
+//        request.predicate = NSPredicate(format: "id = %@", data.id as CVarArg)
+//        
+//        do {
+//            if let deleteWeather = weatherCoreManager.readWeatherCoreData().first(where: { weather in
+//                weather.location == data.location
+//            }) {
+//                weatherCoreManager.deleteWeatherCoreData(deleteWeather)
+//                let fetchResult = try context.fetch(request)
+//                if let targetAlrm = fetchResult.first {
+//                    context.delete(targetAlrm)
+//                    try context.save()
+//                    alrmData = readAlrmCoreData()
+//                }
+//            } else {
+//                let fetchResult = try context.fetch(request)
+//                if let targetAlrm = fetchResult.first {
+//                    context.delete(targetAlrm)
+//                    try context.save()
+//                    alrmData = readAlrmCoreData()
+//                }
+//            }
+//        } catch {
+//            print("삭제 실패: \(error.localizedDescription)")
+//        }
+//    }
+    
     func deleteAlrmCoreData(_ data: AlrmDataModel) {
-        let request: NSFetchRequest<AlrmData> = AlrmData.fetchRequest()
-        request.predicate = NSPredicate(format: "id = %@", data.id as CVarArg)
-        
-        do {
-            if let deleteWeather = weatherCoreManager.readWeatherCoreData().first(where: { weather in
-                weather.location == data.location
-            }) {
-                weatherCoreManager.deleteWeatherCoreData(deleteWeather)
+            let request: NSFetchRequest<AlrmData> = AlrmData.fetchRequest()
+            request.predicate = NSPredicate(format: "id = %@", data.id as CVarArg)
+            
+            do {
                 let fetchResult = try context.fetch(request)
                 if let targetAlrm = fetchResult.first {
                     context.delete(targetAlrm)
                     try context.save()
                     alrmData = readAlrmCoreData()
                 }
-            } else {
-                let fetchResult = try context.fetch(request)
-                if let targetAlrm = fetchResult.first {
-                    context.delete(targetAlrm)
-                    try context.save()
-                    alrmData = readAlrmCoreData()
-                }
+            } catch {
+                print("삭제 실패: \(error.localizedDescription)")
             }
-        } catch {
-            print("삭제 실패: \(error.localizedDescription)")
         }
-    }
     
     func deleteAllAlrms() {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = AlrmData.fetchRequest()

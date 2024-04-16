@@ -20,7 +20,7 @@ struct AlrmListView: View {
                 ForEach(alrmDataManager.alrmData) { alrm in
                     ZStack {
                         NavigationLink {
-                            AlrmEditView(selectedRegion:
+                            NewAlrmView(selectedRegion:
                                             Location(rawValue: alrm.location) ?? Location.seoulGangbuk,
                                          selectedTime: DateFormatter.sharedFormatter.date(from: alrm.setTime) ?? Date(),
                                          selectedDays: selectedDaysFromAlrm(alrm),
@@ -69,7 +69,7 @@ struct AlrmListView: View {
                 }
             }
             .sheet(isPresented: $isAddSheetShowing) {
-                AlrmSettingView(isSheetShowing: $isAddSheetShowing)
+                AlrmEditView(isSheetShowing: $isAddSheetShowing)
             }
         }
     }

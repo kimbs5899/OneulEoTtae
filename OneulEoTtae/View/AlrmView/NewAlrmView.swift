@@ -1,5 +1,5 @@
 //
-//  AlrmEditView.swift
+//  NewAlrmView.swift
 //  OneulEoTtae
 //
 //  Created by 윤진영 on 3/22/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AlrmEditView: View {
+struct NewAlrmView: View {
     @EnvironmentObject var alrmDataManager: AlrmDataManager
     @Environment(\.dismiss) var dismiss
     @State var selectedRegion: Location
@@ -79,6 +79,6 @@ struct AlrmEditView: View {
 }
 
 #Preview {
-    AlrmEditView(selectedRegion: Location.seoulGangbuk, selectedTime: Date(), selectedDays: [], id: UUID())
+    NewAlrmView(selectedRegion: .busanBusanjin, selectedTime: Date(), selectedDays: [], id: UUID())
         .environmentObject(AlrmDataManager())
 }
