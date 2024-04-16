@@ -25,10 +25,16 @@ struct Grouped: View {
 
 struct SettingUIView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 NavigationLink(destination: APIResourceUIView()) {
-                    Grouped(text: "API resouce", image: "info.circle.fill")
+//                    Grouped(text: "API resouce", image: "info.circle.fill")
+                    Label {
+                        Text("API resouce")
+                    } icon: {
+                        Image(systemName: "info.circle.fill")
+                            .foregroundStyle(Color.Blue2_OET)
+                    }
                 }
                 NavigationLink(destination: VersionListUIView()) {
                     Grouped(text: "버전 목록", image: "list.bullet.clipboard.fill")
@@ -45,6 +51,7 @@ struct SettingUIView: View {
                     }
                 }.multilineTextAlignment(.center)
             }
+            .font(.system(size: 16))
             .background(Color.MainColor_OET)
             .navigationBarTitle("설정", displayMode: .inline)
             .scrollContentBackground(.hidden)
