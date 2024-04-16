@@ -9,19 +9,39 @@ import SwiftUI
 
 struct AlrmSettingUIView: View {
     @State private var isAlrmEnabled = true
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        List {
-            HStack{
-                Text("알림 받기")
-                    .font(.system(size: 16))
-                    .padding(.trailing, 5)
-                Spacer()
-                Toggle(isOn: $isAlrmEnabled) {
-                    Text("")
+        NavigationStack{
+            List {
+                LabeledContent {
+                    Toggle(isOn: $isAlrmEnabled) {
+                        Text("")
+                    }
+                } label: {
+                    Text("알림 받기")
                 }
             }
-        }.multilineTextAlignment(.center)
+            .font(.system(size: 17))
+            .listStyle(.insetGrouped)
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("알림 설정")
+                        .font(.jalnan2_S)
+                        .foregroundColor(.Blue1_OET)
+                }
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }, label: {
+                        Image(systemName: "chevron.backward")
+                            .font(.jalnan2_XS)
+                            .foregroundColor(.Blue1_OET)
+                    })
+                }
+            }
+        }
     }
 }
 

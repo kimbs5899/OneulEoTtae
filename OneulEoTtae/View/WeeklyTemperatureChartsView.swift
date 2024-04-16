@@ -31,7 +31,7 @@ struct WeeklyTemperatureChartsView: View {
                 BarMark(
                     x: .value("name", sample.day),
                     y: .value("celsius", sample.celsiusHigh - sample.celsiusLow),
-                    width: .fixed(20.0),
+                    width: .fixed(16.0),
                     stacking: .center
                 )
                 .clipShape(Capsule())
