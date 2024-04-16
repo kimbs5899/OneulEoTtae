@@ -80,6 +80,5 @@ struct AlrmCell_Previews: PreviewProvider {
     static var previews: some View {
         AlrmCell(alrm: .sampleAlarm)
             .environmentObject(AlrmDataManager())
-            .padding()
     }
 }

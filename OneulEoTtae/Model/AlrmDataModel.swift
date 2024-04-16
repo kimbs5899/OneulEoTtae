@@ -40,7 +40,7 @@ extension AlrmDataModel {
     static let sampleAlarm = AlrmDataModel(
         id: UUID(),
         setTime: "12:12",
-        location: "서울",
+        location: Location.seoulDobong.rawValue,
         isToggleOn: true,
         monday: true,
         tuesday: true,

@@ -10,7 +10,7 @@ import SwiftUI
 struct AlrmEditView: View {
     @EnvironmentObject var alrmDataManager: AlrmDataManager
     @Environment(\.dismiss) var dismiss
-    @State var selectedRegion: String
+    @State var selectedRegion: Location
     @State var selectedTime: Date
     @State var selectedDays: [String]
     @State var id: UUID
@@ -24,7 +24,7 @@ struct AlrmEditView: View {
                     DaySettingView(selectedDates: $selectedDays)
                 }
                 Section("지역 선택") {
-                    LocationSettingView(selectedRegion: $selectedRegion, regions: ["서울특별시", "경기도", "강원도"])
+                    LocationSettingView(selectedRegion: $selectedRegion)
                 }
             }
             .navigationBarBackButtonHidden(true)
@@ -63,7 +63,7 @@ struct AlrmEditView: View {
         let newAlarm = AlrmDataModel(
             id: id,
             setTime: setTime,
-            location: locationString,
+            location: locationString.rawValue,
             isToggleOn: true,
             monday: selectedDayResult.contains(Day.monday.rawValue),
             tuesday: selectedDayResult.contains(Day.tuesday.rawValue),
@@ -79,6 +79,6 @@ struct AlrmEditView: View {
 }
 
 #Preview {
-    AlrmEditView(selectedRegion: "", selectedTime: Date(), selectedDays: [], id: UUID())
+    AlrmEditView(selectedRegion: Location.seoulGangbuk, selectedTime: Date(), selectedDays: [], id: UUID())
         .environmentObject(AlrmDataManager())
 }

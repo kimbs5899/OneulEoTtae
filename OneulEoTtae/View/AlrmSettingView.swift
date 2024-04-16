@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AlrmSettingView: View {
     @EnvironmentObject var alrmDataManager: AlrmDataManager
-    @State var selectedRegion: String = "서울특별시"
+    @State var selectedRegion: Location = Location.seoulGangbuk
     @State var selectedTime: Date = Date()
     @State private var selectedDays: [String] = []
     @Binding var isSheetShowing: Bool
@@ -28,7 +28,7 @@ struct AlrmSettingView: View {
                         Text("요일 선택")
                     }
                     Section {
-                        LocationSettingView(selectedRegion: $selectedRegion, regions: ["서울특별시", "경기도", "강원도"])
+                        LocationSettingView(selectedRegion: $selectedRegion)
                     } header: {
                         Text("지역 선택")
                     }
@@ -42,7 +42,9 @@ struct AlrmSettingView: View {
                     }
                     ToolbarItem(placement: .topBarTrailing) {
                         Button(action: {
-                            addNewAlarm()
+                            Task {
+                                await addNewAlarm()
+                            }
                         }, label: {
                             Text("추가")
                                 .font(.jalnan2_XS)
@@ -52,7 +54,7 @@ struct AlrmSettingView: View {
                 }
         }
     }
-    private func addNewAlarm() {
+    private func addNewAlarm() async {
         let setTime = DateFormatter.sharedFormatter.string(from: selectedTime)
         let locationString = selectedRegion
         let selectedDayResult = selectedDays.map { Day(string: $0)?.rawValue }
@@ -60,7 +62,7 @@ struct AlrmSettingView: View {
         let newAlarm = AlrmDataModel(
             id: UUID(),
             setTime: setTime,
-            location: locationString,
+            location: locationString.rawValue,
             isToggleOn: true,
             monday: selectedDayResult.contains(Day.monday.rawValue),
             tuesday: selectedDayResult.contains(Day.tuesday.rawValue),
@@ -70,7 +72,7 @@ struct AlrmSettingView: View {
             saturday: selectedDayResult.contains(Day.saturday.rawValue),
             sunday: selectedDayResult.contains(Day.sunday.rawValue)
         )
-        alrmDataManager.createAlrmCoreData(data: newAlarm)
+        await alrmDataManager.createAlrmCoreData(data: newAlarm)
         isSheetShowing = false
     }
 }

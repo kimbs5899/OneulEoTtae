@@ -8,27 +8,25 @@
 import Foundation
 import CoreData
 
-class WeatherDataManager {
-    static let shared = WeatherDataManager()
-    
-    private init() {}
-    
+@MainActor
+class WeatherDataManager: ObservableObject {
+    @Published var weatherListData: [WeatherDataModel] = []
     lazy var context = AppDelegate().persistentContainer.viewContext
-
     let modelName: String = "WeatherData"
     
-    func createWeatherCoreData(data: WeatherDataModel, arlm: AlrmDataModel) {
-        let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
+    func createWeatherCoreData(data: WeatherDataModel) {
         if let entity = NSEntityDescription.entity(forEntityName: self.modelName, in: context) {
             if let weatherData = NSManagedObject(entity: entity, insertInto: context) as AnyObject as? WeatherData {
                 weatherData.id = data.id
                 weatherData.prevWeather = data.prevWeather
-            //    weatherData.location = arlm.location as AnyObject as? NSSet
+                weatherData.nowWeather = data.nowWeather
+                weatherData.location = data.location
                 if context.hasChanges {
                     do{
                         try context.save()
+                        weatherListData.append(data)
                     } catch {
-                        print(error)
+                        print("Weather Create Error")
                     }
                 }
             }
@@ -41,11 +39,11 @@ class WeatherDataManager {
         do {
             if let fetchedDataList = try context.fetch(request) as? [WeatherDataModel] {
                 weatherData = fetchedDataList.map { weatherEntity in
-                    return WeatherDataModel(id: UUID(), prevWeather: weatherEntity.prevWeather)
+                    return WeatherDataModel(id: weatherEntity.id, prevWeather: weatherEntity.prevWeather, nowWeather: weatherEntity.nowWeather, location: weatherEntity.location)
                 }
             }
         } catch {
-            print("읽기 실패")
+            print("Weather Read Error")
         }
         return weatherData
     }
@@ -57,9 +55,11 @@ class WeatherDataManager {
             if let fetchWeatherList = try context.fetch(request) as? [WeatherDataModel] {
                 if var targetWether = fetchWeatherList.first {
                     targetWether.prevWeather = data.prevWeather
+                    targetWether.nowWeather = data.nowWeather
                     if context.hasChanges {
                         do{
                             try context.save()
+                            weatherListData = readWeatherCoreData()
                         } catch {
                             print(error)
                         }
@@ -67,7 +67,7 @@ class WeatherDataManager {
                 }
             }
         } catch {
-            print("수정 실패")
+            print("Weather Update Error")
         }
     }
     
@@ -81,6 +81,7 @@ class WeatherDataManager {
                     if context.hasChanges {
                         do {
                             try context.save()
+                            weatherListData = readWeatherCoreData()
                         } catch {
                             print(error)
                         }
@@ -88,7 +89,7 @@ class WeatherDataManager {
                 }
             }
         } catch {
-            print("삭제 실패")
+            print("Weather Delete Error")
         }
     }
 }

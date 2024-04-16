@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct LocationSettingView: View {
-    @Binding var selectedRegion: String
-    var regions: [String]
+    @Binding var selectedRegion: Location
+    var regions: [Location] = Location.allCases
     
     var body: some View {
         Picker("장소", selection: $selectedRegion) {
             ForEach(regions, id: \.self) {
-                Text($0)
+                Text($0.rawValue)
             }
         }
     }
 }
 
 #Preview {
-    LocationSettingView(selectedRegion: .constant("서울특별시"), regions: ["서울특별시", "경기도", "강원도"])
+    LocationSettingView(selectedRegion: .constant(Location.seoulGangbuk))
 }

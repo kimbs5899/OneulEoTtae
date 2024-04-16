@@ -24,6 +24,10 @@ extension Font {
     static var jalnan2_XS: Font {
         return Font.custom("Jalnan2", size: 16)
     }
+    /// jalnan2_XXS : 12
+    static var jalnan2_XXS: Font {
+        return Font.custom("Jalnan2", size: 12)
+    }
     /// jalnan2TTF_L : 32
     static var jalnan2TTF_L: Font {
         return Font.custom("Jalnan2", size: 32)
@@ -39,5 +43,9 @@ extension Font {
     /// jalnan2TTF_XS : 16
     static var jalnan2TTF_XS: Font {
         return Font.custom("Jalnan2", size: 16)
+    }
+    /// jalnan2TTF_XXS : 12
+    static var jalnan2TTF_XXS: Font {
+        return Font.custom("Jalnan2", size: 12)
     }
 }

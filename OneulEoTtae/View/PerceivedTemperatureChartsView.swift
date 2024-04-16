@@ -16,17 +16,14 @@ struct PerceivedTemperature: Identifiable {
 }
 
 let samplePerceivedTemperature: [PerceivedTemperature] = [
-    .init(day: "어제", perceivedTemperature: 6),
-    .init(day: "오늘", perceivedTemperature: 3),
-    .init(day: "내일", perceivedTemperature: 6),
-    .init(day: "모레", perceivedTemperature: 4),
-    .init(day: "글피", perceivedTemperature: 7),
+    .init(day: "3시", perceivedTemperature: 6),
+    .init(day: "6시", perceivedTemperature: 3),
+    .init(day: "9시", perceivedTemperature: 6),
+    .init(day: "12시", perceivedTemperature: 4),
 ]
 
 struct PerceivedTemperatureChartsView: View {
-    
     var body: some View {
-        
         let curColor = Color.Blue2_OET
         let curGradient = LinearGradient(
                     gradient: Gradient (

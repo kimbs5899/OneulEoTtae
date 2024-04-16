@@ -15,7 +15,7 @@ struct WeatherModel: Identifiable {
     /// 알림 요일 설정
     var dayOfWeek: [String]
     /// 알림 지역 설정
-    var location: String
+    var location: Location
     /// 알림 설정 토글
     var toggle: Bool
     /// 온도
@@ -27,6 +27,6 @@ struct WeatherModel: Identifiable {
 }
 
 extension WeatherModel {
-    static let sampleAlarm = WeatherModel(setTime: "07:00 AM", dayOfWeek: ["월", "화"], location: "서울특별시", toggle: true)
+    static let sampleAlarm = WeatherModel(setTime: "07:00 AM", dayOfWeek: ["월", "화"], location: Location(rawValue: Location.seoulNowon.rawValue)!, toggle: true)
 }
 

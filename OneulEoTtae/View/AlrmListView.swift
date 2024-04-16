@@ -10,7 +10,7 @@ import SwiftUI
 struct AlrmListView: View {
     @EnvironmentObject var alrmDataManager: AlrmDataManager
     @State private var isAddSheetShowing = false
-    @State private var selectedRegion: String = "서울특별시"
+    @State private var selectedRegion: Location = Location.seoulGangbuk
     @State private var selectedDates: [String] = []
     @State private var selectedAlrm: AlrmDataModel?
     @State private var isEditing = false
@@ -20,7 +20,8 @@ struct AlrmListView: View {
                 ForEach(alrmDataManager.alrmData) { alrm in
                     ZStack {
                         NavigationLink {
-                            AlrmEditView(selectedRegion: alrm.location,
+                            AlrmEditView(selectedRegion:
+                                            Location(rawValue: alrm.location) ?? Location.seoulGangbuk,
                                          selectedTime: DateFormatter.sharedFormatter.date(from: alrm.setTime) ?? Date(),
                                          selectedDays: selectedDaysFromAlrm(alrm),
                                          id: alrm.id)

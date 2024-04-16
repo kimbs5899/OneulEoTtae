@@ -15,23 +15,23 @@ struct LaunchScreenView: View {
             ZStack {
                 // 앱 아이콘 이미지
                 Image("AppLauncher")
-                    .scaleEffect(2.0)
-                    .position(x: geometry.size.width / 2, y: geometry.size.height * 0.33)
+                    .scaleEffect(1.0)
+                    .position(x: geometry.size.width / 2, y: geometry.size.height * 0.30)
                     .opacity(textOpacity)
                 
                 VStack {
                     // "오늘어때?"와 "?" 텍스트
                     HStack(spacing: 0) {
                         Text("오늘어때")
-                            .font(.jalnan2_L)
+                            .font(.jalnan2_R)
                             .foregroundStyle(Color.Blue1_OET)
                     }
-                    .position(x: geometry.size.width / 2, y: geometry.size.height * 0.43)
+                    .position(x: geometry.size.width / 2, y: geometry.size.height * 0.37)
                     .opacity(textOpacity)
                     
                     // "made by SeSAC" 텍스트
                     Text("made by SeSAC")
-                        .font(.jalnan2_XS)
+                        .font(.jalnan2_XXS)
                         .foregroundStyle(Color(red: 0.57, green: 0.61, blue: 0.68))
                         .position(x: geometry.size.width / 2, y: geometry.size.height * 0.30)
                 }
