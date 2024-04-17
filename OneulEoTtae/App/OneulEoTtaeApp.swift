@@ -12,7 +12,7 @@ import UserNotifications
 @main
 struct OneulEoTtaeApp: App {
     @StateObject private var weatherDataManager: WeatherDataManager = WeatherDataManager()
-    @StateObject private var alrmDataManager = AlrmDataManager()
+    @StateObject private var alarmDataManager = AlarmDataManager()
     @State private var isShowingLaunchScreen = true // 런치 스크린 표시 여부를 위한 상태 변수
     /// UIApplicationDelegateAdaptor: UIKit 앱 델리게이트를 만드는 데 사용하는 프로퍼티 래퍼 유형
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
@@ -28,7 +28,7 @@ struct OneulEoTtaeApp: App {
                     }
             } else {
                 Home()
-                    .environmentObject(alrmDataManager)
+                    .environmentObject(alarmDataManager)
                     .environmentObject(weatherDataManager)
             }
         }

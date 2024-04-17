@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SeletedDayView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) private var presentationMode
     @Binding var selectedDates: [String]
     @State private var selectedDays: [Day]
 

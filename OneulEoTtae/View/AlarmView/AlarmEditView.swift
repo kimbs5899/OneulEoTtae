@@ -1,5 +1,5 @@
 //
-//  NewAlrmView.swift
+//  AlarmEditView:.swift
 //  OneulEoTtae
 //
 //  Created by 윤진영 on 3/22/24.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct NewAlrmView: View {
-    @EnvironmentObject var alrmDataManager: AlrmDataManager
-    @Environment(\.dismiss) var dismiss
+struct AlarmEditView: View {
+    @EnvironmentObject private var alarmDataManager: AlarmDataManager
+    @Environment(\.dismiss) private var dismiss
     @State var selectedRegion: Location
     @State var selectedTime: Date
     @State var selectedDays: [String]
@@ -60,7 +60,7 @@ struct NewAlrmView: View {
         let locationString = selectedRegion
         let selectedDayResult = selectedDays.map { Day(string: $0)?.rawValue ?? 0 }
         
-        let newAlarm = AlrmDataModel(
+        let newAlarm = AlarmDataModel(
             id: id,
             setTime: setTime,
             location: locationString.rawValue,
@@ -73,12 +73,12 @@ struct NewAlrmView: View {
             saturday: selectedDayResult.contains(Day.saturday.rawValue),
             sunday: selectedDayResult.contains(Day.sunday.rawValue)
         )
-        alrmDataManager.updateAlrmCoreData(newAlarm)
+        alarmDataManager.updateAlarmCoreData(newAlarm)
         dismiss()
     }
 }
 
 #Preview {
-    NewAlrmView(selectedRegion: .busanBusanjin, selectedTime: Date(), selectedDays: [], id: UUID())
-        .environmentObject(AlrmDataManager())
+    AlarmEditView(selectedRegion: .busanBusanjin, selectedTime: Date(), selectedDays: [], id: UUID())
+        .environmentObject(AlarmDataManager())
 }

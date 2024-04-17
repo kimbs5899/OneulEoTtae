@@ -1,5 +1,5 @@
 //
-//  AlrmCell.swift
+//  Alarm.swift
 //  OneulEoTtae
 //
 //  Created by 윤진영 on 1/16/24.
@@ -7,24 +7,24 @@
 
 import SwiftUI
 
-struct AlrmCell: View {
-    @EnvironmentObject var alrmDataManager: AlrmDataManager
-    let alrm: AlrmDataModel
+struct AlarmCell: View {
+    @EnvironmentObject private var alarmDataManager: AlarmDataManager
+    private let alarm: AlarmDataModel
     @State private var isToggleOn: Bool
     
-    init(alrm: AlrmDataModel) {
-        self.alrm = alrm
-        _isToggleOn = State(initialValue: alrm.isToggleOn)
+    init(alarm: AlarmDataModel) {
+        self.alarm = alarm
+        _isToggleOn = State(initialValue: alarm.isToggleOn)
     }
     
     var body: some View {
         VStack {
             HStack {
-                Text(alrm.location)
+                Text(alarm.location)
                 Spacer()
             }.padding(.bottom, -5)
             HStack {
-                Text(alrm.setTime)
+                Text(alarm.setTime)
                     .foregroundStyle(Color.Blue2_OET)
                     .font(.jalnan2_R)
                     .padding(.trailing, 5)
@@ -36,7 +36,7 @@ struct AlrmCell: View {
                 }
             }.padding(.bottom, -5)
             HStack {
-                Text(returnDay(input: alrm))
+                Text(returnDay(input: alarm))
                 Spacer()
             }
             .font(.callout)
@@ -45,11 +45,11 @@ struct AlrmCell: View {
     }
     
     private func toggleAlarm() {
-        alrmDataManager.toggleAlarm(id: alrm.id)
+        alarmDataManager.toggleAlarm(id: alarm.id)
         isToggleOn.toggle()
     }
     
-    func returnDay(input: AlrmDataModel) -> String {
+    func returnDay(input: AlarmDataModel) -> String {
         var result: [String] = []
         
         for day in Day.allCases {
@@ -76,9 +76,9 @@ struct AlrmCell: View {
     }
 }
 
-struct AlrmCell_Previews: PreviewProvider {
+struct AlarmCell_Previews: PreviewProvider {
     static var previews: some View {
-        AlrmCell(alrm: .sampleAlarm)
-            .environmentObject(AlrmDataManager())
+        AlarmCell(alarm: .sampleAlarm)
+            .environmentObject(AlarmDataManager())
     }
 }

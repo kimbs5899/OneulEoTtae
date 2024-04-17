@@ -49,7 +49,7 @@ struct SettingUIView: View {
                                     .foregroundStyle(Color.Blue2_OET)
                             }
                         }
-                        NavigationLink(destination: AlrmSettingUIView()) {
+                        NavigationLink(destination: AlarmSettingUIView()) {
                             Label {
                                 Text("알림 설정")
                             } icon: {
