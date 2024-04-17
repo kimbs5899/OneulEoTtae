@@ -148,10 +148,10 @@
 		9909E94E2BCFFA7800011319 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9984D1D52BA5C28900AA2F57 /* SubView */,
 				99CB17E72B569DD8003C8B4C /* AlarmListView.swift */,
 				9984D1D62BA5C29500AA2F57 /* NewAlarmView.swift */,
 				995C15492BAD35E600E44991 /* AlarmEditView.swift */,
+				9984D1D52BA5C28900AA2F57 /* SubView */,
 			);
 			path = View;
 			sourceTree = "<group>";
