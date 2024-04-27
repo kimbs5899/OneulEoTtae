@@ -1,5 +1,5 @@
 //
-//  AlrmData+CoreDataProperties.swift
+//  AlarmData+CoreDataProperties.swift
 //  OneulEoTtae
 //
 //  Created by Matthew on 4/15/24.
@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 
-extension AlrmData {
+extension AlarmData {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<AlrmData> {
-        return NSFetchRequest<AlrmData>(entityName: "AlrmData")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<AlarmData> {
+        return NSFetchRequest<AlarmData>(entityName: "AlarmData")
     }
 
     @NSManaged public var friday: Bool
@@ -30,6 +30,6 @@ extension AlrmData {
 
 }
 
-extension AlrmData : Identifiable {
+extension AlarmData : Identifiable {
 
 }

@@ -1,5 +1,5 @@
 //
-//  AlrmSettingUIView.swift
+//  AlarmSettingUIView.swift
 //  OneulEoTtae
 //
 //  Created by Matthew on 2/1/24.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct AlrmSettingUIView: View {
-    @State private var isAlrmEnabled = true
+struct AlarmSettingUIView: View {
+    @State private var isAlarmEnabled = true
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationStack{
             List {
                 LabeledContent {
-                    Toggle(isOn: $isAlrmEnabled) {
+                    Toggle(isOn: $isAlarmEnabled) {
                         Text("")
                     }
                 } label: {
@@ -46,5 +46,5 @@ struct AlrmSettingUIView: View {
 }
 
 #Preview {
-    AlrmSettingUIView()
+    AlarmSettingUIView()
 }

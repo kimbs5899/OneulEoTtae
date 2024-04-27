@@ -9,7 +9,7 @@ import Foundation
 import WeatherKit
 import CoreLocation
 
-class WeatherManager {
+final class WeatherManager {
     let weatherService = WeatherService()
     func getWeather(locationTitle: Location) async -> [String] {
         do {

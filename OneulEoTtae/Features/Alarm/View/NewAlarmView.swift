@@ -1,5 +1,5 @@
 //
-//  AlrmEditView.swift
+//  NewAlarmView.swift
 //  OneulEoTtae
 //
 //  Created by 윤진영 on 3/16/24.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct AlrmEditView: View {
-    @EnvironmentObject var alrmDataManager: AlrmDataManager
-    @State var selectedRegion: Location = Location.seoulGangbuk
-    @State var selectedTime: Date = Date()
+struct NewAlarmView: View {
+    @EnvironmentObject private var alarmDataManager: AlarmDataManager
+    @State private var selectedRegion: Location = Location.seoulGangbuk
+    @State private var selectedTime: Date = Date()
     @State private var selectedDays: [String] = []
     @Binding var isSheetShowing: Bool
     var body: some View {
@@ -42,9 +42,7 @@ struct AlrmEditView: View {
                     }
                     ToolbarItem(placement: .topBarTrailing) {
                         Button(action: {
-                            Task {
-                                await addNewAlarm()
-                            }
+                            addNewAlarm()
                         }, label: {
                             Text("추가")
                                 .font(.jalnan2_XS)
@@ -54,12 +52,12 @@ struct AlrmEditView: View {
                 }
         }
     }
-    private func addNewAlarm() async {
+    private func addNewAlarm() {
         let setTime = DateFormatter.sharedFormatter.string(from: selectedTime)
         let locationString = selectedRegion
         let selectedDayResult = selectedDays.map { Day(string: $0)?.rawValue }
         
-        let newAlarm = AlrmDataModel(
+        let newAlarm = AlarmDataModel(
             id: UUID(),
             setTime: setTime,
             location: locationString.rawValue,
@@ -72,14 +70,14 @@ struct AlrmEditView: View {
             saturday: selectedDayResult.contains(Day.saturday.rawValue),
             sunday: selectedDayResult.contains(Day.sunday.rawValue)
         )
-        await alrmDataManager.createAlrmCoreData(data: newAlarm)
+        alarmDataManager.createAlarmCoreData(data: newAlarm)
         isSheetShowing = false
     }
 }
 
 
 #Preview {
-    AlrmEditView(isSheetShowing: .constant(true))
-        .environmentObject(AlrmDataManager())
+    NewAlarmView(isSheetShowing: .constant(true))
+        .environmentObject(AlarmDataManager())
 }
 

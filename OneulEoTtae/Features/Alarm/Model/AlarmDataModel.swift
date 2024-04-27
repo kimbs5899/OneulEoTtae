@@ -1,5 +1,5 @@
 //
-//  AlrmDataModel.swift
+//  AlarmDataModel.swift
 //  OneulEoTtae
 //
 //  Created by Matthew on 3/1/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AlrmDataModel: Identifiable {
+struct AlarmDataModel: Identifiable {
     let id: UUID
     var setTime: String
     var location: String
@@ -36,8 +36,8 @@ struct AlrmDataModel: Identifiable {
     }
 }
 
-extension AlrmDataModel {
-    static let sampleAlarm = AlrmDataModel(
+extension AlarmDataModel {
+    static let sampleAlarm = AlarmDataModel(
         id: UUID(),
         setTime: "12:12",
         location: Location.seoulDobong.rawValue,

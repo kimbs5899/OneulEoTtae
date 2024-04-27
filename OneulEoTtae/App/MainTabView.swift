@@ -30,7 +30,7 @@ struct Home: View {
                 }
                     .background(Color.MainColor_OET)
                     .setUpTab(.weather)
-                AlrmListView()
+                AlarmListView()
                     .setUpTab(.alarm)
                 SettingUIView()
                 .setUpTab(.settings)

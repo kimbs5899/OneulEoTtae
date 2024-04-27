@@ -1,5 +1,5 @@
 //
-//  AlrmListView.swift
+//  AlarmListView.swift
 //  OneulEoTtae
 //
 //  Created by 윤진영 on 1/16/24.
@@ -7,32 +7,32 @@
 
 import SwiftUI
 
-struct AlrmListView: View {
-    @EnvironmentObject var alrmDataManager: AlrmDataManager
+struct AlarmListView: View {
+    @EnvironmentObject var alarmDataManager: AlarmDataManager
     @State private var isAddSheetShowing = false
     @State private var selectedRegion: Location = Location.seoulGangbuk
     @State private var selectedDates: [String] = []
-    @State private var selectedAlrm: AlrmDataModel?
+    @State private var selectedAlarm: AlarmDataModel?
     @State private var isEditing = false
     var body: some View {
         NavigationStack {
             List {
-                ForEach(alrmDataManager.alrmData) { alrm in
+                ForEach(alarmDataManager.alarmData) { alarm in
                     ZStack {
                         NavigationLink {
-                            NewAlrmView(selectedRegion:
-                                            Location(rawValue: alrm.location) ?? Location.seoulGangbuk,
-                                         selectedTime: DateFormatter.sharedFormatter.date(from: alrm.setTime) ?? Date(),
-                                         selectedDays: selectedDaysFromAlrm(alrm),
-                                         id: alrm.id)
+                            AlarmEditView(selectedRegion:
+                                            Location(rawValue: alarm.location) ?? Location.seoulGangbuk,
+                                         selectedTime: DateFormatter.sharedFormatter.date(from: alarm.setTime) ?? Date(),
+                                         selectedDays: selectedDaysFromAlarm(alarm),
+                                         id: alarm.id)
                         } label: {
                             EmptyView()
                         }.opacity(0)
                         
-                        AlrmCell(alrm: alrm)
+                        AlarmCell(alarm: alarm)
                             .swipeActions(edge: .trailing) {
                                 Button {
-                                    alrmDataManager.deleteAlrmCoreData(alrm)
+                                    alarmDataManager.deleteAlarmCoreData(alarm)
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                         .tint(.red)
@@ -42,8 +42,8 @@ struct AlrmListView: View {
                 }
                 .onDelete { IndexSet in
                     IndexSet.forEach { index in
-                        let alrmToDelete = alrmDataManager.alrmData[index]
-                        alrmDataManager.deleteAlrmCoreData(alrmToDelete)
+                        let alarmToDelete = alarmDataManager.alarmData[index]
+                        alarmDataManager.deleteAlarmCoreData(alarmToDelete)
                     }
                 }
             }
@@ -69,26 +69,26 @@ struct AlrmListView: View {
                 }
             }
             .sheet(isPresented: $isAddSheetShowing) {
-                AlrmEditView(isSheetShowing: $isAddSheetShowing)
+                NewAlarmView(isSheetShowing: $isAddSheetShowing)
             }
         }
     }
-    private func selectedDaysFromAlrm(_ alrm: AlrmDataModel) -> [String] {
+    private func selectedDaysFromAlarm(_ alarm: AlarmDataModel) -> [String] {
         var selectedDays: [String] = []
-        if alrm.monday { selectedDays.append("월요일") }
-        if alrm.tuesday { selectedDays.append("화요일") }
-        if alrm.wednesday { selectedDays.append("수요일") }
-        if alrm.thursday { selectedDays.append("목요일") }
-        if alrm.friday { selectedDays.append("금요일") }
-        if alrm.saturday { selectedDays.append("토요일") }
-        if alrm.sunday { selectedDays.append("일요일") }
+        if alarm.monday { selectedDays.append("월요일") }
+        if alarm.tuesday { selectedDays.append("화요일") }
+        if alarm.wednesday { selectedDays.append("수요일") }
+        if alarm.thursday { selectedDays.append("목요일") }
+        if alarm.friday { selectedDays.append("금요일") }
+        if alarm.saturday { selectedDays.append("토요일") }
+        if alarm.sunday { selectedDays.append("일요일") }
         return selectedDays
     }
 }
 
-struct AlrmListView_Previews: PreviewProvider {
+struct AlarmListView_Previews: PreviewProvider {
     static var previews: some View {
-        AlrmListView()
-            .environmentObject(AlrmDataManager())
+        AlarmListView()
+            .environmentObject(AlarmDataManager())
     }
 }

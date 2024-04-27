@@ -1,5 +1,5 @@
 //
-//  DateListModel.swift
+//  DayModel.swift
 //  OneulEoTtae
 //
 //  Created by Matthew on 3/1/24.
