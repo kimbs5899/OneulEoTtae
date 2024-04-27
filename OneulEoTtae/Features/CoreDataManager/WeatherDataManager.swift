@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 @MainActor
-class WeatherDataManager: ObservableObject {
+final class WeatherDataManager: ObservableObject {
     @Published var weatherListData: [WeatherDataModel] = []
     lazy var context = AppDelegate().persistentContainer.viewContext
     let modelName: String = "WeatherData"

@@ -8,7 +8,7 @@
 import CoreData
 import SwiftUI
 
-class AlarmDataManager: ObservableObject {
+final class AlarmDataManager: ObservableObject {
     @Published var alarmData: [AlarmDataModel] = []
     lazy var context = AppDelegate().persistentContainer.viewContext
 //    let weatherManager = WeatherManager()
