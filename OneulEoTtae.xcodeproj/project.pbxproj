@@ -22,6 +22,7 @@
 		895B153E2B583DCA00B9320E /* DetailWeatherItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895B153D2B583DCA00B9320E /* DetailWeatherItemView.swift */; };
 		995C154A2BAD35E600E44991 /* AlarmEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995C15492BAD35E600E44991 /* AlarmEditView.swift */; };
 		995C154E2BADB54400E44991 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995C154D2BADB54400E44991 /* DateFormatter+.swift */; };
+		996A0F102BEE2D88003DA694 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A0F0F2BEE2D88003DA694 /* MotionManager.swift */; };
 		9984D1D72BA5C29500AA2F57 /* NewAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9984D1D62BA5C29500AA2F57 /* NewAlarmView.swift */; };
 		9984D1D92BA5C2A100AA2F57 /* TimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9984D1D82BA5C2A100AA2F57 /* TimeSettingView.swift */; };
 		9984D1DB2BA5C2AE00AA2F57 /* DaySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9984D1DA2BA5C2AE00AA2F57 /* DaySettingView.swift */; };
@@ -69,6 +70,7 @@
 		895B153D2B583DCA00B9320E /* DetailWeatherItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeatherItemView.swift; sourceTree = "<group>"; };
 		995C15492BAD35E600E44991 /* AlarmEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmEditView.swift; sourceTree = "<group>"; };
 		995C154D2BADB54400E44991 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
+		996A0F0F2BEE2D88003DA694 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 		9984D1D62BA5C29500AA2F57 /* NewAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlarmView.swift; sourceTree = "<group>"; };
 		9984D1D82BA5C2A100AA2F57 /* TimeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSettingView.swift; sourceTree = "<group>"; };
 		9984D1DA2BA5C2AE00AA2F57 /* DaySettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySettingView.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		9909E9512BCFFACC00011319 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				996A0F0F2BEE2D88003DA694 /* MotionManager.swift */,
 				8942F8C22B5CA4AE00E4B83B /* MotionRectangle.swift */,
 				C1CCBC362B91CDC7006832DE /* WeatherDataModel.swift */,
 			);
@@ -429,6 +432,7 @@
 				C1CD98B52B91B96900ABD463 /* WeatherDataManager.swift in Sources */,
 				893A2B3F2B76777900008CE0 /* PerceivedTemperatureChartsView.swift in Sources */,
 				8921D62C2B5696E200956D62 /* CardView.swift in Sources */,
+				996A0F102BEE2D88003DA694 /* MotionManager.swift in Sources */,
 				C1CCBC3B2B91CF2A006832DE /* DayModel.swift in Sources */,
 				C1CD98B72B91B97D00ABD463 /* AlarmDataManager.swift in Sources */,
 				C151F3C22B5FC7C000311869 /* VersionListUIView.swift in Sources */,
